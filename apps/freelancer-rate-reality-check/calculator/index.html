@@ -60,20 +60,20 @@
               </label>
 
               <label class="field">
-                <span class="field-label">Desired annual income</span>
+                <span class="field-label">Desired take-home income</span>
                 <div class="input-affix">
                   <span class="affix">$</span>
                   <input
                     type="number"
-                    id="desiredAnnualIncome"
-                    name="desiredAnnualIncome"
+                    id="desiredNetIncome"
+                    name="desiredNetIncome"
                     min="0"
                     step="1000"
                     inputmode="decimal"
                     required
                   />
                 </div>
-                <span class="hint">What you want to take home as business income (before personal taxes)</span>
+                <span class="hint">What you want to keep after taxes — the number you live on</span>
               </label>
 
               <label class="field">
@@ -90,7 +90,7 @@
                     placeholder="What you charge now"
                   />
                 </div>
-                <span class="hint">Leave blank to evaluate the goal-based rate only</span>
+                <span class="hint">Leave blank to evaluate the floor / recommended rates only</span>
               </label>
 
               <label class="field">
@@ -105,23 +105,40 @@
                   inputmode="decimal"
                   required
                 />
-                <span class="hint">Hours you actually invoice — not total hours worked</span>
+                <span class="hint">Hours you actually invoice — not total hours worked (often 20–30)</span>
               </label>
 
               <label class="field">
-                <span class="field-label">Business expenses / overhead</span>
+                <span class="field-label">Annual business expenses</span>
+                <div class="input-affix">
+                  <span class="affix">$</span>
+                  <input
+                    type="number"
+                    id="annualExpenses"
+                    name="annualExpenses"
+                    min="0"
+                    step="500"
+                    inputmode="decimal"
+                    required
+                  />
+                </div>
+                <span class="hint">Software, insurance, hardware, workspace, accounting — dollars per year</span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Tax rate (total)</span>
                 <div class="range-row">
                   <input
                     type="range"
-                    id="overheadPercent"
-                    name="overheadPercent"
-                    min="0"
-                    max="60"
+                    id="taxRatePercent"
+                    name="taxRatePercent"
+                    min="15"
+                    max="50"
                     step="1"
                   />
-                  <strong id="overheadValue">20%</strong>
+                  <strong id="taxRateValue">30%</strong>
                 </div>
-                <span class="hint">Tools, software, insurance, contractors, workspace, etc.</span>
+                <span class="hint">SE tax + income tax combined. Most US freelancers: ~25–40%. Default 30% is a working estimate — adjust with your accountant.</span>
               </label>
             </div>
 
@@ -131,7 +148,8 @@
             </p>
 
             <p class="muted small formula-note">
-              Formula: <code>rate = (income ÷ (1 − overhead%)) ÷ (hours/week × 48 weeks)</code>
+              Formula:
+              <code>revenue = (take-home + expenses) / (1 - tax%) then floor = revenue / (hrs/wk x 48) then recommended = floor x 1.20</code>
             </p>
           </form>
 
@@ -176,14 +194,20 @@
             <p id="goalGap" class="callout" hidden></p>
 
             <div class="metric-grid">
+              <article class="metric">
+                <h3>Floor rate <span class="metric-tag">minimum viable</span></h3>
+                <p class="metric-value" id="outFloorRate">—</p>
+                <p class="metric-sub" id="outFloorNote">Hits your take-home target with zero buffer</p>
+              </article>
+
               <article class="metric metric-primary">
-                <h3>Recommended hourly rate</h3>
+                <h3>Recommended rate <span class="metric-tag">+15–25% buffer</span></h3>
                 <p class="metric-value" id="outRecommendedRange">—</p>
                 <p class="metric-sub" id="outRecommendedMid">—</p>
               </article>
 
               <article class="metric">
-                <h3>Effective rate after expenses</h3>
+                <h3>Effective rate <span class="metric-tag">true net / life-hour</span></h3>
                 <p class="metric-value" id="outEffectiveRate">—</p>
                 <p class="metric-sub" id="outEffectiveNote">—</p>
               </article>
@@ -194,12 +218,13 @@
                 <p class="metric-sub" id="outMarketMid">—</p>
               </article>
 
-              <article class="metric">
-                <h3>Capacity & revenue</h3>
+              <article class="metric metric-span">
+                <h3>Capacity and revenue</h3>
                 <p class="metric-value small-value" id="outBillableHours">—</p>
                 <p class="metric-sub">
                   Revenue needed <span id="outRevenueNeeded">—</span> · Expenses
-                  <span id="outExpenses">—</span>
+                  <span id="outExpenses">—</span> · Working year
+                  <span id="outWorkingHours">—</span>
                 </p>
               </article>
             </div>
