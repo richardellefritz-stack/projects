@@ -86,7 +86,7 @@ Note what just happened: not 2,080. **1,200.** That gap alone — before tax, be
 
 Compare that to the broken method's $38/hour for the same person wanting a similar life. That's not a rounding difference. That's a different business.
 
-### Minimum viable vs. recommended
+### Floor vs. recommended
 
 $94 is your **floor** — the rate at which you exactly hit your target with zero margin for error. It assumes you fill every one of those 1,200 hours, that nothing goes wrong, that no client pays late, that you never have a slow quarter.
 
@@ -100,15 +100,21 @@ That's your number. Not a guess — a calculation you can walk anyone through li
 
 One more concept, and it's the one that reframes everything.
 
-Your **billable rate** is what you charge. Your **effective rate** is what you actually net per hour of your working life, once tax, expenses, and non-billable time are absorbed. Those are dramatically different numbers — typically a gap of **35–45%**, and often more.
+Your **billable rate** is what you charge. Your **effective rate** is what you actually net per hour of your working life — after tax, after expenses, and spread across every hour you work rather than only the ones you invoice. Those are dramatically different numbers.
 
-Our example freelancer billing $113/hour is netting roughly $70,000 across a ~1,920-hour working year. That's about **$36/hour of actual life**, against a $113 sticker price.
+Our example freelancer has two versions of this, and the difference between them is worth understanding.
 
-Sit with that for a second, because it does two useful things.
+**At the floor rate of $94/hour**, they bill $112,857, keep $79,000 after tax, and net exactly their $70,000 target after expenses. Spread across a ~1,920-hour working year, that's about **$36/hour of actual life** — against a $94 sticker price.
 
-First, it explains the busy-but-broke feeling from Chapter 1 with precision. You weren't imagining the gap between your rate and your bank balance. The gap is structural.
+**At the recommended $113/hour**, they bill about $135,400, and net roughly **$85,800** after tax and expenses. That's about **$45/hour of actual life** — against a $113 sticker price. The extra $19/hour of billing is what turns a zero-margin year into one that survives a slow quarter.
 
-Second, and more usefully: **it makes your rate feel defensible.** The number that felt outrageous to say out loud stops feeling outrageous once you can see that most of it never reaches you. You're not charging $113 because you're worth triple a salaried employee. You're charging $113 because that's what it costs to net a normal income while carrying every cost an employer used to carry for you. That's not greed. That's arithmetic.
+Either way, notice the size of the gap: **the number that reaches you is well under half the number you quote.** Not 10% less. Not 30% less. Under half.
+
+Sit with that, because it does two useful things.
+
+First, it explains the busy-but-broke feeling from Chapter 1 with precision. You weren't imagining the gap between your rate and your bank balance. The gap is structural, and it's bigger than almost anyone estimates.
+
+Second, and more usefully: **it makes your rate feel defensible.** The number that felt outrageous to say out loud stops feeling outrageous once you can see that well over half of it never reaches you. You're not charging $113 because you're worth triple a salaried employee. You're charging $113 because that's what it costs to net a normal income while carrying every cost an employer used to carry for you. That's not greed. That's arithmetic.
 
 When a client pushes back, this is the frame. Not "I'm very experienced" — that's an opinion they can dispute. Rather: this is what independent work costs. That's a fact they can't argue with.
 
@@ -119,8 +125,8 @@ Do it before Chapter 4. Five steps:
 1. Target take-home
 2. Plus annual expenses
 3. Divided by (1 − tax rate)
-4. Divided by (billable hours/week × working weeks)
-5. Times 1.15–1.25 for margin
+4. Divided by (billable hours/week × working weeks) → your floor
+5. Times 1.15–1.25 → your recommended rate
 
 Then put it next to the number you wrote down at the end of Chapter 1. `[CALC]`
 
