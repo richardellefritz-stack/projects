@@ -12,7 +12,7 @@ Those are two different problems. Most pricing advice only solves the first one.
 
 So this book does both. The first half gets you a defensible number. The second half gets you to charge it.
 
-It should take you about an hour to read. There's a companion calculator that automates the arithmetic in Chapter 3 — you can read straight through and run the numbers at the end, or open the calculator alongside Chapter 3 and do it as you go. Either works.
+It should take you about an hour to read. There's a companion calculator that automates the arithmetic in Chapter 3 and the benchmarking in Chapter 4 — you can read straight through and run the numbers at the end, or open the calculator alongside Chapter 3 and do it as you go. Either works.
 
 ## Who This Is For
 
@@ -28,14 +28,17 @@ If you're already running value-based pricing with a mature proposal process, th
 
 A note on the numbers in this book, because you deserve to know how much weight to put on them.
 
-The rate benchmarks throughout are compiled from aggregated public sources: freelance marketplace data summaries, industry rate surveys, published salary and contractor rate databases, and rate-guide compilations published during 2025–2026. They are presented as **ranges**, not point estimates, and that is deliberate. Different sources disagree meaningfully — estimates of "the average US freelance hourly rate," for example, land anywhere from roughly $44 to $48 depending on which dataset you consult, and the underlying methodologies are rarely disclosed in full.
+**The benchmark tables in Chapter 4 are approximate mid-market reference bands for direct client-facing work — not guarantees, and not predictions about any specific engagement.** They exist to support underpricing diagnostics: to tell you roughly which neighborhood you're in and whether your calculated rate is plausibly low. They are the same figures the companion calculator uses, so the book and the tool will never give you contradictory guidance.
+
+Each cell gives a Low, Mid, and High. Mid approximates a typical solid rate for that category and experience band; Low and High bound a realistic range around it. Market multipliers adjust the bands for the market you sell into; the calculator applies them automatically.
 
 What that means for you:
 
-- **Treat every figure here as directional, not authoritative.** A range tells you which neighborhood you're in. It does not tell you what any specific client will pay you for any specific project.
-- **Self-reported rate data skews high.** Freelancers surveyed about their rates tend to report their best rates, not their average ones. Assume real billed rates run somewhat below published figures.
-- **Geography and channel change everything.** The same person can be worth substantially different amounts depending on where their clients are and whether they're found through a marketplace or directly. Chapter 4 covers this.
-- **These figures age fast.** Freelance rate markets move quickly, and the 2025–2026 period in particular has seen unusually sharp movement in both directions depending on the category. Anything more than six to twelve months old deserves extra skepticism — including, eventually, this book.
+- **Treat every figure as directional, not authoritative.** A band tells you where a category sits. It does not tell you what any specific client will pay you for any specific project. Specialization, positioning, portfolio, and negotiation all move real outcomes well outside these bands in both directions.
+- **These describe direct-client work, not marketplace work.** This is the most common source of confusion. Published "average freelance rate" figures — often quoted in the $44–$48/hour range for US freelancers — pool marketplace, offshore, and direct-client work into one number, and marketplace rates run substantially below direct rates for comparable talent. If your mental benchmark came from a freelance platform, these bands will look high. That gap is real and it is the point.
+- **Experience bands are guidelines, not rules.** Years of experience is a rough proxy for capability. A specialist can credibly price above their tenure; an undifferentiated generalist may sit below it. Where tenure and positioning disagree, positioning wins.
+- **Market multipliers reflect where your clients are, not where you live.** A freelancer in a lower-cost market serving clients in a higher-cost one competes in the client's market.
+- **These figures age.** Freelance rate markets move quickly, and the 2025–2026 period in particular has seen unusually sharp movement in both directions depending on category — see the discussion of AI-driven bifurcation in Chapter 4. Anything more than six to twelve months old deserves extra skepticism, including, eventually, this book. Recalculate every six months.
 
 Where this book discusses the psychology of pricing — why freelancers underprice, why raising rates feels dangerous — it describes **patterns that industry practitioners and analyses consistently report**, not findings from primary academic research. Those patterns are widely observed and useful to know about. They are not laboratory results, and this book doesn't dress them up as such.
 
