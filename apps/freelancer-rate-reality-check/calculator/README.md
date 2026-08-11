@@ -51,23 +51,38 @@ No build step, bundler, or backend is required for v1.
 | `js/underpricing.js` | Green / yellow / red diagnostic |
 | `js/app.js` | UI wiring, free/paid toggle, scenarios, export |
 
-## Rate logic (correctness first)
+## Rate logic (ebook Chapter 3 alignment)
 
-**Recommended hourly rate**
+**Floor rate (minimum viable)**
 
 ```
-annual_billable_hours = billable_hours_per_week × 48
-
-revenue_needed = desired_annual_income ÷ (1 − overhead_percent)
-
-recommended_hourly = revenue_needed ÷ annual_billable_hours
+pre_tax_subtotal = desired_take_home + annual_expenses_dollars
+revenue_needed   = pre_tax_subtotal ÷ (1 − tax_rate)
+annual_billable  = billable_hours_per_week × 48
+floor_hourly     = revenue_needed ÷ annual_billable
 ```
 
-- **48 weeks** is the default billable-year assumption (vacation, sick days, admin gaps).  
-- **Overhead** is treated as a percentage of revenue that must be recovered in the rate.  
-- **Recommended range** is ~90%–115% of that mid recommendation (negotiation / positioning band).  
-- **Effective rate** = rate × (1 − overhead) — what remains after expenses.  
-- **Project guidance** = hourly band × typical hours (10 / 40 / 100), with a light package factor on larger scopes.
+**Recommended rate (with buffer)**
+
+```
+recommended_low  = floor × 1.15
+recommended_mid  = floor × 1.20
+recommended_high = floor × 1.25
+```
+
+**Effective rate (true net per hour of working life)**
+
+```
+working_hours_year = 40 × 48   (billable + non-billable)
+gross              = rate × annual_billable
+net                = gross × (1 − tax_rate) − annual_expenses
+effective_hourly   = net ÷ working_hours_year
+```
+
+- **Tax** is user-editable (default 30%; typical US freelance band ~25–40%). Use division to gross up — never multiply.  
+- **Expenses** are annual **dollars**, not a % of revenue.  
+- **48 weeks** is the default billable-year assumption.  
+- **Project guidance** uses the recommended band × typical hours (10 / 40 / 100).
 
 ### Underpricing signal
 
@@ -98,14 +113,17 @@ Use the **toggle** in the header (state stored in `localStorage`).
 
 Replace the toggle later with real entitlements (license key, auth, Gumroad, etc.). Feature gating is already isolated via `body[data-tier]` and `.paid-only` / `.free-only` classes.
 
-## Defaults worth knowing
+## Defaults worth knowing (ebook worked example)
 
 - Category: Writing  
 - Experience: Intermediate  
 - Market: Global / remote (1.0× baseline)  
-- Income goal: $80,000  
-- Billable hours: 25/week  
-- Overhead: 20%  
+- Take-home goal: **$70,000**  
+- Annual expenses: **$9,000**  
+- Tax rate: **30%**  
+- Billable hours: **25/week × 48 weeks = 1,200**  
+
+Expected output for those defaults: **floor ≈ $94/hr**, **recommended ≈ $113/hr**, **effective at floor ≈ $36/hr**.
 
 Benchmarks are **directional USD mid-market references**, not guarantees. Specialties, proof of results, and client segment still matter.
 
