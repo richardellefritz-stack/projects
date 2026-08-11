@@ -4,57 +4,160 @@ You now have a number built from your costs. That number answers *what you need*
 
 This chapter is the sanity check. It's also where the most important development in freelance pricing right now lives, and it's changing faster than most published advice has caught up with.
 
-## Read These Numbers Correctly
+## How to Read These Numbers
 
-Before any figures: a warning about how to use them.
+Before any figures, three things about what the tables below are and aren't.
 
-The headline statistic you'll see quoted everywhere is that the average US freelance hourly rate sits somewhere around **$44–$48**, with most rates falling between roughly **$24 and $62**.
+**They are mid-market references for direct client-facing work.** Not marketplace rates, not agency rates, not guarantees. They describe the neighborhood a competent professional in that category and tier can reasonably occupy when working directly with clients.
 
-That number is nearly useless, and it's worth understanding why, because it will otherwise anchor you badly (see Chapter 2).
+**They are bands, not points.** Each cell gives a Low, Mid, and High. Mid is a typical solid rate; Low and High bound a realistic range. If you're at the Low end, that's not a failure — it's a starting position with room above it.
 
-The range of real freelance rates spans something on the order of **thirty-fold** — from a few dollars an hour for offshore commodity work to several hundred an hour for scarce specialist skills. An "average" across a distribution that wide describes nobody. It's the statistical equivalent of averaging a bicycle and a freight train.
+**They are the same numbers the calculator uses.** The companion tool benchmarks your calculated rate against exactly these figures, so the book and the tool will never tell you two different things. `[CALC]`
 
-So use the numbers below as **neighborhood indicators**: they tell you roughly where a category sits and, more importantly, how wide the band is within it. They do not tell you what you're worth. Per the methodology note at the front of this book, every figure here is a range compiled from aggregated public sources, and different sources disagree.
+One important note on why these sit above the "average freelance rate" figures you'll see quoted online. Published averages — typically in the $44–$48/hour range for US freelancers — pool marketplace work, offshore work, and direct-client work into a single number. Marketplace rates run substantially below direct-client rates for comparable talent, which drags those averages down. The tables here deliberately describe the direct-client market, because that's the market you should be pricing into. If your current rate came from scanning a freelance platform, expect these numbers to look high. That gap is the point.
 
-## Rate Bands by Experience Tier
+## Experience Bands
 
-Cutting across all categories, published figures cluster roughly like this:
-
-| Tier | Typical range |
+| Band | Typical experience |
 |---|---|
-| Beginner (0–2 yrs) | ~$20–$40/hr |
-| Mid-level (3–5 yrs) | ~$40–$75/hr |
-| Expert / specialist (6+ yrs or niche) | ~$75–$150+/hr |
+| **Beginner** | 0–2 years |
+| **Intermediate** | 2–5 years |
+| **Advanced** | 5–10 years |
+| **Expert** | 10+ years |
 
-Median across disciplines lands somewhere around **$65–$85/hr**. Also worth noting: project-based pricing tends to produce **20–40% more** than equivalent hourly billing for the same work — a preview of Chapter 7.
+These are guidelines, not rules. Years of experience is a proxy for capability, and a rough one. A specialist three years into a narrow niche may credibly price at Advanced; a generalist eight years into undifferentiated work may sit at Intermediate. Where the two disagree, capability and positioning win.
 
-## Rate Bands by Category
+## Hourly Benchmarks by Category (USD)
 
-Approximate ranges for US-based freelancers. Expect wide variance.
+### Writing
 
-**Writing.** Entry-level content writing runs roughly $15–$40/hr, or about $0.06–$0.25/word. Technical writing starts around $15–$30/hr at entry but has a much higher ceiling with specialization. Per-word billing is in structural decline; specialty and project-based work is where the category is moving.
+| Band | Low | Mid | High |
+|---|---|---|---|
+| Beginner | $25 | $40 | $55 |
+| Intermediate | $45 | $60 | $80 |
+| Advanced | $75 | $100 | $140 |
+| Expert | $120 | $160 | $220 |
 
-**Design.** Graphic design runs roughly $35–$60/hr at the beginner end, reaching $100/hr+ for senior work. UX/UI is meaningfully higher — roughly $75–$150/hr, with specialist product design in technical domains reported as high as $170–$280/hr.
+Rates vary widely by specialty — SEO, technical, ghostwriting, and conversion copy are different markets. Niche expertise and demonstrable ROI support the upper band.
 
-**Development.** General web development sits around $60–$120/hr. Senior and specialized work — AI/ML, blockchain, embedded systems, security — commonly reaches $150–$200/hr and beyond, with the top of the AI/ML band reported anywhere from $100 to $300+/hr depending on source.
+**Common pitfall:** pricing per word without a floor rate systematically underprices research-heavy work. The more you have to learn to write it, the worse per-word billing treats you.
 
-**Marketing.** Enormous spread depending on positioning. Broad averages land around $26–$34/hr, but senior marketing consultants are routinely quoted at $100–$200/hr. The difference between those figures isn't skill — it's whether you're positioned as a task executor or a strategic advisor.
+### Design
 
-**Consulting.** Wide by nature. Senior strategists and specialty consultants commonly sit at $100–$200+/hr, with vertical specialists in regulated industries at the top of the band.
+| Band | Low | Mid | High |
+|---|---|---|---|
+| Beginner | $30 | $45 | $60 |
+| Intermediate | $50 | $70 | $95 |
+| Advanced | $85 | $120 | $165 |
+| Expert | $140 | $190 | $260 |
 
-If your calculated rate from Chapter 3 sits well above the band for your category and tier, that's information — but not necessarily a reason to lower it. It may mean your cost base is high, that your billable-hours assumption is too pessimistic, or that you need to change category positioning rather than your price. Which brings us to the two levers that actually move your ceiling.
+UI/UX and brand systems generally command more than one-off graphics. Portfolio quality and documented process move rates up more reliably than years alone.
+
+**Common pitfall:** unlimited revisions and open-ended asset requests without defined scope destroy your effective hourly rate while your quoted rate looks fine.
+
+### Development
+
+| Band | Low | Mid | High |
+|---|---|---|---|
+| Beginner | $40 | $55 | $75 |
+| Intermediate | $70 | $95 | $130 |
+| Advanced | $115 | $150 | $200 |
+| Expert | $170 | $220 | $300 |
+
+Full-stack, mobile, and specialized stacks — security, data, AI — sit at the higher end. Maintenance retainers stabilize income between projects.
+
+**Common pitfall:** fixed bids with no contingency for unknowns. The unknowns are not optional; only your compensation for them is.
+
+### Marketing
+
+| Band | Low | Mid | High |
+|---|---|---|---|
+| Beginner | $30 | $45 | $60 |
+| Intermediate | $55 | $75 | $100 |
+| Advanced | $90 | $125 | $170 |
+| Expert | $140 | $190 | $260 |
+
+Strategy and performance marketing typically outprice pure execution. Results-tied case studies are the most direct justification for premium rates in this category.
+
+**Common pitfall:** bundling ads management, content, and strategy into one flat fee. The bundle hides which component is underpriced — usually the strategy.
+
+### Consulting
+
+| Band | Low | Mid | High |
+|---|---|---|---|
+| Beginner | $50 | $70 | $95 |
+| Intermediate | $85 | $120 | $160 |
+| Advanced | $145 | $195 | $260 |
+| Expert | $230 | $300 | $420 |
+
+Consulting prices access to judgment, not hours of production. Day rates and retainers become standard at Advanced and above.
+
+**Common pitfall:** charging implementation rates for advisory work. If they're paying for what you know rather than what you produce, the production rate is the wrong instrument.
+
+### Other
+
+| Band | Low | Mid | High |
+|---|---|---|---|
+| Beginner | $30 | $45 | $60 |
+| Intermediate | $55 | $75 | $100 |
+| Advanced | $90 | $125 | $170 |
+| Expert | $140 | $185 | $250 |
+
+Use neighboring categories as a sanity check. Specialized trades and narrow niches can and do exceed these mid-market bands.
+
+**Common pitfall:** copying hobbyist marketplace rates as your baseline. It doesn't just underprice one project — it trains clients to undervalue the whole category of work.
+
+## Market Multipliers
+
+The bands above are baseline figures. Your market adjusts them. The calculator applies these multipliers automatically when you select your market; if you're working from the tables by hand, multiply the Low/Mid/High values yourself. `[CALC]`
+
+| Market | Multiplier |
+|---|---|
+| United States | 1.00 |
+| Global / remote (market rate) | 1.00 |
+| Northern Europe | 1.05 |
+| Canada | 0.95 |
+| United Kingdom | 0.95 |
+| Western Europe | 0.95 |
+| Australia / NZ | 0.95 |
+| Middle East | 0.85 |
+| Eastern Europe | 0.55 |
+| Latin America | 0.50 |
+| Southeast Asia | 0.45 |
+| Africa | 0.45 |
+| South Asia | 0.40 |
+
+Two things to take from this table.
+
+First, **the spread is enormous** — a factor of roughly two and a half between the highest and lowest multipliers. Any "global average freelance rate" is averaging across that spread and is therefore meaningless for your pricing.
+
+Second, and more usefully: **the multiplier that matters is your client's market, not yours.** If you're based in a 0.50 market and serving US clients directly, you are competing in the 1.00 market and can price accordingly. Many freelancers apply their local multiplier to international work and leave half their rate on the table. Choose the market you sell into, not the one you sleep in.
+
+## Project Sizing
+
+For converting hourly guidance into project quotes, the calculator uses these typical sizes:
+
+| Project size | Estimated billable hours |
+|---|---|
+| Small | 10 |
+| Medium | 40 |
+| Large | 100 |
+
+These are starting reference points for estimation, not scope definitions. Your own tracked actuals will beat them within a few months — see Chapter 7.
 
 ## Lever One: Specialization
 
-The single most reliable rate multiplier in the data isn't experience. It's **narrowness**.
+The single most reliable rate multiplier isn't experience. It's **narrowness**.
 
-Published analyses consistently find that specialists command large premiums over generalists in the same field — commonly in the range of **40–130%** depending on how the specialization is defined. The pattern that emerges:
+Specialists consistently command large premiums over generalists in the same field — commonly in the range of 40–130% depending on how tightly the specialization is defined. The pattern that emerges:
 
 - **Category specialist** (a defined skill within a field): roughly +20–40%
 - **Industry-vertical specialist** (a field applied to a specific industry): roughly +50–80%
 - **Intersection specialist** (a niche within a niche): roughly +90–150%
 
-Concretely: "developer" is a commodity. "Backend developer" is a category specialist. "Backend developer for healthcare compliance systems" is an intersection specialist — and can plausibly charge double the generalist.
+Concretely: "developer" is a commodity. "Backend developer" is a category specialist. "Backend developer for healthcare compliance systems" is an intersection specialist — and plausibly prices at Expert while holding Intermediate years.
+
+This is how you move up a band faster than the calendar allows. It's also why the years-of-experience guidelines above are soft: specialization is the lever that decouples your rate from your tenure.
 
 The counterintuitive part is that narrowing feels like it should shrink your market. It does shrink your market — and raises your price, because within that smaller market you're one of very few credible options rather than one of thousands of interchangeable ones. Most freelancers stay generalists out of fear of the smaller pool, and pay for that safety with their rate, permanently.
 
@@ -80,36 +183,28 @@ On the other side, rates in AI-adjacent specialist categories are climbing:
 - Blockchain developers: roughly +38%
 - Cybersecurity consultants: roughly +32%
 
-Same market, same period, opposite directions. Reported premiums for AI/ML freelancers over general development sit around **40–60%**.
+Same market, same period, opposite directions. Reported premiums for AI/ML freelancers over general development sit around 40–60%.
 
 The generalizable pattern isn't "learn AI." It's this: **positioning yourself as an expert user and integrator of AI tools correlates with rising rates; competing directly against AI-automatable tasks correlates with falling ones.**
 
-This has a direct and uncomfortable implication for pricing. If your work sits in a declining category, the market rate you benchmark against today will likely be lower in eighteen months. Setting a rate that's merely "competitive" for that category is setting a rate on a downward escalator — which makes the anchoring problem from Chapter 2 substantially worse, because you'll be defending a stale number in a market that's moved beneath you.
+This has a direct implication for how you use the tables above. If your work sits in a declining segment, the band you benchmark against today will likely be lower in eighteen months. Pricing at the Mid of a shrinking band is pricing onto a downward escalator — which makes the anchoring problem from Chapter 2 considerably worse, because you'll be defending a stale number in a market that has moved beneath you.
 
 The two practical responses:
 
-1. **Move up the value chain within your category.** A writer who does research-heavy, subject-matter-expert content is in a different market than a writer producing volume blog copy — even though both are "writers" for benchmarking purposes.
-2. **Reposition around the tools rather than against them.** The freelancers gaining ground are frequently the ones who use AI to deliver more, faster — and price on the outcome rather than the hours the tools just eliminated. Which is exactly the trap of hourly billing, and exactly why Chapter 7 exists.
-
-## Two Adjustments Before You Compare
-
-Two structural factors that will make any benchmark misleading if you ignore them.
-
-**Channel.** Marketplace rates run roughly **20–40% below** direct-client rates for comparable talent. If your benchmark came from a platform and you work direct, the benchmark is low. If you work on a platform, understand that you're operating in a structurally compressed segment — and that moving to direct clients is itself a rate increase, without changing your price.
-
-**Geography.** The spread is large: US rates commonly run 2–5x Eastern European rates and 3–8x South Asian rates, with regional averages ranging from roughly $95/hr in North America down to roughly $40/hr in some regions. Global averages are meaningless for your pricing. Benchmark against your clients' market, not the world's.
+1. **Move up the value chain within your category.** A writer doing research-heavy subject-matter work is in a different market than a writer producing volume blog copy — even though both benchmark as "Writing."
+2. **Reposition around the tools rather than against them.** The freelancers gaining ground are frequently the ones using AI to deliver more, faster — and pricing on the outcome rather than the hours the tools just eliminated. Which is exactly the trap of hourly billing, and exactly why Chapter 7 exists.
 
 ## Reconciling Your Number
 
-You now have two figures: your calculated rate from Chapter 3, and a market band from this chapter. Three possible outcomes:
+You now have two figures: your calculated rate from Chapter 3, and a band from this chapter. Three possible outcomes.
 
-**Your rate sits inside the band.** Good. Charge it, with the buffer. Nothing to resolve.
+**Your rate sits inside the band.** Good. Charge it, with the buffer from Chapter 3. Nothing to resolve — though note where in the band you sit, because Low is a floor, not a destination.
 
-**Your rate sits below the band.** You've been underpricing on both dimensions — your costs *and* your market. Raise to at least the calculated number, and treat the band as your next target.
+**Your rate sits below the band.** You've been underpricing on both dimensions — your costs *and* your market. Raise to at least your calculated number, and treat the band's Mid as your next target.
 
-**Your rate sits above the band.** Don't automatically lower it. First check your inputs: is your expense base unusually high, or your billable-hours estimate too conservative? If the inputs are sound and you're still above the band, the answer is usually positioning, not price — you're benchmarking against a category you've outgrown, and the fix is specialization (above), not a discount.
+**Your rate sits above the band.** Don't automatically lower it. First check your inputs: is your expense base unusually high, or your billable-hours estimate too conservative? If the inputs are sound and you're still above the band, the answer is usually positioning, not price — you're benchmarking against a category or tier you've outgrown, and the fix is specialization, not a discount.
 
-The companion calculator does this comparison automatically, showing your calculated rate against your category and tier band. `[CALC]`
+The calculator runs this comparison for you, placing your calculated rate against your category, band, and market. `[CALC]`
 
 ---
 
