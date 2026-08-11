@@ -4,7 +4,7 @@ There's a version of this chapter that would tell you the problem is confidence,
 
 The real answer is more mechanical and more forgivable: **you set your first rate under conditions that guaranteed it would be too low, and then a set of ordinary human tendencies kept it there.** Understanding the mechanism matters, because you can't dismantle something you think is just a personal failing.
 
-## The Conditions Under Which You Set Your First Rate
+## The Conditions That Produced Your First Rate
 
 Rewind to the moment you picked your first number. You almost certainly had:
 
@@ -15,7 +15,7 @@ Rewind to the moment you picked your first number. You almost certainly had:
 
 That last point deserves unpacking, because it's the single most consequential thing that happens to a new freelancer's pricing.
 
-## You Anchored on the Wrong Market
+## You Benchmarked Against the Cheapest Visible Market
 
 When you were figuring out what to charge, where did you look? Almost everyone looks at the same places: freelance marketplaces, job boards, public rate threads. Those are the visible surfaces of the freelance economy — which is exactly the problem, because **the visible surfaces are systematically the cheapest part of it.**
 
@@ -31,11 +31,11 @@ Once a number exists, it becomes hard to move. Industry analyses of pricing beha
 
 This operates on two fronts simultaneously, which is why it's so sticky.
 
-**With clients.** Your existing client knows what you charge. Any increase is measured against that known baseline, not against the market. Going from $50 to $80 is a 60% increase to them, regardless of the fact that $80 is entirely ordinary for the work. The bigger the gap between your anchor and your real rate, the more impossible the correction looks — so you don't attempt it, and the gap grows.
+**With clients, the anchor is your history.** Your existing client knows what you charge. Any increase is measured against that known baseline, not against the market. Going from $50 to $80 is a 60% increase to them, regardless of the fact that $80 is entirely ordinary for the work. The bigger the gap between your anchor and your real rate, the more impossible the correction looks — so you don't attempt it, and the gap grows.
 
-**With yourself.** This one is quieter and does more damage. After enough time quoting $50, that number starts to feel like a description of your worth rather than a decision you made once under bad conditions. Quoting $90 to a new prospect feels like a lie you're telling. It isn't — but the feeling is real, and it's the feeling that governs what comes out of your mouth on a discovery call.
+**With yourself, the anchor becomes self-concept.** This one is quieter and does more damage. After enough time quoting $50, that number starts to feel like a description of your worth rather than a decision you made once under bad conditions. Quoting $90 to a new prospect feels like a lie you're telling. It isn't — but the feeling is real, and it's the feeling that governs what comes out of your mouth on a discovery call.
 
-## The Fear That Sits Underneath
+## The Fear of Losing the Client Is Miscalibrated
 
 Strip away the mechanics and there's a single fear doing most of the work: **if I charge more, they'll say no.**
 
@@ -47,7 +47,7 @@ It's the most consistently reported barrier to raising rates across essentially 
 
 **It ignores what a low price signals.** Where buyers can't easily evaluate quality in advance — which is most professional services — price becomes a proxy for it. This is well-worn territory in pricing practice: unusually low prices don't read as "good value," they read as "something is wrong here." Being the cheapest option can actively cost you the clients you most want, before you ever get to demonstrate the work.
 
-## The Comparison Problem
+## The Comparison Trap Confirms Itself
 
 One more contributor, and then we'll get to arithmetic.
 
@@ -57,7 +57,7 @@ The trap is that this belief confirms itself. You feel less established, so you 
 
 This is also why "raise your rates once you're more experienced" is bad advice in practice. It sounds prudent, but it never triggers, because the feeling of not-yet-being-ready doesn't resolve on a schedule. The people who break the loop generally do it the other way around: they raise the price first, and the positioning follows.
 
-## What This Chapter Was For
+## The Fix Is Mechanical, Not Personal
 
 None of the above is a character flaw. You anchored on a market that was structurally cheaper than yours, at a moment when you had no leverage, using a method nobody told you was broken. Then ordinary anchoring behavior kept the number where it was.
 
