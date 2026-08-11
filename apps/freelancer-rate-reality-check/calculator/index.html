@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive companion calculator for The Freelancer's Rate Reality Check — realistic rates, market benchmarks, and underpricing diagnostic."
+    />
+    <title>Rate Reality Check — Calculator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-tier="free">
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">
+          <p class="eyebrow">Companion tool</p>
+          <h1>The Freelancer's Rate Reality Check</h1>
+          <p class="lede">
+            Calculate a realistic rate, compare it to category benchmarks, and see a clear
+            underpricing signal — before you quote the next client.
+          </p>
+        </div>
+
+        <div class="tier-switch" title="Prototype toggle — replace with real entitlements later">
+          <label class="switch">
+            <input type="checkbox" id="tierToggle" />
+            <span class="slider"></span>
+          </label>
+          <div class="tier-copy">
+            <span id="tierLabel">Free tier</span>
+            <span class="muted small">Toggle full version features</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <!-- Inputs -->
+        <section class="panel panel-form" aria-labelledby="inputs-heading">
+          <div class="panel-head">
+            <h2 id="inputs-heading">Your numbers</h2>
+            <button type="button" class="btn btn-ghost btn-sm" id="btnReset">Reset</button>
+          </div>
+
+          <form id="calcForm" novalidate>
+            <div class="field-grid">
+              <label class="field">
+                <span class="field-label">Profession / category</span>
+                <select id="category" name="category" required></select>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Experience level</span>
+                <select id="experience" name="experience" required></select>
+              </label>
+
+              <label class="field field-span">
+                <span class="field-label">Location / market <span class="optional">optional</span></span>
+                <select id="market" name="market"></select>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Desired annual income</span>
+                <div class="input-affix">
+                  <span class="affix">$</span>
+                  <input
+                    type="number"
+                    id="desiredAnnualIncome"
+                    name="desiredAnnualIncome"
+                    min="0"
+                    step="1000"
+                    inputmode="decimal"
+                    required
+                  />
+                </div>
+                <span class="hint">What you want to take home as business income (before personal taxes)</span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Current hourly rate <span class="optional">optional</span></span>
+                <div class="input-affix">
+                  <span class="affix">$</span>
+                  <input
+                    type="number"
+                    id="currentHourlyRate"
+                    name="currentHourlyRate"
+                    min="0"
+                    step="1"
+                    inputmode="decimal"
+                    placeholder="What you charge now"
+                  />
+                </div>
+                <span class="hint">Leave blank to evaluate the goal-based rate only</span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Billable hours / week</span>
+                <input
+                  type="number"
+                  id="billableHoursPerWeek"
+                  name="billableHoursPerWeek"
+                  min="1"
+                  max="60"
+                  step="1"
+                  inputmode="decimal"
+                  required
+                />
+                <span class="hint">Hours you actually invoice — not total hours worked</span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Business expenses / overhead</span>
+                <div class="range-row">
+                  <input
+                    type="range"
+                    id="overheadPercent"
+                    name="overheadPercent"
+                    min="0"
+                    max="60"
+                    step="1"
+                  />
+                  <strong id="overheadValue">20%</strong>
+                </div>
+                <span class="hint">Tools, software, insurance, contractors, workspace, etc.</span>
+              </label>
+            </div>
+
+            <p id="hoursWarning" class="callout callout-warn" hidden>
+              Billing more than ~30 hours/week long-term is tough for most freelancers. If real
+              capacity is lower, your required rate goes up.
+            </p>
+
+            <p class="muted small formula-note">
+              Formula: <code>rate = (income ÷ (1 − overhead%)) ÷ (hours/week × 48 weeks)</code>
+            </p>
+          </form>
+
+          <!-- Paid: scenarios -->
+          <div class="paid-only scenarios" hidden>
+            <h3>Saved scenarios</h3>
+            <div class="scenario-save-row">
+              <input type="text" id="scenarioName" placeholder="Scenario name (optional)" />
+              <button type="button" class="btn btn-secondary" id="btnSaveScenario">Save</button>
+            </div>
+            <div id="scenarioList" class="scenario-list"></div>
+          </div>
+        </section>
+
+        <!-- Outputs -->
+        <section class="panel panel-results" aria-labelledby="results-heading">
+          <div class="panel-head">
+            <h2 id="results-heading">Reality check</h2>
+            <button type="button" class="btn btn-secondary btn-sm paid-only" id="btnExport" hidden>
+              Export
+            </button>
+          </div>
+
+          <div id="emptyState" class="empty" hidden>
+            <p>Enter your numbers to see recommended rates and the underpricing signal.</p>
+          </div>
+
+          <div id="results">
+            <!-- Underpricing signal (primary visual) -->
+            <div id="signal" class="signal" data-level="green" role="status" aria-live="polite">
+              <div class="signal-top">
+                <span class="signal-dot" aria-hidden="true"></span>
+                <div>
+                  <p class="signal-kicker">Underpricing signal</p>
+                  <p class="signal-badge" id="signalBadge">On Track</p>
+                </div>
+              </div>
+              <p class="signal-summary" id="signalSummary"></p>
+              <ul class="signal-list" id="signalExplanations"></ul>
+            </div>
+
+            <p id="goalGap" class="callout" hidden></p>
+
+            <div class="metric-grid">
+              <article class="metric metric-primary">
+                <h3>Recommended hourly rate</h3>
+                <p class="metric-value" id="outRecommendedRange">—</p>
+                <p class="metric-sub" id="outRecommendedMid">—</p>
+              </article>
+
+              <article class="metric">
+                <h3>Effective rate after expenses</h3>
+                <p class="metric-value" id="outEffectiveRate">—</p>
+                <p class="metric-sub" id="outEffectiveNote">—</p>
+              </article>
+
+              <article class="metric">
+                <h3>Market benchmark</h3>
+                <p class="metric-value" id="outMarketRange">—</p>
+                <p class="metric-sub" id="outMarketMid">—</p>
+              </article>
+
+              <article class="metric">
+                <h3>Capacity & revenue</h3>
+                <p class="metric-value small-value" id="outBillableHours">—</p>
+                <p class="metric-sub">
+                  Revenue needed <span id="outRevenueNeeded">—</span> · Expenses
+                  <span id="outExpenses">—</span>
+                </p>
+              </article>
+            </div>
+
+            <div class="block">
+              <h3>Project rate guidance</h3>
+              <p class="muted small">
+                Rough package bands from your recommended hourly (light discount on larger scopes).
+              </p>
+              <div id="outProjects" class="project-grid"></div>
+            </div>
+
+            <div class="block interpretation">
+              <h3>Plain-language takeaway</h3>
+              <p id="outInterpretation"></p>
+            </div>
+
+            <!-- Free upsell note -->
+            <div class="free-only upsell">
+              <h3>Unlock the full diagnostic</h3>
+              <p>
+                The full version adds category insights, a scored raise path, income reality check,
+                saved scenarios, and export — toggle <strong>Paid / full version</strong> above to
+                preview in this prototype.
+              </p>
+            </div>
+
+            <!-- Paid detailed diagnostic -->
+            <div id="paidDetail" class="paid-only paid-detail" hidden>
+              <h3>Detailed diagnostic</h3>
+              <div class="score-row">
+                <div class="score-card">
+                  <span class="muted small">Overall fit</span>
+                  <strong id="detailScore">—</strong>
+                </div>
+                <div class="score-card">
+                  <span class="muted small">Market fit</span>
+                  <strong id="detailScoreMarket">—</strong>
+                </div>
+                <div class="score-card">
+                  <span class="muted small">Goal fit</span>
+                  <strong id="detailScoreGoal">—</strong>
+                </div>
+              </div>
+
+              <div class="detail-grid">
+                <div>
+                  <h4>Category insight</h4>
+                  <p id="detailInsight"></p>
+                </div>
+                <div>
+                  <h4>Common pitfall</h4>
+                  <p id="detailPitfall"></p>
+                </div>
+              </div>
+
+              <div id="detailIncome" class="callout" hidden></div>
+              <p id="detailCapacity" class="callout callout-warn" hidden></p>
+
+              <h4>Suggested raise path</h4>
+              <ol id="detailSteps" class="steps"></ol>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          Companion tool for <strong>The Freelancer's Rate Reality Check</strong>. Benchmarks are
+          directional mid-market references (USD), not guarantees. Adjust for specialty, proof of
+          results, and client segment.
+        </p>
+        <p class="muted small">v1 prototype · client-side only · no account required</p>
+      </footer>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
