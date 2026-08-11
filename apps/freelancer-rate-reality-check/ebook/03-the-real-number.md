@@ -4,7 +4,7 @@ This is the arithmetic chapter. It's the one most people skip and then wonder wh
 
 We're going to build your rate from the ground up, in five steps. The companion calculator does all of this automatically — but read the steps anyway, because the *reason* each one exists is what you'll need when a client asks you to justify your price. `[CALC]`
 
-## The Broken Method You Probably Used
+## The Method That Halves Your Rate
 
 First, the method almost everyone starts with:
 
@@ -17,6 +17,8 @@ It assumes you can bill every working hour (you can't). It assumes you work ever
 Stack those errors and this method routinely produces a number around **half** of what's actually required. This is the single largest mechanical cause of underpricing, and it's completely fixable.
 
 Here's the correct sequence.
+
+> **About the worked example that follows.** The figures below — $70,000 target, $9,000 expenses, 30% tax, 25 billable hours × 48 weeks, producing a $94 floor and $113 recommended rate — are one illustration of the method, not a typical or expected result. Change any input and every downstream number changes. Run your own figures; don't adopt these.
 
 ## Step 1: Start With What You Want to Keep
 
@@ -44,7 +46,7 @@ Most solo freelancers land somewhere in the **$5,000–$15,000/year** range, but
 > **Worked example:** Expenses = **$9,000**
 > Running subtotal: $70,000 + $9,000 = **$79,000**
 
-## Step 3: Gross Up for Tax
+## Step 3: Gross Up for Tax — Divide, Don't Multiply
 
 Here's where the biggest single miss usually happens.
 
@@ -62,7 +64,7 @@ The first version leaves you short, because you'd owe tax on the grossed-up amou
 > **Worked example:** assume 30% total tax.
 > $79,000 ÷ 0.70 = **$112,857 required annual revenue**
 
-## Step 4: Find Your Real Billable Hours
+## Step 4: Find Your Real Billable Hours — It's Not 2,080
 
 Now the other half of the equation — and the other place the standard method collapses.
 
@@ -78,7 +80,7 @@ If you think you're an exception, track a normal week honestly before assuming i
 
 Note what just happened: not 2,080. **1,200.** That gap alone — before tax, before expenses — accounts for a huge share of typical underpricing.
 
-## Step 5: Divide
+## Step 5: Divide, Then Add Margin
 
 > **Required revenue ÷ billable hours = your minimum viable rate**
 >
@@ -96,7 +98,7 @@ You want a buffer above it. Add **15–25%** for slow periods, scope creep, bad-
 
 That's your number. Not a guess — a calculation you can walk anyone through line by line.
 
-## The Distinction That Changes How You Think
+## Billable Rate vs. Effective Rate
 
 One more concept, and it's the one that reframes everything.
 
@@ -118,7 +120,7 @@ Second, and more usefully: **it makes your rate feel defensible.** The number th
 
 When a client pushes back, this is the frame. Not "I'm very experienced" — that's an opinion they can dispute. Rather: this is what independent work costs. That's a fact they can't argue with.
 
-## Run Yours Now
+## Run Your Own Number Before Continuing
 
 Do it before Chapter 4. Five steps:
 
