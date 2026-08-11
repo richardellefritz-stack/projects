@@ -1,26 +1,27 @@
-# The Freelancer's Rate Reality Check — Manuscript
+# The Freelancer's Rate Reality Check — Ebook
 
-Workstream A deliverable for [P001](https://linear.app/richard-ellefritz/issue/RIC-5/p001-first-digital-product-the-freelancers-rate-reality-check). Built against [the approved spec](../../../docs/specs/001-freelancer-rate-reality-check.md) and [research pack](../../../docs/research/001-freelancer-rate-reality-check.md).
+Draft manuscript. Workstream A of P001.
 
-## Files
+## Structure
 
-| File | Chapter | Status |
-|---|---|---|
-| `00-front-matter.md` | Title, intro, methodology note | Draft complete |
-| `01-the-reality-check.md` | Ch 1 — The Reality Check | Draft complete |
-| `02-why-youre-underpriced.md` | Ch 2 — Why You're Underpriced (and It's Not Your Fault) | Draft complete |
-| `03-the-real-number.md` | Ch 3 — The Real Number | Draft complete |
-| `04-know-your-market.md` | Ch 4 — Know Your Market | Draft complete |
-| `05-08-outline.md` | Ch 5–8 — detailed outlines | Outline complete, prose pending |
+| File | Chapter |
+|---|---|
+| `00-front-matter.md` | Title, introduction, Methodology & Limitations |
+| `01-the-reality-check.md` | 1. The Reality Check |
+| `02-why-youre-underpriced.md` | 2. Why You're Underpriced (and It's Not Entirely Your Fault) |
+| `03-the-real-number.md` | 3. The Real Number |
+| `04-know-your-market.md` | 4. Know Your Market |
+| `05-the-anchoring-trap.md` | 5. The Anchoring Trap |
+| `06-raising-rates.md` | 6. Raising Rates Without Losing the Client |
+| `07-beyond-hourly.md` | 7. Beyond Hourly |
+| `08-next-30-days.md` | 8. Your Next 30 Days |
 
-## Editorial standards applied (per review guidance)
+## Editorial rules in force (per team review)
 
-- All rate figures presented as **ranges**, never single precise numbers, and attributed to aggregated public sources.
-- A **Methodology & Limitations** note appears in the front matter.
-- Psychology claims are stated as **observable patterns** and attributed softly ("industry analyses frequently cite…"). No named academic studies are cited, since primary sources were not verified.
-- Tool cross-references point to the calculator by name with a clear CTA, per spec section 6 (Cohesion).
+- All rate figures presented as **ranges**, sourced to aggregated public data, never as precise fact.
+- Psychology claims attributed cautiously ("industry analyses frequently cite…"); no named academic studies asserted from secondhand sources.
+- Methodology & Limitations note included in front matter.
+- Cross-references to the companion calculator marked `[CALC]` for the productize pass.
 
-## Open editorial notes
-
-- Rate benchmark tables in Ch. 4 must stay numerically consistent with whatever the calculator ships with. Flagging as a Quality Gate check item — if Workstream B adjusts its benchmark bands, Ch. 4 must be updated to match.
-- Chapter 6 scripts are drafted to be copy-adaptable but should get a final read for tone once the overall voice is locked across Ch. 1–4.
+Spec: [`docs/specs/001-freelancer-rate-reality-check.md`](../../../docs/specs/001-freelancer-rate-reality-check.md)
+Research: [`docs/research/001-freelancer-rate-reality-check.md`](../../../docs/research/001-freelancer-rate-reality-check.md)
