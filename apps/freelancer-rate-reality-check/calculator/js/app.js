@@ -306,9 +306,10 @@ function renderPaidDetail(root, detailed, rates, form) {
   if (detailed.incomeReality && detailed.incomeReality.implied != null) {
     inc.hidden = false;
     const short = detailed.incomeReality.shortfall;
+    const amp = String.fromCharCode(38);
     inc.innerHTML = `
       <strong>Income reality check</strong>
-      <p>Implied take-home after tax & expenses: <strong>${formatMoney(detailed.incomeReality.implied)}</strong>
+      <p>Implied take-home after tax ${amp} expenses: <strong>${formatMoney(detailed.incomeReality.implied)}</strong>
       vs goal <strong>${formatMoney(detailed.incomeReality.goal)}</strong>
       ${
         short > 0
@@ -349,11 +350,13 @@ function buildInterpretation(form, rates, diagnostic) {
 }
 
 function escapeHtml(str) {
+  // Build entities without literal HTML entity sequences (safer for some transports)
+  const amp = String.fromCharCode(38);
   return String(str)
-    .replace(/&/g, '&')
-    .replace(/</g, '<')
-    .replace(/>/g, '>')
-    .replace(/"/g, '"');
+    .replace(/&/g, amp + 'amp;')
+    .replace(/</g, amp + 'lt;')
+    .replace(/>/g, amp + 'gt;')
+    .replace(/"/g, amp + 'quot;');
 }
 
 // —— Scenarios (paid) ——
@@ -502,8 +505,8 @@ function exportResults() {
   lines.push(
     '',
     '---',
-    'Companion tool for The Freelancer\'s Rate Reality Check.',
-    'Formula: revenue = (take-home + expenses) / (1 − tax%); floor = revenue / billable hours; recommended = floor × 1.15–1.25.'
+    "Companion tool for The Freelancer's Rate Reality Check.",
+    'Formula: revenue = (take-home + expenses) / (1 - tax%); floor = revenue / billable hours; recommended = floor x 1.15-1.25.'
   );
 
   const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
