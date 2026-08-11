@@ -1,11 +1,14 @@
 /**
  * Core rate calculation logic for The Freelancer's Rate Reality Check.
  *
- * Principles:
- * 1. Desired income must be covered by billable hours after overhead.
- * 2. Billable hours are what you invoice — not total hours worked.
- * 3. Working weeks default to 48 (vacation, sick, holidays, admin gaps).
- * 4. Effective rate = what you keep after expenses / real billable load.
+ * Aligned with the ebook (Chapter 3: The Real Number):
+ *   1. Start with desired take-home (net) income
+ *   2. Add annual business expenses (dollars)
+ *   3. Gross up for tax: revenueNeeded = (net + expenses) / (1 − taxRate)
+ *   4. Divide by realistic billable hours → floor rate
+ *   5. Apply 15–25% buffer → recommended rate
+ *   6. Effective rate = true net per hour of working life
+ *      (after tax, expenses, and non-billable time)
  */
 
 /** Default weeks freelancers can realistically bill in a year. */
@@ -14,115 +17,184 @@ export const DEFAULT_BILLABLE_WEEKS = 48;
 /** Soft cap: above this weekly billable load is often unsustainable. */
 export const OPTIMISTIC_BILLABLE_HOURS = 30;
 
+/** Default total working hours/week (billable + non-billable). */
+export const DEFAULT_WORKING_HOURS_PER_WEEK = 40;
+
+/** Default total tax rate suggestion (SE tax + income tax, rough). */
+export const DEFAULT_TAX_RATE_PERCENT = 30;
+
+/** Buffer above floor for recommended rate (ebook: 15–25%, mid 20%). */
+export const RECOMMENDED_BUFFER_LOW = 1.15;
+export const RECOMMENDED_BUFFER_MID = 1.2;
+export const RECOMMENDED_BUFFER_HIGH = 1.25;
+
 /**
  * @typedef {Object} RateInputs
- * @property {number} desiredAnnualIncome - Target take-home / salary-equivalent goal (pre-tax business income target)
+ * @property {number} desiredNetIncome - Target take-home after taxes
  * @property {number} billableHoursPerWeek - Hours expected to invoice per week
- * @property {number} overheadPercent - Business expenses as % of revenue (0–80)
+ * @property {number} annualExpenses - Business expenses in dollars per year
+ * @property {number} taxRatePercent - Total tax rate as percent (e.g. 30)
  * @property {number} [currentHourlyRate] - Optional: what they charge now
  * @property {number} [billableWeeks] - Optional override (default 48)
+ * @property {number} [workingHoursPerWeek] - Total work week incl. non-billable (default 40)
  */
 
 /**
  * @typedef {Object} RateResults
  * @property {number} annualBillableHours
- * @property {number} baseHourlyBeforeOverhead - Income goal ÷ billable hours
- * @property {number} recommendedHourly - After overhead markup
- * @property {number} recommendedHourlyLow - ~10% below recommended (range floor)
- * @property {number} recommendedHourlyHigh - ~15% above recommended (range ceiling)
- * @property {number} effectiveRate - After expenses, if current rate provided; else same as recommended
- * @property {number} revenueNeeded - Annual revenue needed to hit income after overhead
- * @property {number} annualExpenses - Implied annual overhead $
- * @property {Object} projectGuidance - small/medium/large project price bands
+ * @property {number} annualWorkingHours - Full working year (billable + non-billable)
+ * @property {number} floorHourly - Minimum viable rate (exactly hits target)
+ * @property {number} recommendedHourly - Floor × 1.20 (mid buffer)
+ * @property {number} recommendedHourlyLow - Floor × 1.15
+ * @property {number} recommendedHourlyHigh - Floor × 1.25
+ * @property {number} effectiveRate - Net after tax/expenses per working hour of life
+ * @property {number} revenueNeeded - Annual revenue to hit net after tax + expenses
+ * @property {number} annualExpenses - Dollar expenses used
+ * @property {number} preTaxSubtotal - desiredNet + expenses (before tax gross-up)
+ * @property {Object[]} projectGuidance
  * @property {boolean} billableHoursOptimistic
- * @property {number|null} impliedAnnualFromCurrent - If current rate given
- * @property {number|null} gapToGoal - recommended vs current (absolute $)
- * @property {number|null} gapToGoalPercent
+ * @property {number|null} impliedNetFromCurrent
+ * @property {number|null} gapToFloor - floor − current ($/hr)
+ * @property {number|null} gapToFloorPercent
+ * @property {number|null} gapToRecommended
  */
 
 /**
- * Calculate recommended rates from income goal + capacity + overhead.
+ * Calculate floor + recommended rates from net income, expenses, tax, capacity.
  * @param {RateInputs} inputs
  * @returns {RateResults}
  */
 export function calculateRates(inputs) {
-  const income = clampPositive(inputs.desiredAnnualIncome);
+  const netIncome = clampPositive(inputs.desiredNetIncome ?? inputs.desiredAnnualIncome);
   const hoursPerWeek = clampPositive(inputs.billableHoursPerWeek);
-  const overheadPct = clamp(inputs.overheadPercent ?? 0, 0, 80) / 100;
+  const annualExpenses = clampPositive(inputs.annualExpenses ?? 0);
+  const taxRate = clamp(inputs.taxRatePercent ?? DEFAULT_TAX_RATE_PERCENT, 0, 60) / 100;
   const weeks = clampPositive(inputs.billableWeeks ?? DEFAULT_BILLABLE_WEEKS);
-  const current = inputs.currentHourlyRate != null && inputs.currentHourlyRate > 0
-    ? inputs.currentHourlyRate
-    : null;
+  const workingHoursPerWeek = Math.max(
+    hoursPerWeek,
+    clampPositive(inputs.workingHoursPerWeek ?? DEFAULT_WORKING_HOURS_PER_WEEK)
+  );
+  const current =
+    inputs.currentHourlyRate != null && inputs.currentHourlyRate > 0
+      ? inputs.currentHourlyRate
+      : null;
 
   const annualBillableHours = hoursPerWeek * weeks;
+  const annualWorkingHours = workingHoursPerWeek * weeks;
 
-  // Revenue needed so that (1 - overhead) * revenue = income goal
-  // revenue = income / (1 - overhead)
-  const keepRate = Math.max(1 - overheadPct, 0.01);
-  const revenueNeeded = income / keepRate;
-  const annualExpenses = revenueNeeded - income;
+  // Ebook formula: revenueNeeded = (desiredNet + expenses) / (1 − taxRate)
+  const keepAfterTax = Math.max(1 - taxRate, 0.01);
+  const preTaxSubtotal = netIncome + annualExpenses;
+  const revenueNeeded = preTaxSubtotal / keepAfterTax;
 
-  // Base: pure income ÷ hours (no overhead)
-  const baseHourlyBeforeOverhead =
-    annualBillableHours > 0 ? income / annualBillableHours : 0;
-
-  // Recommended: full revenue ÷ hours (includes overhead recovery)
-  const recommendedHourly =
+  // Floor: minimum viable hourly to hit target exactly
+  const floorHourly =
     annualBillableHours > 0 ? revenueNeeded / annualBillableHours : 0;
 
-  // Range: slight floor for negotiation room, ceiling for premium positioning
-  const recommendedHourlyLow = recommendedHourly * 0.9;
-  const recommendedHourlyHigh = recommendedHourly * 1.15;
+  // Recommended: floor with buffer (15–25%, mid 20%)
+  const recommendedHourly = floorHourly * RECOMMENDED_BUFFER_MID;
+  const recommendedHourlyLow = floorHourly * RECOMMENDED_BUFFER_LOW;
+  const recommendedHourlyHigh = floorHourly * RECOMMENDED_BUFFER_HIGH;
 
-  // Effective rate after expenses from current rate (or recommended as proxy)
+  // Effective rate: true net per hour of working life (not just billable)
+  // Using the rate under review (current if set, else recommended)
   const rateForEffective = current ?? recommendedHourly;
-  const effectiveRate = rateForEffective * keepRate;
+  const effectiveRate = computeEffectiveRate({
+    hourlyRate: rateForEffective,
+    annualBillableHours,
+    annualWorkingHours,
+    taxRate,
+    annualExpenses,
+  });
 
-  const projectGuidance = buildProjectGuidance(recommendedHourlyLow, recommendedHourly, recommendedHourlyHigh);
+  // Also compute effective if they only hit the floor (book's ~$36 illustration)
+  const effectiveRateAtFloor = computeEffectiveRate({
+    hourlyRate: floorHourly,
+    annualBillableHours,
+    annualWorkingHours,
+    taxRate,
+    annualExpenses,
+  });
 
-  let impliedAnnualFromCurrent = null;
-  let gapToGoal = null;
-  let gapToGoalPercent = null;
+  const projectGuidance = buildProjectGuidance(
+    recommendedHourlyLow,
+    recommendedHourly,
+    recommendedHourlyHigh
+  );
+
+  let impliedNetFromCurrent = null;
+  let gapToFloor = null;
+  let gapToFloorPercent = null;
+  let gapToRecommended = null;
 
   if (current != null) {
-    // What annual income does current rate actually deliver after overhead?
     const grossFromCurrent = current * annualBillableHours;
-    impliedAnnualFromCurrent = grossFromCurrent * keepRate;
-    gapToGoal = recommendedHourly - current;
-    gapToGoalPercent =
-      recommendedHourly > 0 ? ((recommendedHourly - current) / recommendedHourly) * 100 : 0;
+    impliedNetFromCurrent = grossFromCurrent * keepAfterTax - annualExpenses;
+    gapToFloor = floorHourly - current;
+    gapToFloorPercent =
+      floorHourly > 0 ? ((floorHourly - current) / floorHourly) * 100 : 0;
+    gapToRecommended = recommendedHourly - current;
   }
 
   return {
     annualBillableHours: round1(annualBillableHours),
-    baseHourlyBeforeOverhead: roundMoney(baseHourlyBeforeOverhead),
+    annualWorkingHours: round1(annualWorkingHours),
+    floorHourly: roundMoney(floorHourly),
     recommendedHourly: roundMoney(recommendedHourly),
     recommendedHourlyLow: roundMoney(recommendedHourlyLow),
     recommendedHourlyHigh: roundMoney(recommendedHourlyHigh),
+    /** @deprecated alias — use floorHourly */
+    baseHourlyBeforeOverhead: roundMoney(floorHourly),
     effectiveRate: roundMoney(effectiveRate),
+    effectiveRateAtFloor: roundMoney(effectiveRateAtFloor),
     revenueNeeded: roundMoney(revenueNeeded),
     annualExpenses: roundMoney(annualExpenses),
+    preTaxSubtotal: roundMoney(preTaxSubtotal),
     projectGuidance,
     billableHoursOptimistic: hoursPerWeek > OPTIMISTIC_BILLABLE_HOURS,
+    impliedNetFromCurrent:
+      impliedNetFromCurrent != null ? roundMoney(impliedNetFromCurrent) : null,
+    /** @deprecated alias */
     impliedAnnualFromCurrent:
-      impliedAnnualFromCurrent != null ? roundMoney(impliedAnnualFromCurrent) : null,
-    gapToGoal: gapToGoal != null ? roundMoney(gapToGoal) : null,
-    gapToGoalPercent: gapToGoalPercent != null ? round1(gapToGoalPercent) : null,
+      impliedNetFromCurrent != null ? roundMoney(impliedNetFromCurrent) : null,
+    gapToFloor: gapToFloor != null ? roundMoney(gapToFloor) : null,
+    gapToFloorPercent: gapToFloorPercent != null ? round1(gapToFloorPercent) : null,
+    gapToRecommended: gapToRecommended != null ? roundMoney(gapToRecommended) : null,
+    /** @deprecated alias for underpricing — gap vs floor */
+    gapToGoal: gapToFloor != null ? roundMoney(gapToFloor) : null,
+    gapToGoalPercent: gapToFloorPercent != null ? round1(gapToFloorPercent) : null,
     meta: {
-      income,
+      netIncome,
       hoursPerWeek,
-      overheadPct: overheadPct * 100,
+      workingHoursPerWeek,
+      annualExpenses,
+      taxRatePercent: taxRate * 100,
       weeks,
       current,
-      keepRate,
+      keepAfterTax,
     },
   };
 }
 
 /**
- * Build project rate guidance from hourly band.
- * Applies a small package discount curve: larger projects often price slightly
- * below pure hourly × hours, but we show full and package-style ranges.
+ * True net per hour of working life after tax, expenses, and non-billable time.
+ */
+function computeEffectiveRate({
+  hourlyRate,
+  annualBillableHours,
+  annualWorkingHours,
+  taxRate,
+  annualExpenses,
+}) {
+  if (annualWorkingHours <= 0) return 0;
+  const gross = clampPositive(hourlyRate) * annualBillableHours;
+  const afterTax = gross * Math.max(1 - taxRate, 0);
+  const net = afterTax - annualExpenses;
+  return net / annualWorkingHours;
+}
+
+/**
+ * Build project rate guidance from recommended hourly band.
  */
 function buildProjectGuidance(hourlyLow, hourlyMid, hourlyHigh) {
   const sizes = [
@@ -142,22 +214,29 @@ function buildProjectGuidance(hourlyLow, hourlyMid, hourlyHigh) {
 }
 
 /**
- * Reverse: given a target hourly and capacity, estimate sustainable income.
- * @param {number} hourlyRate
- * @param {number} billableHoursPerWeek
- * @param {number} overheadPercent
- * @param {number} [billableWeeks]
+ * Reverse: estimate net take-home from a charged rate.
  */
-export function estimateIncomeFromRate(
+export function estimateNetFromRate(
   hourlyRate,
   billableHoursPerWeek,
-  overheadPercent,
+  annualExpenses,
+  taxRatePercent,
   billableWeeks = DEFAULT_BILLABLE_WEEKS
 ) {
   const hours = clampPositive(billableHoursPerWeek) * clampPositive(billableWeeks);
   const gross = clampPositive(hourlyRate) * hours;
-  const keep = Math.max(1 - clamp(overheadPercent, 0, 80) / 100, 0.01);
-  return roundMoney(gross * keep);
+  const keep = Math.max(1 - clamp(taxRatePercent, 0, 60) / 100, 0.01);
+  return roundMoney(gross * keep - clampPositive(annualExpenses));
+}
+
+/** @deprecated use estimateNetFromRate */
+export function estimateIncomeFromRate(
+  hourlyRate,
+  billableHoursPerWeek,
+  taxRatePercent,
+  billableWeeks = DEFAULT_BILLABLE_WEEKS
+) {
+  return estimateNetFromRate(hourlyRate, billableHoursPerWeek, 0, taxRatePercent, billableWeeks);
 }
 
 function clampPositive(n) {
