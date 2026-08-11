@@ -1,123 +1,131 @@
 # Chapter 3: The Real Number
 
-This chapter is arithmetic. It takes about ten minutes and a piece of paper. Do it by hand at least once, even if you plan to use the calculator afterward, because understanding the shape of the calculation is what lets you defend the number later.
+This is the arithmetic chapter. It's the one most people skip and then wonder why nothing changed.
 
-We're solving for two figures:
+We're going to build your rate from the ground up, in five steps. The companion calculator does all of this automatically — but read the steps anyway, because the *reason* each one exists is what you'll need when a client asks you to justify your price. `[CALC]`
 
-- **Your floor** — the rate below which the work is not worth doing. Not a target. A floor.
-- **Your target** — the floor plus the margin that makes this a business rather than a treadmill.
+## The Broken Method You Probably Used
 
-## Step 1: What do you need to actually live on?
+First, the method almost everyone starts with:
 
-Start with your real annual cost of living. Rent or mortgage, food, transport, insurance, debt payments, the irregular things that reliably happen — car repairs, dental work, the wedding you have to fly to.
+> "I want to make $80,000. There are 2,080 working hours in a year. So $80,000 ÷ 2,080 = **$38/hour**."
 
-Do not use your last salary. Use what your life costs.
+Every part of this is wrong in the same direction.
 
-Call this number **L**.
+It assumes you can bill every working hour (you can't). It assumes you work every week of the year (you don't). It ignores self-employment tax entirely (which is not optional). It ignores business expenses (which are real). And it treats $80,000 as revenue when you meant it as take-home.
 
-Most people undershoot here because they budget for a good month and forget that the year contains bad ones. If you have twelve months of bank statements, use them; if you don't, add 10% to whatever you first wrote down.
+Stack those errors and this method routinely produces a number around **half** of what's actually required. This is the single largest mechanical cause of underpricing, and it's completely fixable.
 
-## Step 2: What does the business cost?
+Here's the correct sequence.
 
-Now, separately, everything you spend to be able to do the work at all. Software subscriptions. Hardware and replacement cycles. Professional insurance. Accounting. Website and domain. Professional development. Health coverage, if you're buying it yourself — and this is often the largest single line, so don't wave at it.
+## Step 1: Start With What You Want to Keep
 
-Call this number **B**.
+Write down your target **take-home** income — what lands in your account after taxes, the number you'd actually live on.
 
-A freelancer with a modest tool stack and self-funded health coverage can easily be looking at a five-figure annual business cost. Write down the real number even if it's unpleasant.
+Be honest rather than modest. If a comparable salaried role in your field pays $85,000, don't write $55,000 because freelancing feels like it should cost you something. Freelancing has real advantages, but it also means you're absorbing costs an employer used to cover — which is precisely what the next steps account for.
 
-## Step 3: Gross up for tax
+> **Worked example:** Target take-home = **$70,000**
 
-This is the step almost everyone skips, and it's why the earlier method fails.
+## Step 2: Add Your Business Expenses
 
-**L + B** is what you need the business to *deliver*. It is not what you need to *bill*, because a substantial portion of what you bill goes to tax before it reaches you.
+Every dollar you spend to operate has to come out of revenue before it becomes income. Add up the annual cost of:
 
-As a freelancer you carry the whole self-employment tax burden — both the portion an employee pays and the portion an employer normally pays on their behalf — and then income tax on top. The combined effective rate varies enormously by jurisdiction, income level, entity structure, and what you can legitimately deduct, so I'm not going to give you a precise figure and pretend it applies to you.
+- Software and subscriptions (design tools, project management, hosting, AI tools)
+- Hardware, amortized — a $3,000 laptop replaced every three years is $1,000/year
+- Health insurance, if you're buying it yourself. For many US freelancers this is the largest single line item and frequently the most overlooked. At $500–800/month, that's roughly $6,000–$9,600/year of revenue that exists solely to cover coverage.
+- Professional insurance, if applicable
+- Internet, phone, workspace or coworking
+- Accounting and legal
+- Marketing, website, portfolio hosting
+- Professional development, courses, conferences
 
-What I'll give you is the mechanic. Pick your best estimate of your combined effective tax rate as a decimal — call it **T** — and gross up:
+Most solo freelancers land somewhere in the **$5,000–$15,000/year** range, but this varies enormously by field — a photographer with equipment is not in the same universe as a copywriter with a laptop. Use your real numbers.
 
-```
-Required revenue = (L + B) ÷ (1 − T)
-```
+> **Worked example:** Expenses = **$9,000**
+> Running subtotal: $70,000 + $9,000 = **$79,000**
 
-Note the division. This is the part people get wrong: you cannot just add your tax rate on top. If you need $60,000 to reach you and you're taxed at 30%, you don't need $78,000 — you need roughly **$85,700**, because the tax applies to the larger number too. Adding instead of dividing undershoots by thousands.
+## Step 3: Gross Up for Tax
 
-If you have no idea what to use for **T**, use a placeholder to see the shape of the answer, then get a real figure from an accountant before you commit to anything. This is exactly the kind of number worth paying someone for.
+Here's where the biggest single miss usually happens.
 
-Call the result **R** — required annual revenue.
+As a freelancer you pay **both halves** of Social Security and Medicare — the employee portion and the employer portion your old job used to quietly cover. That's 15.3% combined, applied to roughly 92.35% of net earnings, so the effective bite is around 14%. Half of it is deductible against income tax, which softens it somewhat. That's *before* federal and state income tax.
 
-## Step 4: How many hours can you actually bill?
+All in, most US freelancers should plan for total tax obligations in the **25–40%** range depending on income level, state, and deductions. Where you land inside that band is a question for an accountant, not a book — but you need to pick a working figure now, and you need to apply it correctly.
 
-We covered why this isn't 40 in Chapter 2. Now put a number on it.
+The correct operation is **division, not multiplication.** This trips people up constantly:
 
-```
-Billable hours per year = (billable hours per week) × (working weeks per year)
-```
+- Wrong: $79,000 × 1.30 = $102,700
+- Right: $79,000 ÷ (1 − 0.30) = **$112,857**
 
-For most freelancers, honest values land around **20–30 billable hours per week** and **48–50 working weeks per year**. If you're brand new and still spending most of your time on marketing and setup, use the bottom of that range or below it. If you have a stable book of retained clients and very little pitching, you can justify the top.
+The first version leaves you short, because you'd owe tax on the grossed-up amount too. Use division every time.
 
-What you may not do is write 40 and 52.
+> **Worked example:** assume 30% total tax.
+> $79,000 ÷ 0.70 = **$112,857 required annual revenue**
 
-Call the result **H**.
+## Step 4: Find Your Real Billable Hours
 
-At 25 hours across 48 weeks, **H = 1,200**. Notice how far that is from 2,080. That gap is the entire reason a rate that looked fine on paper leaves you working constantly and still short.
+Now the other half of the equation — and the other place the standard method collapses.
 
-## Step 5: Your floor
+**Weeks per year.** There are 52. You will not work 52. Subtract two weeks of vacation, one to two weeks of holidays and sick days, and you land at **48–50 working weeks**. Use 48 if you'd like to take real time off, which you should.
 
-```
-Floor rate = R ÷ H
-```
+**Billable hours per week.** This is the number people get most wrong. A 40-hour week is not 40 billable hours. It never is. Gone to non-billable work: finding clients, writing proposals, invoicing and chasing payment, email, calls that aren't scoped, admin, taxes, portfolio and marketing, and learning.
 
-That's it. That's the number below which you are, in a literal sense, paying for the privilege of working.
+Realistic billable capacity for most solo freelancers is **20–30 hours per week** out of a 40-hour working week. Time-tracking data broadly supports this — roughly a third of tracked professional time tends to be non-billable, and solo operators generally fare worse than that because there's no one else to absorb the overhead.
 
-### A worked example
+If you think you're an exception, track a normal week honestly before assuming it.
 
-Someone with a $55,000 cost of living, $9,000 in annual business costs, an estimated 28% effective tax rate, billing 25 hours a week across 48 weeks:
+> **Worked example:** 25 billable hours × 48 weeks = **1,200 billable hours/year**
 
-```
-L + B          = $64,000
-R              = $64,000 ÷ (1 − 0.28)  = $88,889
-H              = 25 × 48               = 1,200 hours
-Floor rate     = $88,889 ÷ 1,200       ≈ $74/hour
-```
+Note what just happened: not 2,080. **1,200.** That gap alone — before tax, before expenses — accounts for a huge share of typical underpricing.
 
-Seventy-four dollars an hour — to support a life costing fifty-five thousand.
+## Step 5: Divide
 
-If that number startled you, that reaction is the point of this chapter. Someone in this position charging $45/hour isn't running a slightly-thin business. They're running a business that cannot cover its own costs, and the shortfall is being absorbed by savings, a partner's income, unpaid overtime, or deferred expenses like retirement contributions and health coverage they've decided to skip.
-
-## Step 6: Your target
-
-The floor covers costs. It builds nothing. A business that exactly breaks even has no capacity to absorb a slow quarter, a client who doesn't pay, a piece of equipment dying, or a month off.
-
-Add a margin — **15–30%** over the floor is a reasonable band, and lean toward the higher end if your income is lumpy or your client base is concentrated in a few relationships.
-
-```
-Target rate = Floor rate × 1.20   (for a 20% margin)
-```
-
-In the worked example: $74 × 1.20 ≈ **$89/hour**.
-
-That margin isn't greed. It's the difference between a business and a job with worse benefits.
-
-## Billed rate vs. effective rate
-
-One more distinction, because it explains a specific and demoralizing experience.
-
-Your **billed rate** is what's on the invoice. Your **effective rate** is what you actually clear, per hour you actually worked — including all the hours nobody paid you for.
-
-```
-Effective rate = (annual revenue − tax − business costs) ÷ total hours worked
-```
-
-Run that on the worked example and the person billing $89/hour is clearing something in the neighborhood of $30–$35 per hour of actual work, once you divide by every hour they spent — billable and not. Aggregated figures put this gap at roughly **35–45%** below the billed rate for typical freelancers, and the example lands squarely in that range.
-
-This is why quoting a rate that sounds enormous compared to an hourly wage doesn't feel enormous when the money arrives. You are not comparing like with like. An employee's $35/hour comes with an employer paying half their payroll tax, funding their equipment, covering their health insurance, and paying them during meetings, training, holidays, and sick days. Your $89 has to cover all of that, out of fewer hours.
-
-When a client, or your own internal critic, reacts to your rate as if it's a windfall — this is the answer. It isn't a wage. It's a rate that has to *become* a wage after everything is taken out of it.
-
-## Now go get your number
-
-> **Do this now, before Chapter 4.** The **Rate Reality Check calculator** runs everything above from the same inputs — cost of living, business costs, tax estimate, realistic hours — and returns your floor, your target, and your effective rate side by side, so you can see the gap rather than take my word for it. It also shows how your result compares to the going range for your category and experience tier, which is what the next chapter is about.
+> **Required revenue ÷ billable hours = your minimum viable rate**
 >
-> Write down three numbers before you continue: **your floor, your target, and what you currently charge.**
+> $112,857 ÷ 1,200 = **$94/hour**
 
-That third number is the one that matters. The distance between it and the other two is the subject of the rest of this book.
+Compare that to the broken method's $38/hour for the same person wanting a similar life. That's not a rounding difference. That's a different business.
+
+### Minimum viable vs. recommended
+
+$94 is your **floor** — the rate at which you exactly hit your target with zero margin for error. It assumes you fill every one of those 1,200 hours, that nothing goes wrong, that no client pays late, that you never have a slow quarter.
+
+You want a buffer above it. Add **15–25%** for slow periods, scope creep, bad-debt risk, and reinvestment:
+
+> $94 × 1.20 = **$113/hour recommended**
+
+That's your number. Not a guess — a calculation you can walk anyone through line by line.
+
+## The Distinction That Changes How You Think
+
+One more concept, and it's the one that reframes everything.
+
+Your **billable rate** is what you charge. Your **effective rate** is what you actually net per hour of your working life, once tax, expenses, and non-billable time are absorbed. Those are dramatically different numbers — typically a gap of **35–45%**, and often more.
+
+Our example freelancer billing $113/hour is netting roughly $70,000 across a ~1,920-hour working year. That's about **$36/hour of actual life**, against a $113 sticker price.
+
+Sit with that for a second, because it does two useful things.
+
+First, it explains the busy-but-broke feeling from Chapter 1 with precision. You weren't imagining the gap between your rate and your bank balance. The gap is structural.
+
+Second, and more usefully: **it makes your rate feel defensible.** The number that felt outrageous to say out loud stops feeling outrageous once you can see that most of it never reaches you. You're not charging $113 because you're worth triple a salaried employee. You're charging $113 because that's what it costs to net a normal income while carrying every cost an employer used to carry for you. That's not greed. That's arithmetic.
+
+When a client pushes back, this is the frame. Not "I'm very experienced" — that's an opinion they can dispute. Rather: this is what independent work costs. That's a fact they can't argue with.
+
+## Run Yours Now
+
+Do it before Chapter 4. Five steps:
+
+1. Target take-home
+2. Plus annual expenses
+3. Divided by (1 − tax rate)
+4. Divided by (billable hours/week × working weeks)
+5. Times 1.15–1.25 for margin
+
+Then put it next to the number you wrote down at the end of Chapter 1. `[CALC]`
+
+The gap between those two figures, multiplied by your annual billable hours, is what this has been costing you per year.
+
+---
+
+*Next: what the market says about that number — and why your category matters more in 2026 than it did two years ago.*
