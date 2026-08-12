@@ -1,6 +1,6 @@
 # Production Workflow
 
-This document describes the gated production graph used for every product built in this monorepo.
+The gated production graph used for every product in this monorepo. Governed by [`docs/operating-baseline.md`](operating-baseline.md).
 
 ## The Graph
 
@@ -11,33 +11,40 @@ This document describes the gated production graph used for every product built 
    Validate and deepen the opportunity — audience, positioning, competitive landscape, source material. Primarily NotebookLM-driven, with Claude/Grok support as needed.
 
 3. **Architecture**
-   Define the concrete shape of the product: format, components, tech/tooling choices, deliverable structure, and the spec each generation agent will work from.
+   Define the concrete shape of the product: format, components, tech and tooling choices, deliverable structure, and the spec each generation agent works from.
+
+   Two required outputs before generation begins:
+   - **Entitlement design**, for any product with a paid tier — what gates access, how entitlement is verified, what failed verification does, and the known bypass surface (Agreement D).
+   - **Frozen interface contract** for anything shared across workstreams: benchmark values, formulas, terminology, feature boundaries (Agreement E).
+
+   Also initialise the deliverables manifest from [`docs/templates/deliverables-manifest.md`](templates/deliverables-manifest.md).
 
 4. **Parallel Generation**
-   Execution agents (Grok Heavy's Harper, Benjamin, Lucas) produce the product's components in parallel against the architecture spec.
+   Execution agents produce the product's components in parallel against the architecture spec and the frozen contract. Text is completed and frozen before figures, sales copy, or other derivatives are generated from it (Agreement F).
 
 5. **Quality Gate**
-   Gemini reviews generated output against the spec and rubric, and decides: continue, revise, escalate, or terminate. Escalations (stuck loops or deep technical review) route to Claude.
+   Review against the spec and rubric; decide continue, revise, escalate, or terminate.
 
-6. **Productize**
-   Approved output is packaged into a sellable deliverable — formatting, assets, listing copy, distribution packaging.
+   **The gate inspects built artifacts, not sources.** Comparing repository files to each other will pass a build that was never made from them. Where a built artifact does not yet exist, the gate reviews what does exist and records that limitation explicitly (Agreement G).
 
-7. **Feedback**
-   Post-launch signal (sales, conversion, reviews) feeds back into Opportunity Sensing for the next cycle.
+6. **Release Candidate**
+   One named artifact set. For each deliverable: file path plus commit SHA, or deploy URL. This is the product.
 
-## Roles by Stage
+   Two-sided sign-off, both required:
+   - **Build identity** (Grok Build): the named artifact is what will actually ship, and it was built from the agreed source.
+   - **Content and claims** (Claude): every claim made anywhere public is true of *this* artifact, verified by reading it — not the manuscript it came from.
 
-| Stage | Primary Owner |
-|---|---|
-| Opportunity Sensing | Grok (lead) |
-| Research | NotebookLM |
-| Architecture | Grok Heavy team |
-| Parallel Generation | Grok Heavy team (Harper, Benjamin, Lucas) |
-| Quality Gate | Gemini |
-| Escalation (stuck loop / technical review) | Claude |
-| Productize | Grok Heavy team |
-| Feedback | Grok (lead), informing next Opportunity Sensing pass |
+   Deliverables manifest reconciled: anything not `built` and seen does not appear in sales copy. If the artifact changes after sign-off, claims are regenerated and the gate is re-run. Checklist: [`docs/templates/release-checklist.md`](templates/release-checklist.md).
+
+7. **Productize**
+   Package the signed-off artifact into a sellable deliverable: listing copy, pricing, distribution setup, purchase and delivery flow. Sales copy is generated from the release candidate and from nothing else.
+
+8. **Distribute**
+   Derivative channels — newsletter, podcast, slides, video. Corpus is the product, never the research behind it. Sequence channels by cost: cheapest first, add a channel only when the previous one shows traction.
+
+9. **Feedback**
+   Post-launch signal — sales, conversion, reviews, refunds — feeds back into Opportunity Sensing for the next cycle.
 
 ## Human Checkpoints
 
-Human review occurs at three points only: kickoff, any stuck-loop/terminate escalation, and final deliverable approval. All other stages run autonomously within the loop.
+Kickoff, any stuck-loop or terminate escalation, Release Candidate sign-off, and final deliverable approval. All other stages run autonomously within the loop.
