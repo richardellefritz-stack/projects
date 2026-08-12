@@ -1,0 +1,15 @@
+# P001 calculator site (calculate-my-freelance-rate.netlify.app)
+# If this repo is the Netlify site root, publish the calculator + license function.
+
+[build]
+  publish = "apps/freelancer-rate-reality-check/calculator"
+  functions = "apps/freelancer-rate-reality-check/calculator/netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/verify-license"
+  to = "/.netlify/functions/verify-license"
+  status = 200
+  force = true

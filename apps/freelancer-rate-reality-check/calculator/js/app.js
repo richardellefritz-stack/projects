@@ -1,8 +1,8 @@
 /**
  * UI controller — The Freelancer's Rate Reality Check calculator.
- * Vanilla ES modules, client-side only. Free/paid via toggle + localStorage.
+ * Vanilla ES modules, client-side only.
  *
- * Rate math aligned with ebook Chapter 3 (tax gross-up + dollar expenses).
+ * Access stages: free results → email capture → paid unlock (verified license).
  */
 
 import {
@@ -21,12 +21,23 @@ import {
   DEFAULT_WORKING_HOURS_PER_WEEK,
 } from './calculator.js';
 import { diagnoseUnderpricing } from './underpricing.js';
+import {
+  captureEmail,
+  clearEmailCapture,
+  clearLicense,
+  getEntitlements,
+  getStoredEmail,
+  migrateLegacyTierToggle,
+  activateLicense,
+  refreshLicenseVerification,
+} from './entitlements.js';
 
 const STORAGE_KEYS = {
-  tier: 'frrc_tier',
   scenarios: 'frrc_scenarios',
   form: 'frrc_last_form_v2',
 };
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgawyyny';
 
 const DEFAULTS = {
   category: 'writing',
@@ -62,19 +73,43 @@ function num(v) {
   return Number.isFinite(n) ? n : 0;
 }
 
-function isPaid() {
-  return $('#tierToggle').checked;
-}
+/**
+ * Apply free / email / paid stage to the document and gated sections.
+ * Post-email (“You’re on the list”) only after a valid captured email.
+ */
+function applyAccessUI() {
+  const ent = getEntitlements();
+  const email = ent.email || getStoredEmail();
+  const hasValidEmail = Boolean(ent.hasEmail && email);
 
-function setTierUI(paid) {
-  document.body.dataset.tier = paid ? 'paid' : 'free';
-  $('#tierLabel').textContent = paid ? 'Paid / full version' : 'Free tier';
+  document.body.dataset.stage = ent.isPaid ? 'paid' : hasValidEmail ? 'email' : 'free';
+  document.body.dataset.paid = ent.isPaid ? 'true' : 'false';
+  document.body.dataset.email = hasValidEmail ? 'true' : 'false';
+
+  // Paid feature blocks
   $$('.paid-only').forEach((el) => {
-    el.hidden = !paid;
+    el.hidden = !ent.isPaid;
   });
-  $$('.free-only').forEach((el) => {
-    el.hidden = paid;
-  });
+
+  // Email gate: show after free results when email not yet captured and not paid
+  const emailGate = $('#emailGate');
+  const postEmail = $('#postEmailUpsell');
+  if (!emailGate || !postEmail) return ent;
+
+  if (ent.isPaid) {
+    emailGate.hidden = true;
+    postEmail.hidden = true;
+  } else if (hasValidEmail) {
+    emailGate.hidden = true;
+    postEmail.hidden = false;
+    $('#emailThanks').textContent =
+      `Thanks, ${email} — activate a license below for the full diagnostic, or hang tight for checkout.`;
+  } else {
+    emailGate.hidden = false;
+    postEmail.hidden = true;
+  }
+
+  return ent;
 }
 
 // —— Populate selects ——
@@ -113,7 +148,6 @@ function applyDefaults() {
   }
   const d = { ...DEFAULTS, ...(saved || {}) };
 
-  // Migrate old form keys if present
   if (d.desiredAnnualIncome != null && d.desiredNetIncome == null) {
     d.desiredNetIncome = d.desiredAnnualIncome;
   }
@@ -157,15 +191,16 @@ function run() {
   const catMeta = CATEGORIES.find((c) => c.id === form.category);
   const expMeta = EXPERIENCE_LEVELS.find((e) => e.id === form.experience);
   const insight = CATEGORY_INSIGHTS[form.category] || CATEGORY_INSIGHTS.other;
+  const ent = getEntitlements();
 
-  // Diagnostic: compare against floor (minimum viable) for the income goal
   const diagnostic = diagnoseUnderpricing({
     currentHourlyRate: form.currentHourlyRate,
     recommendedHourly: rates.floorHourly,
     benchmark,
     impliedAnnualFromCurrent: rates.impliedNetFromCurrent,
     desiredAnnualIncome: form.desiredNetIncome,
-    isPaid: isPaid(),
+    isPaid: ent.isPaid,
+    stage: ent.stage,
     categoryLabel: catMeta?.label || form.category,
     experienceLabel: expMeta?.label || form.experience,
     categoryInsight: insight.note,
@@ -173,44 +208,84 @@ function run() {
     billableHoursOptimistic: rates.billableHoursOptimistic,
   });
 
-  renderResults(form, rates, benchmark, diagnostic);
-  return { form, rates, benchmark, diagnostic };
+  renderResults(form, rates, benchmark, diagnostic, ent);
+  return { form, rates, benchmark, diagnostic, ent };
 }
 
-function renderResults(form, rates, benchmark, diagnostic) {
+function renderResults(form, rates, benchmark, diagnostic, ent) {
   const results = $('#results');
   results.hidden = false;
   $('#emptyState').hidden = true;
 
-  // Floor rate
+  // —— Free core ——
   $('#outFloorRate').textContent = `${formatMoney(rates.floorHourly)}/hr`;
   $('#outFloorNote').textContent =
     'Hits your take-home target with zero buffer';
 
-  // Recommended range (15–25% above floor)
   $('#outRecommendedRange').textContent = formatRateRange(
     rates.recommendedHourlyLow,
     rates.recommendedHourlyHigh
   );
   $('#outRecommendedMid').textContent = `${formatMoney(rates.recommendedHourly)}/hr mid (+20% buffer)`;
 
-  // Effective rate — true net per working hour of life
   $('#outEffectiveRate').textContent = `${formatMoney(rates.effectiveRate)}/hr`;
   const rateSource =
     form.currentHourlyRate != null ? 'your current rate' : 'the recommended rate';
   $('#outEffectiveNote').textContent = `True net after tax, expenses, and non-billable time — based on ${rateSource} across ~${rates.annualWorkingHours} working hrs/year`;
 
-  // Market benchmark
+  // Basic underpricing signal (always free)
+  const signal = $('#signal');
+  signal.dataset.level = diagnostic.level;
+  $('#signalBadge').textContent = diagnostic.label;
+  $('#signalSummary').textContent = diagnostic.summary;
+  $('#signalExplanations').innerHTML = diagnostic.explanations
+    .map((e) => `<li>${escapeHtml(e)}</li>`)
+    .join('');
+
+  // Gap callout when current rate present (free)
+  const gap = $('#goalGap');
+  if (form.currentHourlyRate != null && rates.gapToFloor != null) {
+    gap.hidden = false;
+    if (rates.gapToFloor > 5) {
+      gap.textContent = `You are about ${formatMoney(rates.gapToFloor)}/hr below your floor rate (${rates.gapToFloorPercent}% short of the minimum to hit your take-home target).`;
+      gap.dataset.tone = 'warn';
+    } else if (
+      rates.gapToRecommended != null &&
+      rates.gapToRecommended > 5 &&
+      rates.gapToFloor <= 5
+    ) {
+      gap.textContent = `You clear the floor rate, but sit about ${formatMoney(rates.gapToRecommended)}/hr below the recommended rate (with buffer).`;
+      gap.dataset.tone = 'warn';
+    } else if (rates.gapToFloor < -5) {
+      gap.textContent = `Your current rate is about ${formatMoney(Math.abs(rates.gapToFloor))}/hr above the floor needed for your stated take-home.`;
+      gap.dataset.tone = 'good';
+    } else {
+      gap.textContent =
+        'Your current rate roughly matches the floor rate required for your take-home target.';
+      gap.dataset.tone = 'good';
+    }
+  } else {
+    gap.hidden = true;
+  }
+
+  $('#hoursWarning').hidden = !rates.billableHoursOptimistic;
+
+  // Access stage UI (email gate / post-email upsell / paid)
+  applyAccessUI();
+
+  // —— Paid-only richer content ——
+  if (!ent.isPaid) {
+    return;
+  }
+
   $('#outMarketRange').textContent = formatRateRange(benchmark.low, benchmark.high);
   $('#outMarketMid').textContent = `mid ${formatMoney(benchmark.mid)}/hr · ${benchmark.marketLabel}`;
 
-  // Capacity stats
   $('#outBillableHours').textContent = `${rates.annualBillableHours} billable hrs/year`;
   $('#outRevenueNeeded').textContent = formatMoney(rates.revenueNeeded);
   $('#outExpenses').textContent = formatMoney(rates.annualExpenses);
   $('#outWorkingHours').textContent = `${rates.annualWorkingHours} hrs`;
 
-  // Project guidance
   const projEl = $('#outProjects');
   projEl.innerHTML = rates.projectGuidance
     .map(
@@ -223,55 +298,16 @@ function renderResults(form, rates, benchmark, diagnostic) {
     )
     .join('');
 
-  // Underpricing signal
-  const signal = $('#signal');
-  signal.dataset.level = diagnostic.level;
-  $('#signalBadge').textContent = diagnostic.label;
-  $('#signalSummary').textContent = diagnostic.summary;
-
-  const list = $('#signalExplanations');
-  list.innerHTML = diagnostic.explanations
-    .map((e) => `<li>${escapeHtml(e)}</li>`)
-    .join('');
-
-  // Interpretation blurb
   $('#outInterpretation').textContent = buildInterpretation(form, rates, diagnostic);
 
-  // Paid detailed section
-  const detailBox = $('#paidDetail');
-  if (isPaid() && diagnostic.detailed) {
-    detailBox.hidden = false;
-    renderPaidDetail(detailBox, diagnostic.detailed, rates, form);
-  } else {
-    detailBox.hidden = true;
+  if (diagnostic.detailed) {
+    renderPaidDetail(diagnostic.detailed);
   }
 
-  // Optimistic hours warning
-  $('#hoursWarning').hidden = !rates.billableHoursOptimistic;
-
-  // Gap callout when current rate present
-  const gap = $('#goalGap');
-  if (form.currentHourlyRate != null && rates.gapToFloor != null) {
-    gap.hidden = false;
-    if (rates.gapToFloor > 5) {
-      gap.textContent = `You are about ${formatMoney(rates.gapToFloor)}/hr below your floor rate (${rates.gapToFloorPercent}% short of the minimum to hit your take-home target).`;
-      gap.dataset.tone = 'warn';
-    } else if (rates.gapToRecommended != null && rates.gapToRecommended > 5 && rates.gapToFloor <= 5) {
-      gap.textContent = `You clear the floor rate, but sit about ${formatMoney(rates.gapToRecommended)}/hr below the recommended rate (with buffer).`;
-      gap.dataset.tone = 'warn';
-    } else if (rates.gapToFloor < -5) {
-      gap.textContent = `Your current rate is about ${formatMoney(Math.abs(rates.gapToFloor))}/hr above the floor needed for your stated take-home.`;
-      gap.dataset.tone = 'good';
-    } else {
-      gap.textContent = 'Your current rate roughly matches the floor rate required for your take-home target.';
-      gap.dataset.tone = 'good';
-    }
-  } else {
-    gap.hidden = true;
-  }
+  renderScenarioList();
 }
 
-function renderPaidDetail(root, detailed, rates, form) {
+function renderPaidDetail(detailed) {
   const score = detailed.scorecard;
   $('#detailScore').textContent =
     score.overall != null ? `${score.overall}/100` : '—';
@@ -283,8 +319,7 @@ function renderPaidDetail(root, detailed, rates, form) {
   $('#detailInsight').textContent = detailed.categoryInsight;
   $('#detailPitfall').textContent = detailed.commonPitfall;
 
-  const steps = $('#detailSteps');
-  steps.innerHTML = detailed.steps
+  $('#detailSteps').innerHTML = detailed.steps
     .map(
       (s) => `
       <li>
@@ -350,7 +385,6 @@ function buildInterpretation(form, rates, diagnostic) {
 }
 
 function escapeHtml(str) {
-  // Build entities without literal HTML entity sequences (safer for some transports)
   const amp = String.fromCharCode(38);
   return String(str)
     .replace(/&/g, amp + 'amp;')
@@ -375,6 +409,7 @@ function saveScenarios(list) {
 function renderScenarioList() {
   const list = loadScenarios();
   const el = $('#scenarioList');
+  if (!el) return;
   if (!list.length) {
     el.innerHTML = '<p class="muted">No saved scenarios yet.</p>';
     return;
@@ -397,6 +432,7 @@ function renderScenarioList() {
 }
 
 function saveCurrentScenario() {
+  if (!getEntitlements().isPaid) return;
   const { form, rates, diagnostic } = run();
   const nameInput = $('#scenarioName');
   const name =
@@ -426,7 +462,8 @@ function loadScenario(idx) {
   $('#category').value = f.category;
   $('#experience').value = f.experience;
   $('#market').value = f.market;
-  $('#desiredNetIncome').value = f.desiredNetIncome ?? f.desiredAnnualIncome ?? DEFAULTS.desiredNetIncome;
+  $('#desiredNetIncome').value =
+    f.desiredNetIncome ?? f.desiredAnnualIncome ?? DEFAULTS.desiredNetIncome;
   $('#currentHourlyRate').value =
     f.currentHourlyRate == null ? '' : f.currentHourlyRate;
   $('#billableHoursPerWeek').value = f.billableHoursPerWeek;
@@ -445,6 +482,7 @@ function deleteScenario(idx) {
 
 // —— Export (paid) ——
 function exportResults() {
+  if (!getEntitlements().isPaid) return;
   const { form, rates, benchmark, diagnostic } = run();
   const cat = CATEGORIES.find((c) => c.id === form.category)?.label;
   const exp = EXPERIENCE_LEVELS.find((e) => e.id === form.experience)?.label;
@@ -480,7 +518,8 @@ function exportResults() {
     '',
     '=== Project guidance ===',
     ...rates.projectGuidance.map(
-      (p) => `${p.label}: ${formatMoney(p.low)} – ${formatMoney(p.high)} (typ. ${formatMoney(p.mid)})`
+      (p) =>
+        `${p.label}: ${formatMoney(p.low)} – ${formatMoney(p.high)} (typ. ${formatMoney(p.mid)})`
     ),
     '',
     '=== Underpricing signal ===',
@@ -518,6 +557,69 @@ function exportResults() {
   URL.revokeObjectURL(url);
 }
 
+// —— Email + license ——
+/**
+ * Best-effort Formspree POST. Must not block or reverse the local email stage.
+ * @param {string} email
+ */
+function submitEmailToFormspree(email) {
+  fetch(FORMSPREE_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email,
+      source: 'calculator',
+    }),
+  }).catch(() => {
+    /* ignore network / CORS / Formspree errors */
+  });
+}
+
+function handleEmailSubmit(e) {
+  e.preventDefault();
+  const err = $('#emailError');
+  err.hidden = true;
+  const result = captureEmail($('#emailInput').value);
+  if (!result.ok) {
+    err.textContent = result.error;
+    err.hidden = false;
+    return;
+  }
+  submitEmailToFormspree(result.email);
+  run();
+  $('#postEmailUpsell')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+async function handleLicenseSubmit(e) {
+  e.preventDefault();
+  const err = $('#licenseError');
+  const btn = $('#btnLicenseSubmit');
+  err.hidden = true;
+  const prevLabel = btn ? btn.textContent : '';
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Checking…';
+  }
+  try {
+    const result = await activateLicense($('#licenseInput').value);
+    if (!result.ok) {
+      err.textContent = result.error;
+      err.hidden = false;
+      return;
+    }
+    run();
+    $('#paidFeatures')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = prevLabel || 'Activate full version';
+    }
+  }
+}
+
 // —— Events ——
 function bindEvents() {
   const form = $('#calcForm');
@@ -533,13 +635,8 @@ function bindEvents() {
     run();
   });
 
-  $('#tierToggle').addEventListener('change', () => {
-    const paid = isPaid();
-    localStorage.setItem(STORAGE_KEYS.tier, paid ? 'paid' : 'free');
-    setTierUI(paid);
-    run();
-    if (paid) renderScenarioList();
-  });
+  $('#emailForm')?.addEventListener('submit', handleEmailSubmit);
+  $('#licenseForm')?.addEventListener('submit', handleLicenseSubmit);
 
   $('#btnSaveScenario')?.addEventListener('click', () => saveCurrentScenario());
   $('#btnExport')?.addEventListener('click', () => exportResults());
@@ -559,18 +656,20 @@ function bindEvents() {
 }
 
 // —— Boot ——
-function init() {
+async function init() {
+  migrateLegacyTierToggle();
   initSelects();
   applyDefaults();
-
-  const savedTier = localStorage.getItem(STORAGE_KEYS.tier);
-  const paid = savedTier === 'paid';
-  $('#tierToggle').checked = paid;
-  setTierUI(paid);
-
   bindEvents();
+  applyAccessUI();
   run();
-  if (paid) renderScenarioList();
+  const refresh = await refreshLicenseVerification();
+  if (!refresh.skipped) {
+    applyAccessUI();
+    run();
+  }
 }
 
 init();
+
+export { clearEmailCapture, clearLicense, getEntitlements };

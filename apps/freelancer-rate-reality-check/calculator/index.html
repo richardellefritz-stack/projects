@@ -10,27 +10,16 @@
     <title>Rate Reality Check — Calculator</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body data-tier="free">
+  <body data-stage="free">
     <div class="page">
       <header class="site-header">
         <div class="brand">
           <p class="eyebrow">Companion tool</p>
           <h1>The Freelancer's Rate Reality Check</h1>
           <p class="lede">
-            Calculate a realistic rate, compare it to category benchmarks, and see a clear
-            underpricing signal — before you quote the next client.
+            Find the rate your numbers actually support — floor, recommended, and effective rate —
+            then unlock a full market diagnostic when you’re ready.
           </p>
-        </div>
-
-        <div class="tier-switch" title="Prototype toggle — replace with real entitlements later">
-          <label class="switch">
-            <input type="checkbox" id="tierToggle" />
-            <span class="slider"></span>
-          </label>
-          <div class="tier-copy">
-            <span id="tierLabel">Free tier</span>
-            <span class="muted small">Toggle full version features</span>
-          </div>
         </div>
       </header>
 
@@ -178,7 +167,7 @@
           </div>
 
           <div id="results">
-            <!-- Underpricing signal (primary visual) -->
+            <!-- Free: underpricing signal (basic) -->
             <div id="signal" class="signal" data-level="green" role="status" aria-live="polite">
               <div class="signal-top">
                 <span class="signal-dot" aria-hidden="true"></span>
@@ -193,7 +182,8 @@
 
             <p id="goalGap" class="callout" hidden></p>
 
-            <div class="metric-grid">
+            <!-- Free: core rate reveal -->
+            <div class="metric-grid free-metrics">
               <article class="metric">
                 <h3>Floor rate <span class="metric-tag">minimum viable</span></h3>
                 <p class="metric-value" id="outFloorRate">—</p>
@@ -206,86 +196,155 @@
                 <p class="metric-sub" id="outRecommendedMid">—</p>
               </article>
 
-              <article class="metric">
+              <article class="metric metric-span">
                 <h3>Effective rate <span class="metric-tag">true net / life-hour</span></h3>
                 <p class="metric-value" id="outEffectiveRate">—</p>
                 <p class="metric-sub" id="outEffectiveNote">—</p>
               </article>
+            </div>
 
-              <article class="metric">
-                <h3>Market benchmark</h3>
-                <p class="metric-value" id="outMarketRange">—</p>
-                <p class="metric-sub" id="outMarketMid">—</p>
-              </article>
+            <!-- Email capture: between free results and richer features -->
+            <div id="emailGate" class="email-gate" hidden>
+              <h3>Get the full diagnostic</h3>
+              <p class="email-gate-lede">
+                Enter your email to unlock detailed market benchmarks, project pricing guidance,
+                category insights, and the full raise-path diagnostic — or to pick up where you left
+                off when you get the complete version.
+              </p>
+              <form id="emailForm" class="email-form" novalidate>
+                <label class="field email-field">
+                  <span class="field-label">Email</span>
+                  <input
+                    type="email"
+                    id="emailInput"
+                    name="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </label>
+                <button type="submit" class="btn btn-primary" id="btnEmailSubmit">
+                  Unlock detailed insights
+                </button>
+              </form>
+              <p id="emailError" class="form-error" hidden></p>
+              <p class="muted small email-privacy">
+                No spam. We’ll use this to send your results path and product updates. You can
+                unsubscribe anytime.
+              </p>
+            </div>
 
-              <article class="metric metric-span">
-                <h3>Capacity and revenue</h3>
-                <p class="metric-value small-value" id="outBillableHours">—</p>
-                <p class="metric-sub">
-                  Revenue needed <span id="outRevenueNeeded">—</span> · Expenses
-                  <span id="outExpenses">—</span> · Working year
-                  <span id="outWorkingHours">—</span>
+            <!-- After email, before paid unlock -->
+            <div id="postEmailUpsell" class="post-email-upsell" hidden>
+              <div class="upsell-success">
+                <p class="upsell-kicker">You’re on the list</p>
+                <p id="emailThanks">
+                  Thanks — check below for everything the full version unlocks.
                 </p>
-              </article>
+              </div>
+              <div class="upsell-card">
+                <h3>Full version includes</h3>
+                <ul class="upsell-list">
+                  <li>Category &amp; market benchmark bands (Low / Mid / High)</li>
+                  <li>Capacity &amp; revenue breakdown</li>
+                  <li>Project rate guidance (small / medium / large)</li>
+                  <li>Plain-language takeaway written for your numbers</li>
+                  <li>Scored raise path, category insights &amp; pitfalls</li>
+                  <li>Saved scenarios &amp; export</li>
+                </ul>
+                <form id="licenseForm" class="license-form" novalidate>
+                  <label class="field">
+                    <span class="field-label">Have a license key?</span>
+                    <input
+                      type="text"
+                      id="licenseInput"
+                      name="license"
+                      autocomplete="off"
+                      placeholder="Paste your license key"
+                      spellcheck="false"
+                    />
+                  </label>
+                  <button type="submit" class="btn btn-secondary" id="btnLicenseSubmit">
+                    Activate full version
+                  </button>
+                </form>
+                <p id="licenseError" class="form-error" hidden></p>
+                <p class="muted small">
+                  Purchased the book or bundle? Activate with your license key.
+                  <!-- Hook: replace with Lemon Squeezy checkout URL when live -->
+                  <span id="checkoutHint"> Checkout link coming soon.</span>
+                </p>
+              </div>
             </div>
 
-            <div class="block">
-              <h3>Project rate guidance</h3>
-              <p class="muted small">
-                Rough package bands from your recommended hourly (light discount on larger scopes).
-              </p>
-              <div id="outProjects" class="project-grid"></div>
-            </div>
+            <!-- Paid-only richer results -->
+            <div id="paidFeatures" class="paid-only" hidden>
+              <div class="metric-grid paid-metrics">
+                <article class="metric">
+                  <h3>Market benchmark</h3>
+                  <p class="metric-value" id="outMarketRange">—</p>
+                  <p class="metric-sub" id="outMarketMid">—</p>
+                </article>
 
-            <div class="block interpretation">
-              <h3>Plain-language takeaway</h3>
-              <p id="outInterpretation"></p>
-            </div>
-
-            <!-- Free upsell note -->
-            <div class="free-only upsell">
-              <h3>Unlock the full diagnostic</h3>
-              <p>
-                The full version adds category insights, a scored raise path, income reality check,
-                saved scenarios, and export — toggle <strong>Paid / full version</strong> above to
-                preview in this prototype.
-              </p>
-            </div>
-
-            <!-- Paid detailed diagnostic -->
-            <div id="paidDetail" class="paid-only paid-detail" hidden>
-              <h3>Detailed diagnostic</h3>
-              <div class="score-row">
-                <div class="score-card">
-                  <span class="muted small">Overall fit</span>
-                  <strong id="detailScore">—</strong>
-                </div>
-                <div class="score-card">
-                  <span class="muted small">Market fit</span>
-                  <strong id="detailScoreMarket">—</strong>
-                </div>
-                <div class="score-card">
-                  <span class="muted small">Goal fit</span>
-                  <strong id="detailScoreGoal">—</strong>
-                </div>
+                <article class="metric metric-span">
+                  <h3>Capacity and revenue</h3>
+                  <p class="metric-value small-value" id="outBillableHours">—</p>
+                  <p class="metric-sub">
+                    Revenue needed <span id="outRevenueNeeded">—</span> · Expenses
+                    <span id="outExpenses">—</span> · Working year
+                    <span id="outWorkingHours">—</span>
+                  </p>
+                </article>
               </div>
 
-              <div class="detail-grid">
-                <div>
-                  <h4>Category insight</h4>
-                  <p id="detailInsight"></p>
-                </div>
-                <div>
-                  <h4>Common pitfall</h4>
-                  <p id="detailPitfall"></p>
-                </div>
+              <div class="block">
+                <h3>Project rate guidance</h3>
+                <p class="muted small">
+                  Rough package bands from your recommended hourly (light discount on larger scopes).
+                </p>
+                <div id="outProjects" class="project-grid"></div>
               </div>
 
-              <div id="detailIncome" class="callout" hidden></div>
-              <p id="detailCapacity" class="callout callout-warn" hidden></p>
+              <div class="block interpretation">
+                <h3>Plain-language takeaway</h3>
+                <p id="outInterpretation"></p>
+              </div>
 
-              <h4>Suggested raise path</h4>
-              <ol id="detailSteps" class="steps"></ol>
+              <div id="paidDetail" class="paid-detail">
+                <h3>Detailed diagnostic</h3>
+                <div class="score-row">
+                  <div class="score-card">
+                    <span class="muted small">Overall fit</span>
+                    <strong id="detailScore">—</strong>
+                  </div>
+                  <div class="score-card">
+                    <span class="muted small">Market fit</span>
+                    <strong id="detailScoreMarket">—</strong>
+                  </div>
+                  <div class="score-card">
+                    <span class="muted small">Goal fit</span>
+                    <strong id="detailScoreGoal">—</strong>
+                  </div>
+                </div>
+
+                <div class="detail-grid">
+                  <div>
+                    <h4>Category insight</h4>
+                    <p id="detailInsight"></p>
+                  </div>
+                  <div>
+                    <h4>Common pitfall</h4>
+                    <p id="detailPitfall"></p>
+                  </div>
+                </div>
+
+                <div id="detailIncome" class="callout" hidden></div>
+                <p id="detailCapacity" class="callout callout-warn" hidden></p>
+
+                <h4>Suggested raise path</h4>
+                <ol id="detailSteps" class="steps"></ol>
+              </div>
             </div>
           </div>
         </section>
@@ -297,7 +356,7 @@
           directional mid-market references (USD), not guarantees. Adjust for specialty, proof of
           results, and client segment.
         </p>
-        <p class="muted small">v1 prototype · client-side only · no account required</p>
+        <p class="muted small">Free rate check · full diagnostic with purchase · client-side</p>
       </footer>
     </div>
 

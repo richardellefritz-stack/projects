@@ -32,6 +32,7 @@
  * @param {number|null} params.impliedAnnualFromCurrent
  * @param {number} params.desiredAnnualIncome
  * @param {boolean} params.isPaid - Whether to include richer diagnostic detail
+ * @param {'free'|'email'|'paid'} [params.stage] - Access stage for CTA copy (defaults from isPaid)
  * @param {string} params.categoryLabel
  * @param {string} params.experienceLabel
  * @param {string} [params.categoryInsight]
@@ -47,6 +48,7 @@ export function diagnoseUnderpricing(params) {
     impliedAnnualFromCurrent,
     desiredAnnualIncome,
     isPaid,
+    stage: stageParam,
     categoryLabel,
     experienceLabel,
     categoryInsight,
@@ -54,6 +56,7 @@ export function diagnoseUnderpricing(params) {
     billableHoursOptimistic,
   } = params;
 
+  const stage = stageParam || (isPaid ? 'paid' : 'free');
   const hasCurrent = currentHourlyRate != null && currentHourlyRate > 0;
   // Primary rate we evaluate: current if provided, else recommended goal rate
   const rateUnderReview = hasCurrent ? currentHourlyRate : recommendedHourly;
@@ -78,17 +81,27 @@ export function diagnoseUnderpricing(params) {
     benchmark,
   });
 
-  const explanations = buildExplanations({
-    hasCurrent,
-    rateUnderReview,
-    recommendedHourly,
-    vsMarket,
-    vsGoal,
-    impliedAnnualFromCurrent,
-    desiredAnnualIncome,
-    benchmark,
-    billableHoursOptimistic,
-  });
+  // Free: short signal bullets. Paid: full market / goal explanations.
+  const explanations = isPaid
+    ? buildExplanations({
+        hasCurrent,
+        rateUnderReview,
+        recommendedHourly,
+        vsMarket,
+        vsGoal,
+        impliedAnnualFromCurrent,
+        desiredAnnualIncome,
+        benchmark,
+        billableHoursOptimistic,
+      })
+    : buildBasicExplanations({
+        hasCurrent,
+        rateUnderReview,
+        recommendedHourly,
+        vsMarket,
+        vsGoal,
+        stage,
+      });
 
   const metrics = {
     rateUnderReview,
@@ -130,6 +143,61 @@ export function diagnoseUnderpricing(params) {
   }
 
   return result;
+}
+
+/**
+ * Free-tier signal copy: level + direction without full benchmark tables.
+ */
+function ctaForStage(stage, hasCurrent) {
+  if (stage === 'paid') return null;
+  if (stage === 'email') {
+    return hasCurrent
+      ? 'Activate a license below for market bands, project pricing, and a scored raise path.'
+      : 'Activate a license below to unlock full market benchmarks and the detailed diagnostic.';
+  }
+  return hasCurrent
+    ? 'Enter your email below for market bands, project pricing, and a scored raise path.'
+    : 'Enter your email below to unlock full market benchmarks and the detailed diagnostic.';
+}
+
+function buildBasicExplanations({
+  hasCurrent,
+  rateUnderReview,
+  recommendedHourly,
+  vsMarket,
+  vsGoal,
+  stage,
+}) {
+  const lines = [];
+  const rate = Math.round(rateUnderReview);
+
+  if (hasCurrent) {
+    lines.push(
+      `Your current rate ($${rate}/hr) is ${vsMarket.position} for your category and experience.`
+    );
+    if (vsGoal.status !== 'on_track' && vsGoal.status !== 'n/a') {
+      const pct = Math.round((1 - vsGoal.ratio) * 100);
+      lines.push(
+        `That sits roughly ${pct}% below the floor rate your take-home goal implies (~$${Math.round(recommendedHourly)}/hr).`
+      );
+    } else {
+      lines.push(
+        `Against your income goal, you’re near the floor rate of about $${Math.round(recommendedHourly)}/hr.`
+      );
+    }
+  } else {
+    lines.push(
+      `Your goal-based floor is about $${rate}/hr — the minimum to hit your stated take-home after tax and expenses.`
+    );
+    lines.push(
+      `Versus typical rates for your profile, that floor is ${vsMarket.position}.`
+    );
+  }
+
+  const cta = ctaForStage(stage, hasCurrent);
+  if (cta) lines.push(cta);
+
+  return lines;
 }
 
 /**

@@ -1,0 +1,13 @@
+# Used when this folder is the Netlify base / drop-deploy root.
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/verify-license"
+  to = "/.netlify/functions/verify-license"
+  status = 200
+  force = true
