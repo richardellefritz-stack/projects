@@ -2,6 +2,8 @@
 
 Draft manuscript. Workstream A of P001.
 
+The v1 PDF source set is `00-front-matter.md` and `01` through `10-*.md` only. This README is internal and is excluded from the v1 PDF source set.
+
 ## Structure
 
 | File | Chapter |
@@ -27,7 +29,7 @@ Draft manuscript. Workstream A of P001.
 - Psychology claims attributed cautiously ("industry analyses frequently report…"); no named academic studies asserted from secondhand sources.
 - Methodology & Limitations note included in front matter.
 - **Guardrails:** the $30k illustration (Ch. 1) and the $38→$94→$113 worked example (Ch. 3) carry inline notes marking them as illustrations under stated assumptions. These must never be used as promises, projections, or sales-page headlines.
-- Cross-references to the companion calculator marked `[CALC]` for the productize pass.
+- Companion-calculator links in `00`–`10` were resolved in the v1 text freeze; those files contain no `[CALC]` markers.
 
 Spec: [`docs/specs/001-freelancer-rate-reality-check.md`](../../../docs/specs/001-freelancer-rate-reality-check.md)
 Research: [`docs/research/001-freelancer-rate-reality-check.md`](../../../docs/research/001-freelancer-rate-reality-check.md)

@@ -12,7 +12,7 @@ Before any figures, three things about what the tables below are and aren't.
 
 **They are bands, not points.** Each cell gives a Low, Mid, and High. Mid is a typical solid rate; Low and High bound a realistic range. If you're at the Low end, that's not a failure — it's a starting position with room above it.
 
-**They are the same numbers the calculator uses.** The companion tool benchmarks your calculated rate against exactly these figures, so the book and the tool will never tell you two different things. `[CALC]`
+**The tables stand alone.** Use them here to place your calculated rate. The full (paid) tool applies these same figures when it benchmarks; the free calculator does not unlock them.
 
 One important note on why these sit above the "average freelance rate" figures you'll see quoted online. Published averages — typically in the $44–$48/hour range for US freelancers — pool marketplace work, offshore work, and direct-client work into a single number. Marketplace rates run substantially below direct-client rates for comparable talent, which drags those averages down. The tables here deliberately describe the direct-client market, because that's the market you should be pricing into. If your current rate came from scanning a freelance platform, expect these numbers to look high. That gap is the point.
 
@@ -109,7 +109,7 @@ Use neighboring categories as a sanity check. Specialized trades and narrow nich
 
 ## Market Multipliers
 
-The bands above are baseline figures. Your market adjusts them. The calculator applies these multipliers automatically when you select your market; if you're working from the tables by hand, multiply the Low/Mid/High values yourself. `[CALC]`
+The bands above are baseline figures. Your market adjusts them. If you're working from the tables by hand, multiply the Low/Mid/High values yourself. The full (paid) tool applies these multipliers automatically; the free calculator does not.
 
 | Market | Multiplier |
 |---|---|
@@ -143,7 +143,7 @@ For converting hourly guidance into project quotes, the calculator uses these ty
 | Medium | 40 |
 | Large | 100 |
 
-These are starting reference points for estimation, not scope definitions. Your own tracked actuals will beat them within a few months — see Chapter 7.
+These are starting reference points for estimation, not scope definitions. Your own tracked actuals will beat them within a few months — see Chapter 8.
 
 ## Lever One: Specialization
 
@@ -192,7 +192,7 @@ This has a direct implication for how you use the tables above. If your work sit
 The two practical responses:
 
 1. **Move up the value chain within your category.** A writer doing research-heavy subject-matter work is in a different market than a writer producing volume blog copy — even though both benchmark as "Writing."
-2. **Reposition around the tools rather than against them.** The freelancers gaining ground are frequently the ones using AI to deliver more, faster — and pricing on the outcome rather than the hours the tools just eliminated. Which is exactly the trap of hourly billing, and exactly why Chapter 7 exists.
+2. **Reposition around the tools rather than against them.** The freelancers gaining ground are frequently the ones using AI to deliver more, faster — and pricing on the outcome rather than the hours the tools just eliminated. Which is exactly the trap of hourly billing, and exactly why Chapter 8 exists.
 
 ## Reconciling Your Number
 
@@ -204,7 +204,7 @@ You now have two figures: your calculated rate from Chapter 3, and a band from t
 
 **Your rate sits above the band.** Don't automatically lower it. First check your inputs: is your expense base unusually high, or your billable-hours estimate too conservative? If the inputs are sound and you're still above the band, the answer is usually positioning, not price — you're benchmarking against a category or tier you've outgrown, and the fix is specialization, not a discount.
 
-The calculator runs this comparison for you, placing your calculated rate against your category, band, and market. `[CALC]`
+Place your calculated rate against your category, band, and market using the tables in this chapter. The full (paid) tool runs that comparison; the free calculator does not.
 
 ---
 

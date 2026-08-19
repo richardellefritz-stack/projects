@@ -2,6 +2,9 @@
 
 ### You're probably charging less than you need to. Here's the real number — and how to actually charge it.
 
+**Version:** August 2026  
+**Author:** Richard G. Ellefritz, PhD
+
 ---
 
 ## Before You Start
@@ -12,7 +15,7 @@ Those are two different problems. Most pricing advice only solves the first one.
 
 So this book does both. The first half gets you a defensible number. The second half gets you to charge it.
 
-It should take you about an hour to read. There's a companion calculator that automates the arithmetic in Chapter 3 and the benchmarking in Chapter 4 — you can read straight through and run the numbers at the end, or open the calculator alongside Chapter 3 and do it as you go. Either works.
+It should take you about an hour to read. A free calculator at https://calculate-my-freelance-rate.netlify.app/ does the Chapter 3 math. Category and market benchmarking is part of the full (paid) tool; the free calculator does not unlock the Chapter 4 tables.
 
 ## Who This Is For
 
@@ -22,15 +25,15 @@ You'll get the most out of this if you're somewhere in your first few years of f
 - Your rate hasn't moved since you started.
 - You have a quiet, persistent suspicion that you're underpriced but no evidence either way.
 
-If you're already running value-based pricing with a mature proposal process, this book is below your level. Chapter 7 points at where you'd go next.
+If you're already running value-based pricing with a mature proposal process, this book is below your level. Chapter 8 points at where you'd go next.
 
 ## Methodology & Limitations
 
 A note on the numbers in this book, because you deserve to know how much weight to put on them.
 
-**The benchmark tables in Chapter 4 are approximate mid-market reference bands for direct client-facing work — not guarantees, and not predictions about any specific engagement.** They exist to support underpricing diagnostics: to tell you roughly which neighborhood you're in and whether your calculated rate is plausibly low. They are the same figures the companion calculator uses, so the book and the tool will never give you contradictory guidance.
+**The benchmark tables in Chapter 4 are approximate mid-market reference bands for direct client-facing work — not guarantees, and not predictions about any specific engagement.** They exist to support underpricing diagnostics: to tell you roughly which neighborhood you're in and whether your calculated rate is plausibly low. They are the same figures the full (paid) tool uses, so the book and the paid tool will never give you contradictory guidance.
 
-Each cell gives a Low, Mid, and High. Mid approximates a typical solid rate for that category and experience band; Low and High bound a realistic range around it. Market multipliers adjust the bands for the market you sell into; the calculator applies them automatically.
+Each cell gives a Low, Mid, and High. Mid approximates a typical solid rate for that category and experience band; Low and High bound a realistic range around it. Market multipliers adjust the bands for the market you sell into; the full (paid) tool applies them automatically.
 
 What that means for you:
 

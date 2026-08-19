@@ -30,7 +30,7 @@ Sub-title for listings: *Find the rate you should actually be charging — and l
 | SKU | Price | Contents |
 |---|---|---|
 | Free tier | $0 | Calculator: floor + recommended rate, effective-rate reveal |
-| Ebook only | **$29** | Full 8-chapter ebook, PDF |
+| Ebook only | **$29** | Full 10-chapter ebook, PDF |
 | Bundle | **$39** | Ebook + full calculator (category benchmarks, underpricing diagnostic, project guidance, category insights) |
 
 **Rationale for the $29/$39 spread — decoy pricing, not unit revenue.** At $19 vs $39 the bundle costs twice the ebook, which is a real decision and pushes some buyers toward the SKU that omits the differentiator. At $29 vs $39 the bundle is +$10 for an entire second product, and most buyers stop deliberating. Bundle *mix* matters more than unit price for both revenue and the conversion data v1 exists to gather.
@@ -85,7 +85,7 @@ Then the effective-rate reveal: *at $113/hour, you net about $45/hour of your ac
 
 Two columns, ebook and calculator, with the free/paid line drawn visibly.
 
-**The book (8 chapters, ~50 pages, one sitting):** the calculation, category benchmarks, why anchoring keeps you stuck, four word-for-word scripts for raising rates, handling the four objections you'll actually hear, and a 30-day plan.
+**The book (10 chapters, one sitting):** the calculation, category benchmarks, why anchoring keeps you stuck, seven word-for-word scripts for raising rates, handling the five responses you'll actually hear, and a 30-day plan.
 
 **The calculator:** your floor and recommended rate, effective-rate breakdown, benchmarking against your category/experience/market, underpricing diagnostic, project-size pricing.
 
@@ -169,8 +169,8 @@ Ordered by priority. Items marked **↑** were raised per locked decision 4.
 - [ ] **↑ PDF layout and typesetting — verify all nine benchmark/multiplier tables render correctly** (highest-risk item: broken tables destroy the credibility of the core asset)
 - [ ] **↑ Cover design**
 - [ ] Add inline guardrail notes to the manuscript at the $30k figure (Ch. 1) and the $38→$94 example (Ch. 3) per §3
-- [ ] Ebook copyedit pass (single voice check across all 8 chapters)
-- [ ] Replace `[CALC]` markers with real calculator links (21 instances)
+- [ ] Ebook copyedit pass (single voice check across all 10 chapters)
+- [x] Replace `[CALC]` markers with real calculator links (8 instances)
 - [ ] Front matter: add version date and a "recalculate every 6 months" note
 - [ ] ~~EPUB export~~ — deferred to v1.1
 

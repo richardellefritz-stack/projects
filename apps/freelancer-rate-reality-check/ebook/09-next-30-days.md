@@ -6,7 +6,7 @@ The plan below is deliberately small. Most people who read a pricing book do not
 
 ## Week 1: Get Your Number
 
-**Day 1 — Run the calculation.** Chapter 3's five steps, using your real figures. Ten minutes with the calculator, twenty by hand. `[CALC]`
+**Day 1 — Run the calculation.** Chapter 3's five steps, using your real figures. Ten minutes with the calculator at https://calculate-my-freelance-rate.netlify.app/, twenty by hand.
 
 - Target take-home
 - Plus annual business expenses

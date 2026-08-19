@@ -52,7 +52,7 @@ Most people who read a book like this and change nothing get stuck on the second
 
 ---
 
-**One task before you continue.** Write down your current rate. On paper, in a note, wherever you like, but write the actual number down before you read further. In Chapter 3 you'll calculate what it should be, and the comparison lands much harder when you committed to the old number in advance instead of quietly revising your memory of it. `[CALC]`
+**One task before you continue.** Write down your current rate. On paper, in a note, wherever you like, but write the actual number down before you read further. In Chapter 3 you'll calculate what it should be, and the comparison lands much harder when you committed to the old number in advance instead of quietly revising your memory of it.
 
 ---
 
