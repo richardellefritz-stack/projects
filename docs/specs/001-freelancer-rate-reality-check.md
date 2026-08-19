@@ -19,15 +19,15 @@ Tagline direction: *"You're probably charging less than you think you need to. H
 ## 3. Ebook Structure (Chapter Outline)
 
 1. **The Reality Check** — open with the underpricing diagnostic (100% close rate, no pushback, no rate movement since starting) so readers self-identify immediately.
-2. **Why You're Underpriced (and It's Not Your Fault)** — anchoring effect, platform-driven low anchors, imposter syndrome; normalize the pattern using research findings.
+2. **Why You're Underpriced (and It's Not Entirely Your Fault)** — anchoring effect, platform-driven low anchors, imposter syndrome; normalize the pattern using research findings.
 3. **The Real Number** — walk through the actual math: desired income → gross-up for SE tax and expenses → realistic billable hours (20–30/week, 48–50 weeks/year) → effective vs. billable rate. This chapter is the narrative walkthrough of what the calculator automates.
 4. **Know Your Market** — category/specialty benchmarks by field, and the 2026-specific AI bifurcation angle: how positioning as an AI-tool expert vs. competing with AI-automatable commodity work moves your ceiling.
 5. **The Anchoring Trap** — why your first rate follows you, and why incremental increases beat one-time jumps for existing clients.
-6. **Raising Rates Without Losing the Client** — concrete scripts: grandfathering existing clients, introducing new rates to new clients, framing the increase around value/outcomes rather than apologizing for it.
-7. **Beyond Hourly** — a short, forward-looking chapter introducing value/project-based pricing as the next step once the reader's hourly rate is fixed — sets up a natural upsell to a future product rather than over-promising a full framework here.
-8. **Your Next 30 Days** — action checklist: run the calculator, pick your number, script your next client conversation, set a 6-month recalculation reminder.
-
-Target length: 40–60 pages, consistent with the original opportunity brief — short enough to read in one sitting, long enough to feel substantive.
+6. **What Leverage You Actually Have** — strategy differentiated by leverage and experience level (beginner through expert): how fast to move, what to trade instead of price, and when to prune.
+7. **The Scripts** — concrete, copy-adaptable scripts and objection responses: grandfathering existing clients, introducing new rates to new clients, framing the increase around value/outcomes rather than apologizing for it.
+8. **The Ceiling Hourly Billing Puts on You** — a short, forward-looking chapter introducing value/project-based pricing as the next step once the reader's hourly rate is fixed — sets up a natural upsell to a future product rather than over-promising a full framework here.
+9. **Your Next 30 Days** — action checklist: run the calculator, pick your number, script your next client conversation, set a 6-month recalculation reminder.
+10. **The Standard You Set** — closing chapter: the rate as a standard, not only a number.
 
 ## 4. Interactive Tool Requirements — Rate Calculator
 
@@ -69,7 +69,7 @@ For this product to pass the Quality Gate and move to Productize, all of the fol
 **Content quality:**
 - All rate figures in the ebook are presented as ranges with attributed sourcing (or clearly labeled as illustrative), not asserted as precise fact — consistent with the research caveats.
 - No unverifiable or fabricated statistics; any research-derived claim traces back to the research pack or an equivalent verified source.
-- Chapter 6 (rate-raising scripts) contains genuinely usable, copy-adaptable language — not vague advice.
+- Chapter 7 (rate-raising scripts) contains genuinely usable, copy-adaptable language — not vague advice.
 - Reading level and tone appropriate for a fast, one-sitting read (no padding to hit a page count).
 
 **Tool quality:**
@@ -87,8 +87,8 @@ For this product to pass the Quality Gate and move to Productize, all of the fol
 Based on category norms for ebook + calculator hybrids and the research's cost/value framing:
 
 - **Free tier — Calculator only, gated at the output's depth:** free access to the basic number (minimum viable rate), used as the lead magnet / email capture. This matches how the reviewed competitor tools operate (free, no signup) but converts traffic into the funnel rather than losing it to a generic competitor tool.
-- **Ebook alone:** $19–$29 — consistent with niche non-fiction ebook norms; low-friction impulse buy.
-- **Ebook + full calculator (benchmark comparison, diagnostic, category-specific detail) bundle:** $39–$49 — the primary offer. Anchor the bundle against the ebook-alone price so the bundle reads as the obvious better deal.
+- **Ebook alone:** $19–$29 — consistent with niche non-fiction ebook norms; low-friction impulse buy. Productize locks **$29**.
+- **Ebook + full calculator (benchmark comparison, diagnostic, category-specific detail) bundle:** $39–$49 — the primary offer. Anchor the bundle against the ebook-alone price so the bundle reads as the obvious better deal. Productize locks **$39**.
 - **Rationale for this band:** the research's own value framing (a $20K/year income improvement justifies a $2–4K course) supports pricing meaningfully higher than $39–49, but a first product in this pipeline should optimize for **proof of the full pipeline and initial conversion data**, not maximum extraction — recommend launching at the lower end of viable pricing and revisiting upward once real conversion/feedback data exists (this feeds the Feedback stage).
 - **Upsell path:** rate-raising scripts and "Beyond Hourly" chapter set up a plausible future product (value-based pricing course/template) at a materially higher price point once this product validates the audience.
 

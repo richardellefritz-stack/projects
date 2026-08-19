@@ -47,7 +47,7 @@ Two structural moves matter more than the rate increase itself at this level.
 
 **Set a minimum engagement size.** Small jobs carry the same admin, onboarding, invoicing, and context-switching overhead as large ones, spread across far fewer billable hours. A $400 minimum project fee frequently improves effective rate more than a 15% rate increase does, because it eliminates the work that was quietly destroying your utilization.
 
-**Start quoting projects instead of hours** wherever scope is definable. Project pricing tends to run 20–40% above equivalent hourly billing (Chapter 4), and it stops penalizing you for getting faster, which, as Chapter 8 argues, is the structural flaw in hourly you'll eventually have to solve anyway.
+**Start quoting projects instead of hours** wherever scope is definable. Project pricing tends to run 20–40% above equivalent hourly billing (Chapter 8), and it stops penalizing you for getting faster — the structural flaw in hourly you'll eventually have to solve anyway.
 
 **Tactic: the two-option quote.** When budget is uncertain, present the full engagement at your rate and a genuinely smaller engagement at a lower total. Never the same scope at two prices. The conversation shifts from *whether* to *which*, and both options protect your rate.
 

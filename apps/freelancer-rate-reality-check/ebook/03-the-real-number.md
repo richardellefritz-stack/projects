@@ -2,7 +2,7 @@
 
 This is the arithmetic chapter, the one most people skip before wondering why nothing changed.
 
-We're going to build your rate from the ground up, in five steps. The companion calculator does all of this automatically, but read the steps anyway, because the *reason* each one exists is what you'll need when a client asks you to justify your price. `[CALC]`
+We're going to build your rate from the ground up, in five steps. The companion calculator at https://calculate-my-freelance-rate.netlify.app/ does all of this automatically, but read the steps anyway, because the *reason* each one exists is what you'll need when a client asks you to justify your price.
 
 ## The Method That Halves Your Rate
 
@@ -100,7 +100,7 @@ Your **billable rate** is what you charge. Your **effective rate** is what you a
 
 **At the floor rate of $94/hour**, they bill $112,857, keep $79,000 after tax, and net exactly their $70,000 target after expenses. Spread across a working year of roughly 1,920 hours, that comes to about **$36/hour of actual life**, against a $94 sticker price.
 
-**At the recommended $113/hour**, they bill about $135,400 and net roughly **$85,800** after tax and expenses. That comes to about **$45/hour of actual life**, against a $113 sticker price. The extra $19/hour of billing is what turns a zero-margin year into one that survives a slow quarter.
+**At the recommended $113/hour**, they bill about $135,600 and net roughly **$85,920** after tax and expenses. That comes to about **$45/hour of actual life**, against a $113 sticker price. The extra $19/hour of billing is what turns a zero-margin year into one that survives a slow quarter.
 
 Either way, notice the size of the gap. **The amount that reaches you is well under half the number you quote.** Not 10% less, not 30% less, but under half.
 
@@ -120,7 +120,7 @@ Do it before Chapter 4, in five steps:
 4. Divided by (billable hours/week × working weeks), giving your floor
 5. Times 1.15–1.25, giving your recommended rate
 
-Then put the result next to the number you wrote down at the end of Chapter 1. `[CALC]` The gap between those two figures, multiplied by your annual billable hours, is what this has been costing you per year.
+Then put the result next to the number you wrote down at the end of Chapter 1. https://calculate-my-freelance-rate.netlify.app/ The gap between those two figures, multiplied by your annual billable hours, is what this has been costing you per year.
 
 ---
 

@@ -80,4 +80,4 @@ You already did the difficult part. You found out what the number is, and you ca
 
 ---
 
-*Recalculate every six months. The version of you who set today's rate will be underpricing the version of you reading this a year from now, and you will know exactly what to do about it.* `[CALC]`
+*Recalculate every six months. The version of you who set today's rate will be underpricing the version of you reading this a year from now, and you will know exactly what to do about it.*
