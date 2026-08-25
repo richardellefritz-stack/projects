@@ -53,12 +53,13 @@ This is the first production project that fully exercises the multi-agent contro
 - The human reviews the actual artifact and CI logs, not a completion report.  
 - Production “GO” (merge to main, any posting, any deployment) stays with the human operator.
 
-**Source provenance (recoverable convention)**  
-- The two ebooks exist as controlled copies under `source/ebooks/`.  
-- `source/manifest.json` records the originating commit SHA (or equivalent) + copy timestamp.  
-- Every generated asset must reference the relevant manifest entry.  
-- Do not reach outside this project for source material once the copies exist.  
-- Missing sources are marked `TODO: SOURCE`. Never invent claims or fill gaps.
+**Source provenance (see `source/PROVENANCE.md` for the full model)**  
+- The provenance floor is the tiered corpus at `/corpus/corpus.json` — Tier 1 primary and quantitative sources, Tier 2 credentialed scholarship heterodox on interpretation. Tier 3 polemical and movement sources are permitted for framing and never load-bear a factual claim.  
+- The two ebooks are **derived outputs, not sources.** They are never cited. Versioned SHA-stamped snapshots live under `source/snapshots/` and exist to record which manuscript version an artifact corresponded to.  
+- The unit of provenance is the **claim**, not the page. Claims carry stable IDs in `source/claims/claims.json` and cite corpus entries with a locator. Every derived artifact — page, post, video script, manuscript chapter — references claim IDs.  
+- **Corpus access rule (ratified 2026-08-25).** Project agents may **read** from the monorepo-root `/corpus/` (the approved shared Tier 1/2 provenance floor). They may not write to or mutate the corpus without explicit operator GO. They may not reach outside the monorepo for any other source material. Project-local living content and snapshots remain under the project directory.  
+- Missing sources are marked `TODO: SOURCE`. Never invent claims or fill gaps.  
+- `tools/validate-provenance.mjs` is a required CI check and refuses violations. Do not weaken or skip it; if it fails and you cannot fix it, say so in the PR description.
 
 **Non-negotiables**  
 - No secrets in the repo.  
@@ -77,11 +78,12 @@ This is the first production project that fully exercises the multi-agent contro
   - Video: FFmpeg + Node/TypeScript orchestration  
   - Posting: Official X API v2 + Meta Graph API (always dry-run + operator GO)  
 - Website production uses Grok Build. First several working webpages are constructed manually to establish quality before automation.  
-- Actual controlled copies of the ebooks and first content generation have not yet occurred. Manifest SHAs are currently null.  
-- `TODO: SOURCE` CI gate is deferred until generated assets exist.
+- Provenance model installed (`source/PROVENANCE.md`); corpus, claims ledger, and validator landed before first content generation.  
+- Snapshot SHAs are null and permitted to be null **only while `derived[]` is empty.** The first derived artifact makes a null SHA a hard CI failure.  
+- Corpus and claims files are seeded, not populated. Seed bibliographic details are marked `operator-to-confirm` and must be checked against the sources themselves.
 
 ## 4. How Claude should work here
-
+- Before generating any page, post, or script: confirm each factual assertion resolves to a claim ID whose support is Tier 1 or Tier 2. Where it does not, write `TODO: SOURCE` and stop. Do not promote a Tier 3 source to cover a gap, and do not synthesize an unsourced node — gap identification and search targets are in lane; manufacture is not.
 - Always begin by reading the nearest AGENTS.md (nested wins).  
 - Treat the source provenance and “no invented facts” rules as binding.  
 - When asked to generate content, pages, posts, or video scripts, require a valid manifest reference or mark `TODO: SOURCE`.  
