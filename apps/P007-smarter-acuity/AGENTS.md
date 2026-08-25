@@ -3,7 +3,7 @@
 Website + content pipeline deriving social posts, video assets, and dual living ebooks from a tiered source corpus and claims ledger. Nested rules here win for files under this directory. See root AGENTS.md for repo-wide rules.
 
 ## Orientation
-- Webpage-first dual-write: maintain working webpages → derive social posts (X + Instagram) and video assets (image + voiceover + text overlays) → simultaneously advance the two living ebook manuscripts.
+- Webpage-first dual-write: maintain working webpages → derive social posts (X + YouTube) and video assets (image + voiceover + text overlays) → simultaneously advance the two living ebook manuscripts.
 - Public system only. High-agency coaching layer is out of scope.
 - This is the first production use of the full multi-agent control plane (issues → draft PRs → CI + GATE vs CONVENTION).
 - No invented facts. Every claim must trace to a Tier 1 or Tier 2 corpus source via the claims ledger, or be marked `TODO: SOURCE`.
@@ -31,13 +31,17 @@ Common refusals and what they mean:
 Publishing, merging to `main`, and any posting stay with the operator.
 
 ## Build / test / run
-Stack is not yet locked. Do not invent framework, static-site generator, video pipeline, or posting commands.
-```
-# Placeholder only — replace after operator locks the stack
-# build: TBD
-# test: TBD
-# run / dev: TBD
-```
+
+**Locked site stack (2026-08-25):** Astro + MDX content collections.
+- Content collections live under `src/content/`
+- Pages under `src/pages/`
+- Exact `build` / `dev` / `test` commands will be filled once the Astro project is scaffolded under this directory.
+
+**Distribution scope (2026-08-25):**
+- X and YouTube: automated / semi-automated allowed (always dry-run + operator GO)
+- Instagram / Facebook: automated publishing is **out of scope** until Meta identity verification is resolved. Manual only for now.
+
+Video toolchain and ebook toolchain remain open. Do not invent commands for them.
 
 ## Notes
 - Prefer editing existing files over creating new ones.
