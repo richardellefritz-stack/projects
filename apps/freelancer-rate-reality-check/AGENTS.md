@@ -1,12 +1,12 @@
-# AGENTS.md — Freelancer Rate Reality Check
+# AGENTS.md — freelancer-rate-reality-check
 
-See root AGENTS.md for repo-wide rules.
-
-This directory contains the calculator and ebook for the Freelancer Rate Reality Check product.
+Calculator + companion ebook product. See root AGENTS.md for repo-wide rules.
 
 ## Build / test / run
-- Static site + Netlify functions. See the local README and netlify.toml for exact commands.
-- Prefer editing existing files over creating new ones.
+- Calculator lives in `calculator/`
+- Ebook source lives in `ebook/`
+- Netlify config is at both the product root and inside `calculator/`
 
 ## Notes
-- No invented statistics or claims. Source any numbers that appear in the calculator or ebook.
+- Prefer editing existing files over creating new ones.
+- Any change that touches entitlements, license verification, or paid unlock paths must be flagged in the PR description.
