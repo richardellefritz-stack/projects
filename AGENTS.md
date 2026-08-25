@@ -13,6 +13,8 @@ and has its own AGENTS.md with build, test, and run instructions.
 
 ## Workflow
 - Work on a branch. Open a **draft** PR. Do not merge.
+- Leave required checks green. If a check fails and you cannot fix it, say so
+  in the PR description rather than disabling, skipping, or weakening the check.
 - The PR description states what changed, what you verified, and what you did
   not verify. Coverage limits are stated explicitly, not implied.
 - Small, verifiable increments over large parallel generation.
