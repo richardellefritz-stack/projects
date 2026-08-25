@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://richardellefritz-stack/projects/P007/claims.schema.json",
+  "title": "Claims Ledger — P007",
+  "description": "Atomic factual assertions with stable IDs. The unit of provenance. Every derived artifact references claim IDs; claims reference corpus entries.",
+  "type": "object",
+  "required": ["project", "claims_version", "updated", "claims"],
+  "properties": {
+    "project": { "type": "string", "pattern": "^P[0-9]{3}$" },
+    "claims_version": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "corpus_ref": {
+      "type": "object",
+      "required": ["path", "corpus_version"],
+      "properties": {
+        "path": { "type": "string" },
+        "corpus_version": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "required": ["id", "pair", "statement", "kind", "load_bearing", "support", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^CLM-[A-Z]{3}-[0-9]{4}$" },
+        "pair": {
+          "type": "string",
+          "enum": [
+            "science-sports",
+            "math-motivation",
+            "aesthetics-architecture",
+            "reading-research",
+            "technology-teaching",
+            "environment-entertainment",
+            "recreation-relaxation",
+            "root-calendar"
+          ]
+        },
+        "statement": { "type": "string", "minLength": 10 },
+        "kind": { "type": "string", "enum": ["quantitative", "documentary", "interpretive"] },
+        "load_bearing": { "type": "boolean" },
+        "support": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["source_id", "locator", "supports"],
+            "additionalProperties": false,
+            "properties": {
+              "source_id": { "type": "string", "pattern": "^SRC-T[123]-[A-Z0-9-]+$" },
+              "locator": { "type": "string", "minLength": 1 },
+              "supports": { "type": "string", "enum": ["direct", "contextual"] },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "contested_by": { "type": "string" },
+        "response": { "type": "string" },
+        "status": { "type": "string", "enum": ["verified", "pending", "TODO: SOURCE"] },
+        "verified_by": { "type": "string" },
+        "verified_on": { "type": "string", "format": "date" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "interpretive" } }, "required": ["kind"] },
+          "then": { "required": ["contested_by", "response"] }
+        }
+      ]
+    }
+  }
+}

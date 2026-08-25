@@ -1,21 +1,36 @@
 {
-  "schema_version": 1,
-  "ebooks": [
+  "project": "P007",
+  "manifest_version": "0.2.0-draft",
+  "updated": "2026-08-25",
+  "_note": "Replaces the v0.1 manifest that recorded controlled ebook copies as sources. Sources now live in /corpus/. This file records derived output only.",
+  "corpus_ref": {
+    "path": "/corpus/corpus.json",
+    "corpus_version": "0.1.0-seed"
+  },
+  "claims_ref": {
+    "path": "source/claims/claims.json",
+    "claims_version": "0.1.0-seed"
+  },
+  "snapshots": [
     {
-      "id": "triumph",
-      "title": "The Triumph of Western Civilization",
-      "path": "source/ebooks/triumph/",
-      "source_sha": null,
-      "copied_at": null,
-      "notes": "14-chapter premium illustrated volume (SMARTER Acuity 2026–27). Populate on first controlled copy."
+      "id": "SNAP-TRIUMPH-2026-08-25",
+      "work": "triumph",
+      "commit_sha": null,
+      "taken_at": "2026-08-25T00:00:00Z",
+      "freeze_until": "2026-09-06",
+      "resync_state": "fresh",
+      "resync_reason": "Placeholder. commit_sha is null because no controlled copy has been taken yet. The validator permits null only while derived[] is empty; the first derived artifact makes this a hard failure.",
+      "path": "source/snapshots/triumph/"
     },
     {
-      "id": "why-it-works",
-      "title": "Why Western Civilization Works",
-      "path": "source/ebooks/why-it-works/",
-      "source_sha": null,
-      "copied_at": null,
-      "notes": "9-chapter dual-pair volume (SMARTER Acuity 2026–27). Populate on first controlled copy."
+      "id": "SNAP-WHYITWORKS-2026-08-25",
+      "work": "why-it-works",
+      "commit_sha": null,
+      "taken_at": "2026-08-25T00:00:00Z",
+      "freeze_until": "2026-09-06",
+      "resync_state": "fresh",
+      "path": "source/snapshots/why-it-works/"
     }
-  ]
+  ],
+  "derived": []
 }
