@@ -1,7 +1,7 @@
 {
-  "corpus_version": "0.1.0-seed",
+  "corpus_version": "0.1.1-cleanup",
   "updated": "2026-08-25",
-  "_note": "SEED ONLY. These entries demonstrate the schema and the tier discriminator. Every bibliographic field is marked operator-to-confirm and MUST be checked against the source itself before any claim cites it. Nothing here has been verified by the drafting seat; per Framework §13 no unsourced nodes are manufactured, so these are well-known works listed as candidates, not as confirmed records.",
+  "_note": "SEED ONLY. Every bibliographic field is marked operator-to-confirm and MUST be checked against the source itself before any claim cites it. The previous Tier-3 example placeholder has been removed.",
   "entries": [
     {
       "id": "SRC-T1-MADDISON-DB",
@@ -43,15 +43,6 @@
       "contested": true,
       "shared_with": ["P005", "P007", "P013"],
       "verification_status": "operator-to-confirm"
-    },
-    {
-      "id": "SRC-T3-EXAMPLE-PLACEHOLDER",
-      "tier": 3,
-      "type": "commentary",
-      "title": "PLACEHOLDER — illustrates tier 3 handling",
-      "shared_with": ["P007"],
-      "verification_status": "TODO: SOURCE",
-      "notes": "Present only to demonstrate that a tier 3 entry is schema-valid but cannot appear as sole support for a load-bearing claim. Validator rule R4 refuses that combination. Replace or delete before install."
     }
   ]
 }

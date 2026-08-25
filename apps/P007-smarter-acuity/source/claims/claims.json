@@ -1,8 +1,8 @@
 {
   "project": "P007",
-  "claims_version": "0.1.0-seed",
+  "claims_version": "0.1.1-cleanup",
   "updated": "2026-08-25",
-  "_note": "SEED ONLY — these demonstrate the ledger mechanics for the 6 September Science-Sports launch pair. No claim here is verified. Statements are structural placeholders. The drafting seat does not manufacture sourced assertions.",
+  "_note": "SEED ONLY — structural placeholders for the 6 September Science-Sports launch pair. No claim here is verified. The deliberate mismatch previously in CLM-SCI-0002 and the Tier-3 example have been removed per post-install review.",
   "corpus_ref": {
     "path": "/corpus/corpus.json",
     "corpus_version": "0.1.0-seed"
@@ -27,14 +27,15 @@
     {
       "id": "CLM-SCI-0002",
       "pair": "science-sports",
-      "statement": "PLACEHOLDER — a documentary claim about the founding date and stated purpose of a specific scientific institution.",
+      "statement": "PLACEHOLDER — a documentary claim about the founding date and stated purpose of a specific scientific institution. Replace with a real archival source before verification.",
       "kind": "documentary",
       "load_bearing": true,
       "support": [
         {
           "source_id": "SRC-T1-MADDISON-DB",
-          "locator": "PLACEHOLDER — replace with the correct archival source; this deliberately shows a mismatched citation the reviewer should catch",
-          "supports": "direct"
+          "locator": "TODO: SOURCE — replace with the correct archival source for the institution; do not leave Maddison here",
+          "supports": "direct",
+          "note": "Previous deliberate mismatch removed. This claim needs a real Tier 1 archival source."
         }
       ],
       "status": "TODO: SOURCE"
@@ -60,22 +61,6 @@
       "contested_by": "PLACEHOLDER — state the strongest mainstream counter-reading in its own best form. Typically some combination of colonial extraction, coal and geographic endowment, or contingency arguments. Steelman it.",
       "response": "PLACEHOLDER — how the claim survives that reading. Prefer answering on tier 1 ground wherever the counter-position makes a checkable empirical prediction.",
       "status": "TODO: SOURCE"
-    },
-    {
-      "id": "CLM-SCI-0004",
-      "pair": "science-sports",
-      "statement": "PLACEHOLDER — a non-load-bearing colour claim used for narrative texture only.",
-      "kind": "documentary",
-      "load_bearing": false,
-      "support": [
-        {
-          "source_id": "SRC-T3-EXAMPLE-PLACEHOLDER",
-          "locator": "n/a",
-          "supports": "contextual",
-          "note": "Legal because load_bearing is false. Flip that flag to true and the validator refuses this claim under R4."
-        }
-      ],
-      "status": "pending"
     }
   ]
 }
