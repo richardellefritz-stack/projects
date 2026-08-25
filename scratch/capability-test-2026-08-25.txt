@@ -1,0 +1,1 @@
+Capability test file written 2026-08-25 by Grok Heavy under explicit operator GO. This is a temporary probe for multi-file hand-off direct-path evaluation. Safe to delete.
