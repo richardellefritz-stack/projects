@@ -1,0 +1,81 @@
+{
+  "project": "P007",
+  "claims_version": "0.1.0-seed",
+  "updated": "2026-08-25",
+  "_note": "SEED ONLY — these demonstrate the ledger mechanics for the 6 September Science-Sports launch pair. No claim here is verified. Statements are structural placeholders. The drafting seat does not manufacture sourced assertions.",
+  "corpus_ref": {
+    "path": "/corpus/corpus.json",
+    "corpus_version": "0.1.0-seed"
+  },
+  "claims": [
+    {
+      "id": "CLM-SCI-0001",
+      "pair": "science-sports",
+      "statement": "PLACEHOLDER — a quantitative claim about sustained growth in real income per head following roughly 1800, stated as a specific multiple over a specific interval.",
+      "kind": "quantitative",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-T1-MADDISON-DB",
+          "locator": "TODO: SOURCE — specify country series and year range cells",
+          "supports": "direct",
+          "note": "Tier 1 carries this alone. No interpretive source needed for the magnitude itself."
+        }
+      ],
+      "status": "TODO: SOURCE"
+    },
+    {
+      "id": "CLM-SCI-0002",
+      "pair": "science-sports",
+      "statement": "PLACEHOLDER — a documentary claim about the founding date and stated purpose of a specific scientific institution.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-T1-MADDISON-DB",
+          "locator": "PLACEHOLDER — replace with the correct archival source; this deliberately shows a mismatched citation the reviewer should catch",
+          "supports": "direct"
+        }
+      ],
+      "status": "TODO: SOURCE"
+    },
+    {
+      "id": "CLM-SCI-0003",
+      "pair": "science-sports",
+      "statement": "PLACEHOLDER — an interpretive claim about why the scientific method became self-sustaining in one civilization rather than another.",
+      "kind": "interpretive",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-T2-MCCLOSKEY-DIGNITY",
+          "locator": "TODO: SOURCE — chapter and page",
+          "supports": "direct"
+        },
+        {
+          "source_id": "SRC-T2-HENRICH-WEIRD",
+          "locator": "TODO: SOURCE — chapter and page",
+          "supports": "contextual"
+        }
+      ],
+      "contested_by": "PLACEHOLDER — state the strongest mainstream counter-reading in its own best form. Typically some combination of colonial extraction, coal and geographic endowment, or contingency arguments. Steelman it.",
+      "response": "PLACEHOLDER — how the claim survives that reading. Prefer answering on tier 1 ground wherever the counter-position makes a checkable empirical prediction.",
+      "status": "TODO: SOURCE"
+    },
+    {
+      "id": "CLM-SCI-0004",
+      "pair": "science-sports",
+      "statement": "PLACEHOLDER — a non-load-bearing colour claim used for narrative texture only.",
+      "kind": "documentary",
+      "load_bearing": false,
+      "support": [
+        {
+          "source_id": "SRC-T3-EXAMPLE-PLACEHOLDER",
+          "locator": "n/a",
+          "supports": "contextual",
+          "note": "Legal because load_bearing is false. Flip that flag to true and the validator refuses this claim under R4."
+        }
+      ],
+      "status": "pending"
+    }
+  ]
+}
