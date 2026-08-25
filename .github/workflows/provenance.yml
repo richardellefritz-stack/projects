@@ -1,12 +1,7 @@
-# Repo destination: .github/workflows/provenance.yml  (monorepo root)
-
 name: P007 Provenance Gate
 
 on:
   pull_request:
-    paths:
-      - "corpus/**"
-      - "apps/P007-smarter-acuity/**"
   push:
     branches: [main]
 
@@ -23,9 +18,8 @@ jobs:
 
       # Zero dependencies by design — no install step, nothing to cache.
       # Full JSON Schema validation via ajv is a later, explicit operator decision.
+      # Path filter removed 2026-08-25: a required check that only runs on some
+      # paths leaves other PRs permanently pending. The validator is fast enough
+      # to run on every PR.
       - name: Validate provenance
         run: node apps/P007-smarter-acuity/tools/validate-provenance.mjs --root .
-
-# After this lands, add "provenance-gate" to the branch protection required checks
-# for main. Until that is done the workflow reports but does not block, and the
-# rule remains CONVENTION rather than GATE.
