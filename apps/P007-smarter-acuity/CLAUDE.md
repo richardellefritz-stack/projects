@@ -10,7 +10,7 @@ SMARTER Acuity is a public content system (and private high-agency coaching laye
 **Core content model (locked)**  
 Webpage-first dual-write:
 1. Create and maintain working website pages (≤5-minute read, primary-source grounded).
-2. From those approved pages, derive social posts for X (@SMARTER_Acuity) and Instagram.
+2. From those approved pages, derive social posts for X (@SMARTER_Acuity) and (when unblocked) other platforms.
 3. From the same pages, produce video assets (image + voiceover + text overlays).
 4. Simultaneously advance two parallel living ebook manuscripts:
    - *The Triumph of Western Civilization* (14-chapter premium illustrated volume, higher price, richer illustration package)
@@ -19,15 +19,15 @@ Webpage-first dual-write:
 **Scope of this monorepo project (P007)**  
 - Website pages as the canonical content source  
 - Automated (or semi-automated) derivation of social posts and video assets  
-- Publishing pipeline to X and Instagram (never without operator GO)  
+- Publishing pipeline to X and YouTube (never without operator GO)  
 - Provenance of every claim back to the tiered corpus and claims ledger  
 - The multi-agent control plane itself
 
 **Out of scope**  
-Private coaching client work, Meta identity verification for restricted platforms, any live posting, deployment, or external side-effect without explicit human approval.
+Private coaching client work, Meta identity verification for restricted platforms, Instagram / Facebook automated publishing (until identity verification is resolved — manual only for now), any live posting, deployment, or external side-effect without explicit human approval.
 
 **Near-term goal**  
-All socials ready + preferred automated process by / before 6 September 2026 launch (Science ↔ Sports under the September Architecture root).
+All viable socials ready + preferred automated process by / before 6 September 2026 launch (Science ↔ Sports under the September Architecture root).
 
 **Brand rule (locked)**  
 - Display / product name: SMARTER Acuity or S.M.A.R.T.E.R. Acuity (no underscore)  
@@ -74,7 +74,9 @@ This is the first production project that fully exercises the multi-agent contro
 - Provenance model installed (`source/PROVENANCE.md`); corpus, claims ledger, and validator landed before first content generation.  
 - Snapshot SHAs are null and permitted to be null **only while `derived[]` is empty.** The first derived artifact makes a null SHA a hard CI failure.  
 - Corpus and claims files are seeded, not populated. Seed bibliographic details are marked `operator-to-confirm` and must be checked against the sources themselves.  
-- Stack is not yet locked. Current team recommendation: Astro + MDX content collections (site), FFmpeg + Node/TypeScript orchestration (video), Official X API v2 + Meta Graph API (posting, always dry-run + operator GO).  
+- **Site stack locked (2026-08-25):** Astro + MDX content collections. Content under `src/content/`, pages under `src/pages/`. Exact build commands filled once the Astro project is scaffolded.  
+- **Distribution scope (2026-08-25):** X and YouTube automated / semi-automated allowed (dry-run + operator GO). Instagram / Facebook automated publishing is **out of scope** until Meta identity verification is resolved — manual only.  
+- Video toolchain and ebook toolchain remain open.  
 - Website production uses Grok Build. First several working webpages are constructed manually to establish quality before automation.
 
 ## 4. How Claude should work here
