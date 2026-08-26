@@ -1,66 +1,159 @@
 {
   "project": "P007",
-  "claims_version": "0.1.1-cleanup",
+  "claims_version": "0.2.0-science-sports-1",
   "updated": "2026-08-25",
-  "_note": "SEED ONLY — structural placeholders for the 6 September Science-Sports launch pair. No claim here is verified. The deliberate mismatch previously in CLM-SCI-0002 and the Tier-3 example have been removed per post-install review.",
+  "_note": "First Science ↔ Sports claims batch. Seed placeholders replaced. All locators still pending passage-level verification. CLM-SCI-0005 awaits a World Athletics corpus entry.",
   "corpus_ref": {
     "path": "/corpus/corpus.json",
-    "corpus_version": "0.1.0-seed"
+    "corpus_version": "0.2.0-sports-batch-1"
   },
   "claims": [
     {
       "id": "CLM-SCI-0001",
       "pair": "science-sports",
-      "statement": "PLACEHOLDER — a quantitative claim about sustained growth in real income per head following roughly 1800, stated as a specific multiple over a specific interval.",
-      "kind": "quantitative",
-      "load_bearing": true,
-      "support": [
-        {
-          "source_id": "SRC-T1-MADDISON-DB",
-          "locator": "TODO: SOURCE — specify country series and year range cells",
-          "supports": "direct",
-          "note": "Tier 1 carries this alone. No interpretive source needed for the magnitude itself."
-        }
-      ],
-      "status": "TODO: SOURCE"
-    },
-    {
-      "id": "CLM-SCI-0002",
-      "pair": "science-sports",
-      "statement": "PLACEHOLDER — a documentary claim about the founding date and stated purpose of a specific scientific institution. Replace with a real archival source before verification.",
-      "kind": "documentary",
-      "load_bearing": true,
-      "support": [
-        {
-          "source_id": "SRC-T1-MADDISON-DB",
-          "locator": "TODO: SOURCE — replace with the correct archival source for the institution; do not leave Maddison here",
-          "supports": "direct",
-          "note": "Previous deliberate mismatch removed. This claim needs a real Tier 1 archival source."
-        }
-      ],
-      "status": "TODO: SOURCE"
-    },
-    {
-      "id": "CLM-SCI-0003",
-      "pair": "science-sports",
-      "statement": "PLACEHOLDER — an interpretive claim about why the scientific method became self-sustaining in one civilization rather than another.",
+      "statement": "Modern sport, as defined by Guttmann's seven characteristics (secularism, equality of opportunity, specialization, rationalization, bureaucratic organization, quantification, and the quest for records), is discontinuous with ancient Greek and Roman athletic and spectacular practices.",
       "kind": "interpretive",
       "load_bearing": true,
       "support": [
         {
-          "source_id": "SRC-T2-MCCLOSKEY-DIGNITY",
-          "locator": "TODO: SOURCE — chapter and page",
+          "source_id": "SRC-GUTTMANN-RITUAL-RECORD",
+          "locator": "seven characteristics / discontinuity thesis (2004 ed.)",
+          "supports": "direct"
+        }
+      ],
+      "contested_by": "Continuity arguments that treat the modern Olympics or modern arenas as direct heirs of Olympia or the Colosseum.",
+      "response": "Guttmann's framework treats the seven characteristics as emergent with modernity; Young separately demonstrates that the Greek amateur ideal is a modern construction, not an ancient inheritance.",
+      "status": "pending"
+    },
+    {
+      "id": "CLM-SCI-0002",
+      "pair": "science-sports",
+      "statement": "The achievement of modern Western sport is not the arena form itself but the transformation of contest into a rule-bound, quantified, record-seeking activity in which death is not the object.",
+      "kind": "interpretive",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-GUTTMANN-RITUAL-RECORD",
+          "locator": "quantification; quest for records; rationalization (2004 ed.)",
           "supports": "direct"
         },
         {
-          "source_id": "SRC-T2-HENRICH-WEIRD",
-          "locator": "TODO: SOURCE — chapter and page",
+          "source_id": "SRC-KYLE-SPECTACLES-DEATH",
+          "locator": "character of lethal spectacle",
           "supports": "contextual"
         }
       ],
-      "contested_by": "PLACEHOLDER — state the strongest mainstream counter-reading in its own best form. Typically some combination of colonial extraction, coal and geographic endowment, or contingency arguments. Steelman it.",
-      "response": "PLACEHOLDER — how the claim survives that reading. Prefer answering on tier 1 ground wherever the counter-position makes a checkable empirical prediction.",
+      "contested_by": "Bread and circuses claims that modern mass sport is essentially continuous with Roman arena spectacle.",
+      "response": "Architectural and spectacular lineage can be acknowledged; the institutional transformation (published rules, records, death-not-the-object) is the discontinuity that carries the claim.",
+      "status": "pending"
+    },
+    {
+      "id": "CLM-SCI-0003",
+      "pair": "science-sports",
+      "statement": "The Football Association's Laws of the Game, adopted 8 December 1863, constitute an early and explicit act of publishing binding rules for a competitive physical contest, modelled in part on the prior codification of cricket by the MCC.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-FA-LAWS-1863",
+          "locator": "preamble / adoption date; thirteen laws",
+          "supports": "direct"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "CLM-SCI-0004",
+      "pair": "science-sports",
+      "statement": "Modern athletics maintains official, progressive world-record lists that make quantifiable improvement over time a central institutional fact; the quest for records is one of Guttmann's seven defining characteristics of modern sport.",
+      "kind": "quantitative",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-HYMANS-IAAF-RECORDS-2015",
+          "locator": "record progression tables",
+          "supports": "direct"
+        },
+        {
+          "source_id": "SRC-GUTTMANN-RITUAL-RECORD",
+          "locator": "quest for records (2004 ed.)",
+          "supports": "direct"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "CLM-SCI-0005",
+      "pair": "science-sports",
+      "statement": "On 26 April 2026, Sabastian Sawe recorded 1:59:30 at the London Marathon, the first World Athletics-ratified men's marathon performance under two hours in race conditions.",
+      "kind": "quantitative",
+      "load_bearing": false,
+      "support": [
+        {
+          "source_id": "SRC-HYMANS-IAAF-RECORDS-2015",
+          "locator": "TODO: SOURCE — add World Athletics official marathon records page as its own corpus entry; this claim must not rest on secondary reportage",
+          "supports": "direct",
+          "note": "Externally verified against worldathletics.org 2026-08-25; corpus entry still required before status can leave TODO: SOURCE."
+        }
+      ],
       "status": "TODO: SOURCE"
+    },
+    {
+      "id": "CLM-SCI-0006",
+      "pair": "science-sports",
+      "statement": "Roman arena spectacle included forms in which death was an intended or accepted outcome (executions, venationes, gladiatorial combat with real mortality); this is documented in specialized scholarship and should not be reduced to the phrase 'slave death matches.'",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-KYLE-SPECTACLES-DEATH",
+          "locator": "executions; venationes; gladiatorial mortality",
+          "supports": "direct"
+        },
+        {
+          "source_id": "SRC-FAGAN-LURE-ARENA",
+          "locator": "crowd and lethal display",
+          "supports": "contextual"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "CLM-SCI-0007",
+      "pair": "science-sports",
+      "statement": "Martial's Liber de Spectaculis (conventional title), written for the Colosseum's inaugural games under Titus (80 CE), is a contemporaneous literary source for the building and its opening spectacles.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-MARTIAL-SPECTACULIS",
+          "locator": "Epigram 1 (amphitheatre as wonder); dedicatory context",
+          "supports": "direct"
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "CLM-SCI-0008",
+      "pair": "science-sports",
+      "statement": "Modern sport published a standard of equal conditions of competition and has repeatedly been held to that standard by internal and external pressure; historical exclusions (e.g., by race, sex, or class) were contested and often overturned by appeal to the institution's own stated rules rather than by rejection of the institution.",
+      "kind": "interpretive",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-GUTTMANN-RITUAL-RECORD",
+          "locator": "equality of opportunity (2004 ed.)",
+          "supports": "direct"
+        },
+        {
+          "source_id": "SRC-YOUNG-OLYMPIC-MYTH",
+          "locator": "amateurism as class exclusion",
+          "supports": "contextual"
+        }
+      ],
+      "contested_by": "Claims that modern sport's history of exclusion proves the equal-conditions rule was never genuine.",
+      "response": "The existence of a published standard that critics and reformers could invoke is itself part of the institutional achievement; exclusions were real and the standard was used against them.",
+      "status": "pending"
     }
   ]
 }
