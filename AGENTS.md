@@ -26,6 +26,7 @@ and has its own AGENTS.md with build, test, and run instructions.
 - The PR description states what changed, what you verified, and what you did
   not verify. Coverage limits are stated explicitly, not implied.
 - Small, verifiable increments over large parallel generation.
+- A deletion names the condemned sentence and the sentence immediately before and after. If either cannot stand without it, include both in the same edit.
 
 ## Non-negotiables
 - No secrets in the repo. If you find a credential, key, or token committed,
