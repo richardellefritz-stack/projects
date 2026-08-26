@@ -1,8 +1,8 @@
 {
   "project": "P007",
-  "claims_version": "0.2.2-claim-0007-locator",
-  "updated": "2026-08-25",
-  "_note": "CLM-SCI-0003 and CLM-SCI-0007 locators pinned to primary texts. CLM-SCI-0005 still awaits a World Athletics corpus entry.",
+  "claims_version": "0.2.2-claim-0007-locator+test-pass",
+  "updated": "2026-08-26",
+  "_note": "DISPOSABLE TEST BRANCH — full ledger + one additive test claim. Do not merge. Close after green check.",
   "corpus_ref": {
     "path": "/corpus/corpus.json",
     "corpus_version": "0.2.0-sports-batch-1"
@@ -156,6 +156,21 @@
       "contested_by": "Claims that modern sport's history of exclusion proves the equal-conditions rule was never genuine.",
       "response": "The existence of a published standard that critics and reformers could invoke is itself part of the institutional achievement; exclusions were real and the standard was used against them.",
       "status": "pending"
+    },
+    {
+      "id": "CLM-TEST-CONFIRM-PASS",
+      "pair": "science-sports",
+      "statement": "DISPOSABLE TEST — CONFIRM pass leg. Verified load-bearing claim citing a verified Tier 1 source. Delete with branch.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-FA-LAWS-1863",
+          "locator": "Laws 1–13 (test of CONFIRM pass on full ledger)",
+          "supports": "direct"
+        }
+      ],
+      "status": "verified"
     }
   ]
 }
