@@ -89,13 +89,14 @@ for (const c of claims.claims ?? []) {
     fail("R4", `claim ${c.id} is load-bearing with no tier 1 or tier 2 support. This is the exact failure mode the model was built to refuse: a tier 3 source carrying a factual claim.`);
   }
 
-  // Load-bearing claims may not rest on unconfirmed sources.
-  // verification_status must be "verified" for every support source when load_bearing is true.
-  if (c.load_bearing === true) {
+  // CONFIRM: a verified load-bearing claim may not rest on unconfirmed sources.
+  // Pending claims may still cite operator-to-confirm while work is in progress.
+  // Same pattern as the TODO rule for publishable artifacts.
+  if (c.load_bearing === true && c.status === "verified") {
     for (const src of supportSources) {
       const vs = src.verification_status;
       if (vs === "operator-to-confirm" || vs === "TODO: SOURCE" || !vs) {
-        fail("CONFIRM", `load-bearing claim ${c.id} cites ${src.id} with verification_status "${vs || "(missing)"}". Open the source, pin the locator, and mark it verified before this claim can load-bear.`);
+        fail("CONFIRM", `verified load-bearing claim ${c.id} cites ${src.id} with verification_status "${vs || "(missing)"}". Open the source, pin the locator, and mark it verified before promoting this claim to verified.`);
       }
     }
   }
