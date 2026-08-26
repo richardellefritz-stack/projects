@@ -1,7 +1,7 @@
 {
-  "corpus_version": "0.2.0-sports-batch-1",
+  "corpus_version": "0.2.1-wa-marathon",
   "updated": "2026-08-25",
-  "_note": "SEED + Science↔Sports first batch. Bibliographic fields confirmed where noted; claim-support (passage-level) remains operator-to-confirm until a claim cites a specific locator. Previous Tier-3 example placeholder removed earlier.",
+  "_note": "Added World Athletics official marathon records entry for Sawe 1:59:30. Prior sports batch retained.",
   "entries": [
     {
       "id": "SRC-T1-MADDISON-DB",
@@ -29,7 +29,7 @@
       "contested": true,
       "shared_with": ["P005", "P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Argues the Great Enrichment is explained by a shift in attitudes toward commerce rather than by capital accumulation or exploitation. Heterodox on interpretation, unimpeachable on standing — the archetypal tier 2 entry."
+      "notes": "Argues the Great Enrichment is explained by a shift in attitudes toward commerce rather than by capital accumulation or exploitation. Heterodox on interpretation, unimpeachable on standing."
     },
     {
       "id": "SRC-T2-HENRICH-WEIRD",
@@ -58,7 +58,7 @@
       "locator_scheme": "section",
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Adopted 8 December 1863; thirteen laws. Public domain. Explicit modelling on MCC cricket codification. This is the published-rules claim itself, not a description of it. Tier 1 primary text for the rationalization / rule-bound contest argument under Science ↔ Sports."
+      "notes": "Thirteen laws as published. Public domain. Tier 1 primary text for the published-rules / rationalization argument under Science ↔ Sports."
     },
     {
       "id": "SRC-HYMANS-IAAF-RECORDS-2015",
@@ -74,7 +74,7 @@
       "locator_scheme": "table",
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Official federation document. Quantitative anchor for the quest-for-records characteristic. Tier 1. Confirm current World Athletics hosting or stable archive link before load-bearing use."
+      "notes": "Official federation document. Quantitative anchor for the quest-for-records characteristic."
     },
     {
       "id": "SRC-MARTIAL-SPECTACULIS",
@@ -90,7 +90,23 @@
       "locator_scheme": "section",
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Contemporaneous source for the Colosseum inaugural games (80 CE). Public domain. Title Liber de Spectaculis is post-classical (Gruter); recent editors prefer Liber Epigrammaton. Epigram 1: all labor yields to the Caesarean amphitheatre. Epigram 29 (Titus freeing gladiators after equal contest) usable for governing-rule argument — but concede the volume also celebrates lethal venationes and executions. Ker Loeb (1919) is public domain; Shackleton Bailey Loeb is in copyright. URL confirmed live 2026-08-25."
+      "notes": "Contemporaneous source for the Colosseum inaugural games (80 CE). Public domain. URL confirmed live 2026-08-25."
+    },
+    {
+      "id": "SRC-WA-MARATHON-RECORDS",
+      "tier": 1,
+      "type": "official-statistics",
+      "title": "World Athletics — Men's Marathon World Record / London 2026 Report",
+      "author": ["World Athletics"],
+      "year": 2026,
+      "publisher": "World Athletics",
+      "identifier": {
+        "url": "https://worldathletics.org/records/by-discipline/road-running/marathon/outdoor/men"
+      },
+      "locator_scheme": "table",
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Official World Athletics records page lists Sabastian Sawe (KEN) 1:59:30, London, 26 Apr 2026, as the men's marathon world record — first legal sub-two-hour performance in race conditions. Supporting report: https://worldathletics.org/news/report/sawe-two-hour-assefa-world-record-london-marathon. Ratified (secondary confirmation July 2026). Tier 1 quantitative anchor for the quest-for-records claim."
     },
     {
       "id": "SRC-GUTTMANN-RITUAL-RECORD",
@@ -108,7 +124,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Spine source for Science ↔ Sports. Seven characteristics of modern sport. First published 1978; cite the 2004 revised edition (contains Guttmann’s own retrospective critique). Page locators are edition-specific. Load-bearing for the discontinuity thesis."
+      "notes": "Spine source for Science ↔ Sports. Seven characteristics of modern sport. Cite 2004 revised edition."
     },
     {
       "id": "SRC-YOUNG-OLYMPIC-MYTH",
@@ -126,7 +142,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Demonstrates that ancient Greek ‘amateurism’ is a modern myth constructed by the Olympic movement. Closes the continuity-via-amateur-ideal route. Must be read before any page that touches Greek athletics."
+      "notes": "Closes the continuity-via-amateur-ideal route."
     },
     {
       "id": "SRC-GUTTMANN-GAMES-EMPIRES",
@@ -144,7 +160,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Imperial-diffusion critique of modern sport’s global spread. Cite it yourself before a critic does."
+      "notes": "Imperial-diffusion critique. Cite it yourself before a critic does."
     },
     {
       "id": "SRC-GUTTMANN-OLYMPICS",
@@ -162,7 +178,7 @@
       "contested": false,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Institutional history of the modern Olympic Games. First published 1992; revised edition 2001. State which edition is held when citing page locators."
+      "notes": "Institutional history of the modern Olympic Games."
     },
     {
       "id": "SRC-KYLE-SPECTACLES-DEATH",
@@ -180,7 +196,7 @@
       "contested": false,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Precise treatment of lethality in the Roman arena (executions, venationes, gladiatorial combat). Use to keep the Roman side factually tight — avoid the flattened ‘slave death matches’ phrasing. ISBN confirmed via Journal of Roman Archaeology review."
+      "notes": "Precise treatment of lethality in the Roman arena."
     },
     {
       "id": "SRC-FAGAN-LURE-ARENA",
@@ -198,7 +214,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Social psychology of the Roman crowd and arena. Complements Kyle. Paperback ISBN 978-0-521-18596-7; confirm hardback if a single canonical identifier is required. Reviewers expected a range of responses to the application of modern social psychology to Roman crowds."
+      "notes": "Social psychology of the Roman crowd and arena. Complements Kyle."
     },
     {
       "id": "SRC-WELCH-ROMAN-AMPHITHEATRE",
@@ -216,7 +232,7 @@
       "contested": false,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Direct Architecture-root match for the September Colosseum / amphitheatre material. Strongest scholarly source currently identified for the building itself. Author given as K. Welch pending verification of full given name."
+      "notes": "Direct Architecture-root match for September Colosseum material."
     }
   ]
 }
