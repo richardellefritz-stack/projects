@@ -1,7 +1,7 @@
 {
-  "corpus_version": "0.1.1-cleanup",
+  "corpus_version": "0.2.0-sports-batch-1",
   "updated": "2026-08-25",
-  "_note": "SEED ONLY. Every bibliographic field is marked operator-to-confirm and MUST be checked against the source itself before any claim cites it. The previous Tier-3 example placeholder has been removed.",
+  "_note": "SEED + Science↔Sports first batch. Bibliographic fields confirmed where noted; claim-support (passage-level) remains operator-to-confirm until a claim cites a specific locator. Previous Tier-3 example placeholder removed earlier.",
   "entries": [
     {
       "id": "SRC-T1-MADDISON-DB",
@@ -43,6 +43,180 @@
       "contested": true,
       "shared_with": ["P005", "P007", "P013"],
       "verification_status": "operator-to-confirm"
+    },
+    {
+      "id": "SRC-FA-LAWS-1863",
+      "tier": 1,
+      "type": "primary-text",
+      "title": "Laws of the Game (Football Association)",
+      "author": ["Football Association", "Morley, Ebenezer Cobb"],
+      "year": 1863,
+      "publisher": "Football Association",
+      "identifier": {
+        "url": "https://en.wikisource.org/wiki/Laws_of_the_Game_(1863)"
+      },
+      "locator_scheme": "section",
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Adopted 8 December 1863; thirteen laws. Public domain. Explicit modelling on MCC cricket codification. This is the published-rules claim itself, not a description of it. Tier 1 primary text for the rationalization / rule-bound contest argument under Science ↔ Sports."
+    },
+    {
+      "id": "SRC-HYMANS-IAAF-RECORDS-2015",
+      "tier": 1,
+      "type": "official-statistics",
+      "title": "Progression of IAAF World Records",
+      "author": ["Hymans, Richard", "Matrahazi, Imre"],
+      "year": 2015,
+      "publisher": "IAAF (now World Athletics)",
+      "identifier": {
+        "url": "TODO: SOURCE — confirm official PDF / archive URL"
+      },
+      "locator_scheme": "table",
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Official federation document. Quantitative anchor for the quest-for-records characteristic. Tier 1. Confirm current World Athletics hosting or stable archive link before load-bearing use."
+    },
+    {
+      "id": "SRC-MARTIAL-SPECTACULIS",
+      "tier": 1,
+      "type": "primary-text",
+      "title": "Liber de Spectaculis (conventional title)",
+      "author": ["Martial"],
+      "year": 80,
+      "publisher": "n/a (ancient text)",
+      "identifier": {
+        "url": "https://www.thelatinlibrary.com/martial/mart.spec.shtml"
+      },
+      "locator_scheme": "section",
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Contemporaneous source for the Colosseum inaugural games (80 CE). Public domain. Title Liber de Spectaculis is post-classical (Gruter); recent editors prefer Liber Epigrammaton. Epigram 1: all labor yields to the Caesarean amphitheatre. Epigram 29 (Titus freeing gladiators after equal contest) usable for governing-rule argument — but concede the volume also celebrates lethal venationes and executions. Ker Loeb (1919) is public domain; Shackleton Bailey Loeb is in copyright. URL confirmed live 2026-08-25."
+    },
+    {
+      "id": "SRC-GUTTMANN-RITUAL-RECORD",
+      "tier": 2,
+      "type": "monograph",
+      "title": "From Ritual to Record: The Nature of Modern Sports",
+      "author": ["Guttmann, Allen"],
+      "year": 1978,
+      "publisher": "Columbia University Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm 2004 reissue ISBN"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Columbia University Press monograph; author was Professor of American Studies at Amherst College with a substantial peer-reviewed record in sport history.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Spine source for Science ↔ Sports. Seven characteristics of modern sport. First published 1978; cite the 2004 revised edition (contains Guttmann’s own retrospective critique). Page locators are edition-specific. Load-bearing for the discontinuity thesis."
+    },
+    {
+      "id": "SRC-YOUNG-OLYMPIC-MYTH",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Olympic Myth of Greek Amateur Athletics",
+      "author": ["Young, David C."],
+      "year": 1984,
+      "publisher": "Ares Publishers",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Monograph by a classicist; reviewed in Journal of Hellenic Studies 106 (1986). Author held academic posts in classics.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Demonstrates that ancient Greek ‘amateurism’ is a modern myth constructed by the Olympic movement. Closes the continuity-via-amateur-ideal route. Must be read before any page that touches Greek athletics."
+    },
+    {
+      "id": "SRC-GUTTMANN-GAMES-EMPIRES",
+      "tier": 2,
+      "type": "monograph",
+      "title": "Games and Empires: Modern Sports and Cultural Imperialism",
+      "author": ["Guttmann, Allen"],
+      "year": 1994,
+      "publisher": "Columbia University Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Columbia University Press monograph; same author standing as From Ritual to Record.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Imperial-diffusion critique of modern sport’s global spread. Cite it yourself before a critic does."
+    },
+    {
+      "id": "SRC-GUTTMANN-OLYMPICS",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Olympics: A History of the Modern Games",
+      "author": ["Guttmann, Allen"],
+      "year": 1992,
+      "publisher": "University of Illinois Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm 2001 revised edition ISBN"
+      },
+      "locator_scheme": "page",
+      "credentialing": "University of Illinois Press monograph; same author standing.",
+      "contested": false,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Institutional history of the modern Olympic Games. First published 1992; revised edition 2001. State which edition is held when citing page locators."
+    },
+    {
+      "id": "SRC-KYLE-SPECTACLES-DEATH",
+      "tier": 2,
+      "type": "monograph",
+      "title": "Spectacles of Death in Ancient Rome",
+      "author": ["Kyle, Donald G."],
+      "year": 1998,
+      "publisher": "Routledge",
+      "identifier": {
+        "isbn": "0-415-09678-2"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Routledge academic monograph; author is a specialist in ancient sport and spectacle with a peer-reviewed publication record.",
+      "contested": false,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Precise treatment of lethality in the Roman arena (executions, venationes, gladiatorial combat). Use to keep the Roman side factually tight — avoid the flattened ‘slave death matches’ phrasing. ISBN confirmed via Journal of Roman Archaeology review."
+    },
+    {
+      "id": "SRC-FAGAN-LURE-ARENA",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Lure of the Arena: Social Psychology and the Crowd at the Roman Games",
+      "author": ["Fagan, Garrett G."],
+      "year": 2011,
+      "publisher": "Cambridge University Press",
+      "identifier": {
+        "isbn": "978-0-521-18596-7"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Cambridge University Press monograph; author held an academic post in classics/ancient history.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Social psychology of the Roman crowd and arena. Complements Kyle. Paperback ISBN 978-0-521-18596-7; confirm hardback if a single canonical identifier is required. Reviewers expected a range of responses to the application of modern social psychology to Roman crowds."
+    },
+    {
+      "id": "SRC-WELCH-ROMAN-AMPHITHEATRE",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Roman Amphitheatre: From Its Origins to the Colosseum",
+      "author": ["Welch, K."],
+      "year": 2007,
+      "publisher": "Cambridge University Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Cambridge University Press monograph; author is a specialist in Roman architecture and archaeology.",
+      "contested": false,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Direct Architecture-root match for the September Colosseum / amphitheatre material. Strongest scholarly source currently identified for the building itself. Author given as K. Welch pending verification of full given name."
     }
   ]
 }
