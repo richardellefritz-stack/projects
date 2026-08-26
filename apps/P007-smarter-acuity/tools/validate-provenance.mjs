@@ -82,7 +82,9 @@ for (const c of claims.claims ?? []) {
   const tiers = [];
 
   for (const s of c.support ?? []) {
-    if (!/^SRC-T[123]-/.test(s.source_id ?? "")) {
+    // Tier-free IDs: ^SRC-[A-Z0-9-]+$ (aligned with corpus.schema.json / claims.schema.json after 2026-08-25)
+    // Legacy SRC-T[123]-* IDs remain valid under this pattern.
+    if (!/^SRC-[A-Z0-9-]+$/.test(s.source_id ?? "")) {
       fail("R1", `claim ${c.id} cites "${s.source_id}", which is not a corpus source ID. Claims may cite corpus entries only — never pages, manuscripts, snapshots, or other claims.`);
       continue;
     }
