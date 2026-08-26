@@ -1,6 +1,6 @@
 # Surface Boundary Amendment — 26 August 2026
 
-**Status:** Operator GO required to take effect  
+**Status:** GO 2026-08-26  
 **Amends:** Operator GO 2026-08-25 (Surface Boundary)  
 **Reason:** After the pure-static site went live at smarteracuity.com, Notion and the deployed site began to read as additional sources of truth. The original GO named two surfaces. This amendment names the third operational surface and limits Notion.
 
@@ -56,7 +56,5 @@ This amendment does not move claims, corpus, or calendar authority.
 
 ## Operator signature
 
-- [ ] GO — Rich Ellefritz  
-- Date: _______________
-
-Once checked, update `DRIVE_POINTERS.md` and `AGENTS.md` if any wording still implies Notion or dual deploy origins are authoritative.
+- [x] GO — Rich Ellefritz
+- Date: 2026-08-26
