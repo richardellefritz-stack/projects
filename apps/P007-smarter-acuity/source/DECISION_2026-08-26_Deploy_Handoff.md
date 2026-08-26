@@ -43,5 +43,5 @@ shipped is not demonstrably the artifact reviewed.
 
 ## Operator signature
 
-- [ ] GO — Rich Ellefritz
-- Date: _______________
+- [x] GO — Rich Ellefritz
+- Date: 2026-08-25
