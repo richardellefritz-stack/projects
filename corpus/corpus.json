@@ -1,7 +1,7 @@
 {
-  "corpus_version": "0.2.1-wa-marathon",
+  "corpus_version": "0.2.2-verified-tier1",
   "updated": "2026-08-25",
-  "_note": "Added World Athletics official marathon records entry for Sawe 1:59:30. Prior sports batch retained.",
+  "_note": "FA Laws, Martial, WA marathon promoted to verified after locator passes. Monographs remain operator-to-confirm until page numbers are pinned.",
   "entries": [
     {
       "id": "SRC-T1-MADDISON-DB",
@@ -14,7 +14,7 @@
       "locator_scheme": "series-cell",
       "shared_with": ["P005", "P007", "P013"],
       "verification_status": "operator-to-confirm",
-      "notes": "Long-run GDP per capita series. Primary quantitative ground for any post-1800 growth claim. Confirm which release year is being cited and pin it."
+      "notes": "Long-run GDP per capita series. Primary quantitative ground for any post-1800 growth claim."
     },
     {
       "id": "SRC-T2-MCCLOSKEY-DIGNITY",
@@ -29,7 +29,7 @@
       "contested": true,
       "shared_with": ["P005", "P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Argues the Great Enrichment is explained by a shift in attitudes toward commerce rather than by capital accumulation or exploitation. Heterodox on interpretation, unimpeachable on standing."
+      "notes": "Heterodox on interpretation, unimpeachable on standing."
     },
     {
       "id": "SRC-T2-HENRICH-WEIRD",
@@ -57,8 +57,8 @@
       },
       "locator_scheme": "section",
       "shared_with": ["P007"],
-      "verification_status": "operator-to-confirm",
-      "notes": "Thirteen laws as published. Public domain. Tier 1 primary text for the published-rules / rationalization argument under Science ↔ Sports."
+      "verification_status": "verified",
+      "notes": "Thirteen laws as published. Public domain. Locator pinned 2026-08-25 (Laws 1–13 + definitions). Primary text for the published-rules claim under Science ↔ Sports."
     },
     {
       "id": "SRC-HYMANS-IAAF-RECORDS-2015",
@@ -89,8 +89,8 @@
       },
       "locator_scheme": "section",
       "shared_with": ["P007"],
-      "verification_status": "operator-to-confirm",
-      "notes": "Contemporaneous source for the Colosseum inaugural games (80 CE). Public domain. URL confirmed live 2026-08-25."
+      "verification_status": "verified",
+      "notes": "Contemporaneous source for the Colosseum inaugural games (80 CE). Public domain. Locator pinned 2026-08-25 to Epigrams I–II. Epigram XXIX usable for governing-rule only with open concession about lethal content."
     },
     {
       "id": "SRC-WA-MARATHON-RECORDS",
@@ -105,8 +105,8 @@
       },
       "locator_scheme": "table",
       "shared_with": ["P007"],
-      "verification_status": "operator-to-confirm",
-      "notes": "Official World Athletics records page lists Sabastian Sawe (KEN) 1:59:30, London, 26 Apr 2026, as the men's marathon world record — first legal sub-two-hour performance in race conditions. Supporting report: https://worldathletics.org/news/report/sawe-two-hour-assefa-world-record-london-marathon. Ratified (secondary confirmation July 2026). Tier 1 quantitative anchor for the quest-for-records claim."
+      "verification_status": "verified",
+      "notes": "Sabastian Sawe (KEN) 1:59:30, London, 26 Apr 2026 — first legal sub-two-hour marathon. Ratified: 2026-07-23 (World Athletics press release: ratified-world-records-sawe-ehammer-charlton-mcrae-yan-duplantis-assefa). Supporting race report: worldathletics.org/news/report/sawe-two-hour-assefa-world-record-london-marathon. Hold off first launch page per operator decision; keep in corpus."
     },
     {
       "id": "SRC-GUTTMANN-RITUAL-RECORD",
@@ -124,7 +124,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Spine source for Science ↔ Sports. Seven characteristics of modern sport. Cite 2004 revised edition."
+      "notes": "Spine source for Science ↔ Sports. Cite 2004 revised edition. Page numbers still required before load-bearing use."
     },
     {
       "id": "SRC-YOUNG-OLYMPIC-MYTH",
@@ -142,7 +142,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Closes the continuity-via-amateur-ideal route."
+      "notes": "Closes the continuity-via-amateur-ideal route. Page numbers still required."
     },
     {
       "id": "SRC-GUTTMANN-GAMES-EMPIRES",
@@ -160,7 +160,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Imperial-diffusion critique. Cite it yourself before a critic does."
+      "notes": "Imperial-diffusion critique. Page numbers still required."
     },
     {
       "id": "SRC-GUTTMANN-OLYMPICS",
@@ -178,7 +178,7 @@
       "contested": false,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Institutional history of the modern Olympic Games."
+      "notes": "Institutional history of the modern Olympic Games. Page numbers still required."
     },
     {
       "id": "SRC-KYLE-SPECTACLES-DEATH",
@@ -196,7 +196,7 @@
       "contested": false,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Precise treatment of lethality in the Roman arena."
+      "notes": "Precise treatment of lethality in the Roman arena. Page numbers still required."
     },
     {
       "id": "SRC-FAGAN-LURE-ARENA",
@@ -214,7 +214,7 @@
       "contested": true,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Social psychology of the Roman crowd and arena. Complements Kyle."
+      "notes": "Social psychology of the Roman crowd and arena. Page numbers still required."
     },
     {
       "id": "SRC-WELCH-ROMAN-AMPHITHEATRE",
@@ -232,7 +232,7 @@
       "contested": false,
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Direct Architecture-root match for September Colosseum material."
+      "notes": "Direct Architecture-root match for September Colosseum material. Page numbers still required."
     }
   ]
 }
