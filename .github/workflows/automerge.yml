@@ -1,0 +1,116 @@
+name: automerge
+
+# Runs from the default branch (pull_request_target + workflow_run).
+# Never check out the PR head. Eligibility is labels + the GitHub files API.
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, labeled, unlabeled, synchronize]
+  workflow_run:
+    workflows: ["ci", "P007 Provenance Gate"]
+    types: [completed]
+
+concurrency:
+  group: automerge-${{ github.event.pull_request.number || github.event.workflow_run.head_sha }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+
+jobs:
+  maybe-merge:
+    if: >-
+      github.event_name == 'pull_request_target' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Evaluate Track A and squash-merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_FROM_EVENT: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          if [ "$EVENT_NAME" = "workflow_run" ]; then
+            PR_NUMBER="$(gh api "repos/${REPO}/commits/${HEAD_SHA}/pulls" --jq '.[0].number // empty')"
+          else
+            PR_NUMBER="$PR_FROM_EVENT"
+          fi
+
+          if [ -z "${PR_NUMBER}" ]; then
+            echo "No pull request associated with this event."
+            exit 0
+          fi
+
+          echo "Evaluating PR #${PR_NUMBER}"
+          PR_JSON="$(gh api "repos/${REPO}/pulls/${PR_NUMBER}")"
+
+          STATE="$(printf '%s' "$PR_JSON" | jq -r .state)"
+          MERGED="$(printf '%s' "$PR_JSON" | jq -r .merged)"
+          DRAFT="$(printf '%s' "$PR_JSON" | jq -r .draft)"
+          BASE="$(printf '%s' "$PR_JSON" | jq -r .base.ref)"
+
+          if [ "$STATE" != "open" ] || [ "$MERGED" = "true" ]; then
+            echo "PR is not open. Skip."
+            exit 0
+          fi
+          if [ "$BASE" != "main" ]; then
+            echo "Base is ${BASE}, not main. Skip."
+            exit 0
+          fi
+          if [ "$DRAFT" = "true" ]; then
+            echo "Draft PR. Track B by default. Skip."
+            exit 0
+          fi
+
+          LABELS="$(printf '%s' "$PR_JSON" | jq -r '.labels[].name')"
+          echo "Labels:"
+          printf '%s\n' "$LABELS"
+
+          if printf '%s\n' "$LABELS" | grep -Fxq "needs-human"; then
+            echo "needs-human present. Skip."
+            exit 0
+          fi
+          if ! printf '%s\n' "$LABELS" | grep -Fxq "automerge"; then
+            echo "automerge label absent. Skip."
+            exit 0
+          fi
+
+          echo "Changed files:"
+          FILES="$(gh api --paginate "repos/${REPO}/pulls/${PR_NUMBER}/files" --jq '.[].filename')"
+          printf '%s\n' "$FILES"
+
+          DENIED=0
+          while IFS= read -r f; do
+            [ -z "$f" ] && continue
+            case "$f" in
+              .github/workflows/*|netlify.toml)
+                echo "DENY-LIST: $f"
+                DENIED=1
+                ;;
+            esac
+          done <<EOF
+          $FILES
+          EOF
+
+          if [ "$DENIED" -eq 1 ]; then
+            echo "Deny-list hit. Will not merge. Add needs-human."
+            gh api --method POST "repos/${REPO}/issues/${PR_NUMBER}/labels" -f "labels[]=needs-human" >/dev/null || true
+            exit 0
+          fi
+
+          echo "Track A eligible. Enabling squash auto-merge (or merging if already mergeable)."
+          if gh pr merge "$PR_NUMBER" --repo "$REPO" --squash --auto; then
+            echo "Auto-merge enabled or merged."
+            exit 0
+          fi
+          if gh pr merge "$PR_NUMBER" --repo "$REPO" --squash; then
+            echo "Squash-merged."
+            exit 0
+          fi
+          echo "Merge not possible yet (checks pending or ruleset blocking). Will retry on next event."
+          exit 0
