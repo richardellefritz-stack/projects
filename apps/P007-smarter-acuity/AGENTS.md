@@ -9,6 +9,12 @@ Website + content pipeline deriving social posts, video assets, and dual living 
 - No invented facts. Every claim must trace to a Tier 1 or Tier 2 corpus source via the claims ledger, or be marked `TODO: SOURCE`.
 - Brand: SMARTER Acuity (display / products) / @SMARTER_Acuity (handle). Underscore only in the handle.
 
+## Production status (2026-08-25/26)
+
+**Current public production** is the pure-static site at https://smarteracuity.com (and www), deployed via Wrangler as a Cloudflare Worker with static assets (`npx wrangler deploy`). DNSSEC is enabled.
+
+This monorepo continues to own provenance, the claims ledger, content collections, and the intended future Astro + MDX pipeline. The two systems are complementary: the pure-static site is the live public face; the monorepo is the source of truth for claims and the longer-term structured content system. See `DRIVE_POINTERS.md` for the Drive folder and full deploy details.
+
 ## Provenance
 
 Run `node tools/validate-provenance.mjs` before opening a PR. It refuses on ten rules; the table in `source/PROVENANCE.md` §6 says which are GATE, which are CONVENTION, and which stay with the operator.
@@ -32,10 +38,12 @@ Publishing, merging to `main`, and any posting stay with the operator.
 
 ## Build / test / run
 
-**Locked site stack (2026-08-25):** Astro + MDX content collections.
+**Locked long-term site stack (2026-08-25):** Astro + MDX content collections.
 - Content collections live under `src/content/`
 - Pages under `src/pages/`
 - Exact `build` / `dev` / `test` commands will be filled once the Astro project is scaffolded under this directory.
+
+**Current production deploy (interim):** pure static via Wrangler (see Production status above and `DRIVE_POINTERS.md`).
 
 **Distribution scope (2026-08-25):**
 - X and YouTube: automated / semi-automated allowed (always dry-run + operator GO)
