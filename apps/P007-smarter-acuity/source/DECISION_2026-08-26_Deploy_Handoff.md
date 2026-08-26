@@ -1,6 +1,6 @@
 # Deploy Handoff Rule — MDX (monorepo) → Live static site (Drive)
 
-**Status:** Operator GO required  
+Status: GO 2026-08-25  
 **Amends:** Surface Boundary Amendment 2026-08-26 (sole deploy origin = Drive static folder)
 
 ## Problem
