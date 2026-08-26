@@ -1,6 +1,6 @@
 # Deploy Handoff Rule — MDX (monorepo) → Live static site (Drive)
 
-Status: GO 2026-08-25  
+**Status:** GO 2026-08-26
 **Amends:** Surface Boundary Amendment 2026-08-26 (sole deploy origin = Drive static folder)
 
 ## Problem
@@ -44,4 +44,4 @@ shipped is not demonstrably the artifact reviewed.
 ## Operator signature
 
 - [x] GO — Rich Ellefritz
-- Date: 2026-08-25
+- Date: 2026-08-26
