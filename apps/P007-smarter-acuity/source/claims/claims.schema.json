@@ -51,7 +51,7 @@
             "required": ["source_id", "locator", "supports"],
             "additionalProperties": false,
             "properties": {
-              "source_id": { "type": "string", "pattern": "^SRC-T[123]-[A-Z0-9-]+$" },
+              "source_id": { "type": "string", "pattern": "^SRC-[A-Z0-9-]+$" },
               "locator": { "type": "string", "minLength": 1 },
               "supports": { "type": "string", "enum": ["direct", "contextual"] },
               "note": { "type": "string" }
