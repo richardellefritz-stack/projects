@@ -4,13 +4,8 @@
  *
  * Repo destination: apps/P007-smarter-acuity/tools/validate-provenance.mjs
  *
- * The GATE. Ten checks, each mapping to a rule in source/PROVENANCE.md §6.
+ * The GATE. Checks mapping to rules in source/PROVENANCE.md §6.
  * Exit 0 = clean. Exit 1 = refuse.
- *
- * Zero dependencies by design. Per CLAUDE.md "do not add dependencies without
- * asking": full JSON Schema validation would need `ajv`, which is a decision for
- * the operator. These hand-rolled checks cover every GATE-class rule; the schemas
- * remain authoritative for editor tooling and for any later ajv wiring.
  *
  * Usage: node tools/validate-provenance.mjs [--root <monorepo-root>]
  */
@@ -41,11 +36,6 @@ const manifest = readJson(join(PROJ, "source/manifest.json"))      ?? { snapshot
 const sourceById = new Map((corpus.entries ?? []).map((e) => [e.id, e]));
 const claimById  = new Map((claims.claims ?? []).map((c) => [c.id, c]));
 
-/* ── corpus integrity: has the shared corpus moved since we stamped it? ─
- * Reading /corpus/ is free; writing it is operator-only (WORD class). Nothing
- * can mechanically prevent an edit, but this makes one visible: any mutation
- * changes the hash and refuses the build until the stamp is re-cut, and
- * re-cutting is where the operator GO lands. */
 const corpusPath = join(ROOT, "corpus/corpus.json");
 if (existsSync(corpusPath)) {
   const actual = createHash("sha256").update(readFileSync(corpusPath)).digest("hex");
@@ -59,7 +49,6 @@ if (existsSync(corpusPath)) {
   }
 }
 
-/* ── R2: no corpus entry may point inside a derived tree ─────────────── */
 const DERIVED_TREE = /(^|\/)(pages|manuscripts|snapshots|ebooks)\//;
 for (const e of corpus.entries ?? []) {
   if (e.local_path && DERIVED_TREE.test(e.local_path)) {
@@ -67,7 +56,6 @@ for (const e of corpus.entries ?? []) {
   }
 }
 
-/* ── Tier 2 requires nameable credentialing ──────────────────────────── */
 for (const e of corpus.entries ?? []) {
   if (e.tier === 2 && (!e.credentialing || e.credentialing.trim().length < 12)) {
     fail("TIER2", `corpus entry ${e.id} is tier 2 without nameable credentialing. If the credential cannot be stated in a sentence, re-tier it to 3.`);
@@ -77,13 +65,11 @@ for (const e of corpus.entries ?? []) {
   }
 }
 
-/* ── R1 + dangling refs + R4 + R5 across the claims ledger ───────────── */
 for (const c of claims.claims ?? []) {
   const tiers = [];
+  const supportSources = [];
 
   for (const s of c.support ?? []) {
-    // Tier-free IDs: ^SRC-[A-Z0-9-]+$ (aligned with corpus.schema.json / claims.schema.json after 2026-08-25)
-    // Legacy SRC-T[123]-* IDs remain valid under this pattern.
     if (!/^SRC-[A-Z0-9-]+$/.test(s.source_id ?? "")) {
       fail("R1", `claim ${c.id} cites "${s.source_id}", which is not a corpus source ID. Claims may cite corpus entries only — never pages, manuscripts, snapshots, or other claims.`);
       continue;
@@ -91,6 +77,7 @@ for (const c of claims.claims ?? []) {
     const src = sourceById.get(s.source_id);
     if (!src) { fail("REF", `claim ${c.id} cites unknown source ${s.source_id}.`); continue; }
     tiers.push(src.tier);
+    supportSources.push(src);
     if (!s.locator || /^TODO: SOURCE/.test(s.locator)) {
       if (c.status !== "TODO: SOURCE") {
         fail("LOCATOR", `claim ${c.id} has an unresolved locator for ${s.source_id} but status is "${c.status}". Mark the claim TODO: SOURCE or resolve the locator.`);
@@ -102,13 +89,23 @@ for (const c of claims.claims ?? []) {
     fail("R4", `claim ${c.id} is load-bearing with no tier 1 or tier 2 support. This is the exact failure mode the model was built to refuse: a tier 3 source carrying a factual claim.`);
   }
 
+  // Load-bearing claims may not rest on unconfirmed sources.
+  // verification_status must be "verified" for every support source when load_bearing is true.
+  if (c.load_bearing === true) {
+    for (const src of supportSources) {
+      const vs = src.verification_status;
+      if (vs === "operator-to-confirm" || vs === "TODO: SOURCE" || !vs) {
+        fail("CONFIRM", `load-bearing claim ${c.id} cites ${src.id} with verification_status "${vs || "(missing)"}". Open the source, pin the locator, and mark it verified before this claim can load-bear.`);
+      }
+    }
+  }
+
   if (c.kind === "interpretive") {
     if (!c.contested_by?.trim()) fail("R5", `interpretive claim ${c.id} does not name its strongest counter-position.`);
     if (!c.response?.trim())     fail("R5", `interpretive claim ${c.id} names no response to the counter-position.`);
   }
 }
 
-/* ── snapshots: null SHA, freeze, resync ─────────────────────────────── */
 const today = new Date().toISOString().slice(0, 10);
 const hasDerived = (manifest.derived ?? []).length > 0;
 for (const s of manifest.snapshots ?? []) {
@@ -120,7 +117,6 @@ for (const s of manifest.snapshots ?? []) {
   }
 }
 
-/* ── derived artifacts: claim resolution + publish gating ────────────── */
 const PUBLISHABLE = new Set(["release-candidate", "published"]);
 for (const d of manifest.derived ?? []) {
   for (const id of d.derives_from ?? []) {
@@ -141,7 +137,6 @@ for (const d of manifest.derived ?? []) {
   if (d.voice_check === "fail") fail("VOICE", `artifact ${d.artifact} failed the voice check.`);
 }
 
-/* ── Human Voice Directive: greppable ────────────────────────────────── */
 const VOICE_PATTERNS = [
   { re: /\b(?:is|are|was|were|it['’]s)\s+not\s+(?:just\s+)?[^.,;!?]{1,60}?,?\s+(?:it['’]s|they['’]re|but)\s+/gi,
     label: '"X is not Y, it\'s Z" construction' },
@@ -170,7 +165,6 @@ for (const f of walk(join(PROJ, "pages")).concat(walk(join(PROJ, "content")))) {
   }
 }
 
-/* ── report ──────────────────────────────────────────────────────────── */
 for (const w of warnings) console.warn(w);
 if (failures.length) {
   console.error(`\nPROVENANCE GATE: REFUSED (${failures.length})\n`);
