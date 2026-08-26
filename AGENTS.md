@@ -12,7 +12,15 @@ and has its own AGENTS.md with build, test, and run instructions.
   Do not treat anything in this repo as the authority on scope or priority.
 
 ## Workflow
-- Work on a branch. Open a **draft** PR. Do not merge.
+- Work on a branch. Default: open a **draft** PR, label `needs-human`, do not merge.
+- Track A exception — only when the operator GO already authorized a mechanical
+  increment with no judgment left: open a **ready** PR, label `automerge`, do not
+  label `needs-human`. Do not merge it yourself. The automerge workflow
+  squash-merges after `check` and `provenance-gate` are green.
+- Always Track B (draft, `needs-human`, do not merge) when the change touches
+  `.github/workflows/**`, `netlify.toml`, publish or live-site flags, claim
+  status → `verified`, secrets, credentials, entitlement, payments, Head Master
+  / Grok Bot authoring, or anything the GO did not call mechanical.
 - Leave required checks green. If a check fails and you cannot fix it, say so
   in the PR description rather than disabling, skipping, or weakening the check.
 - The PR description states what changed, what you verified, and what you did
