@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://richardellefritz-stack/projects/P007/manifest.schema.json",
+  "title": "P007 Derived-Output Manifest",
+  "description": "Records what was produced, from which claims, against which snapshot. Sources live in the corpus. Manuscripts appear here as derived artifacts.",
+  "type": "object",
+  "required": ["project", "manifest_version", "updated", "corpus_ref", "claims_ref", "snapshots", "derived"],
+  "properties": {
+    "project": { "type": "string", "const": "P007" },
+    "manifest_version": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "corpus_ref": {
+      "type": "object",
+      "required": ["path", "corpus_version"],
+      "properties": {
+        "path": { "type": "string" },
+        "corpus_version": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "claims_ref": {
+      "type": "object",
+      "required": ["path", "claims_version"],
+      "properties": {
+        "path": { "type": "string" },
+        "claims_version": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "snapshots": { "type": "array", "items": { "$ref": "#/$defs/snapshot" } },
+    "derived": { "type": "array", "items": { "$ref": "#/$defs/derived" } }
+  },
+  "$defs": {
+    "snapshot": {
+      "type": "object",
+      "required": ["id", "work", "commit_sha", "taken_at", "freeze_until", "resync_state"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^SNAP-[A-Z]+-[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "work": { "type": "string", "enum": ["triumph", "why-it-works"] },
+        "commit_sha": { "type": ["string", "null"] },
+        "taken_at": { "type": "string", "format": "date-time" },
+        "freeze_until": { "type": "string", "format": "date" },
+        "resync_state": { "type": "string", "enum": ["fresh", "stale", "expired"] },
+        "resync_reason": { "type": "string" },
+        "path": { "type": "string", "pattern": "^source/snapshots/" }
+      }
+    },
+    "derived": {
+      "type": "object",
+      "required": ["artifact", "kind", "derives_from", "generated_at", "generator", "publish_state"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact": { "type": "string" },
+        "kind": {
+          "type": "string",
+          "enum": ["page", "x-post", "instagram-post", "video-script", "video-asset", "manuscript-chapter"]
+        },
+        "derives_from": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^CLM-[A-Z]{3}-[0-9]{4}$" }
+        },
+        "parent_artifact": { "type": "string" },
+        "snapshot_ref": { "type": "string" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "generator": { "type": "string" },
+        "publish_state": {
+          "type": "string",
+          "enum": ["draft", "review", "release-candidate", "PENDING — DO NOT PUBLISH", "published"]
+        },
+        "voice_check": { "type": "string", "enum": ["pass", "fail", "not-run"] }
+      }
+    }
+  }
+}

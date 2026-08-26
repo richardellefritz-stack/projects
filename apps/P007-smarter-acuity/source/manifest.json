@@ -1,0 +1,37 @@
+{
+  "project": "P007",
+  "manifest_version": "0.2.1-cleanup",
+  "updated": "2026-08-25",
+  "_note": "Sources live in /corpus/. This file records derived output only. freeze_until extended to 2026-10-06 to avoid the 7 September time bomb identified in post-install review.",
+  "corpus_ref": {
+    "path": "/corpus/corpus.json",
+    "corpus_version": "0.1.0-seed"
+  },
+  "claims_ref": {
+    "path": "source/claims/claims.json",
+    "claims_version": "0.1.1-cleanup"
+  },
+  "snapshots": [
+    {
+      "id": "SNAP-TRIUMPH-2026-08-25",
+      "work": "triumph",
+      "commit_sha": null,
+      "taken_at": "2026-08-25T00:00:00Z",
+      "freeze_until": "2026-10-06",
+      "resync_state": "fresh",
+      "resync_reason": "Placeholder. commit_sha is null because no controlled copy has been taken yet. Null is permitted only while derived[] is empty. freeze_until deliberately extended past launch to avoid accidental CI red on 7 September.",
+      "path": "source/snapshots/triumph/"
+    },
+    {
+      "id": "SNAP-WHYITWORKS-2026-08-25",
+      "work": "why-it-works",
+      "commit_sha": null,
+      "taken_at": "2026-08-25T00:00:00Z",
+      "freeze_until": "2026-10-06",
+      "resync_state": "fresh",
+      "resync_reason": "Same deliberate extension as the Triumph snapshot.",
+      "path": "source/snapshots/why-it-works/"
+    }
+  ],
+  "derived": []
+}

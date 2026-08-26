@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://richardellefritz-stack/projects/corpus.schema.json",
+  "title": "Tiered Source Corpus",
+  "description": "Repo destination: /corpus/corpus.schema.json (monorepo root). Shared source-of-record across P005 / P007 / P013. Entries are sources only. An entry may never point at project-derived output.",
+  "type": "object",
+  "required": ["corpus_version", "updated", "entries"],
+  "properties": {
+    "corpus_version": { "type": "string" },
+    "updated": { "type": "string", "format": "date" },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": ["id", "tier", "type", "title", "shared_with", "verification_status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^SRC-[A-Z0-9-]+$",
+          "description": "Stable source ID. Tier is a separate field; re-tiering does not require renaming. Legacy SRC-T[123]-* IDs remain valid under this pattern."
+        },
+        "tier": { "type": "integer", "enum": [1, 2, 3] },
+        "type": {
+          "type": "string",
+          "enum": ["dataset", "archive", "primary-text", "monograph", "journal-article", "official-statistics", "periodical", "commentary", "movement-publication"]
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "author": { "type": "array", "items": { "type": "string" } },
+        "year": { "type": "integer" },
+        "publisher": { "type": "string" },
+        "identifier": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "isbn": { "type": "string" },
+            "doi": { "type": "string" },
+            "url": { "type": "string" },
+            "archive_ref": { "type": "string" }
+          }
+        },
+        "locator_scheme": {
+          "type": "string",
+          "enum": ["page", "chapter", "table", "figure", "section", "paragraph", "line", "series-cell"],
+          "description": "How a claim addresses a specific location inside this source."
+        },
+        "credentialing": {
+          "type": "string",
+          "minLength": 12,
+          "description": "REQUIRED for tier 2. Name the specific basis of standing in one sentence: peer review, university press, academic post, or equivalent. If it cannot be named, the source is tier 3."
+        },
+        "contested": {
+          "type": "boolean",
+          "description": "True where mainstream scholarship disputes this source's interpretation. Not a defect — expected for much of tier 2. Recorded so authors know a counter-position exists."
+        },
+        "local_path": {
+          "type": "string",
+          "description": "Optional local copy. MUST NOT resolve inside pages/, manuscripts/, or source/snapshots/. Validator rule R2.",
+          "not": { "pattern": "(^|/)(pages|manuscripts|snapshots|ebooks)/" }
+        },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "shared_with": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^P[0-9]{3}$" },
+          "minItems": 1
+        },
+        "verification_status": {
+          "type": "string",
+          "enum": ["verified", "operator-to-confirm", "TODO: SOURCE"],
+          "description": "Bibliographic details confirmed against the source itself. Seeded entries start as operator-to-confirm."
+        },
+        "superseded_by": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "tier": { "const": 2 } }, "required": ["tier"] },
+          "then": { "required": ["credentialing"] }
+        },
+        {
+          "if": { "properties": { "tier": { "const": 1 } }, "required": ["tier"] },
+          "then": { "required": ["identifier"] }
+        }
+      ]
+    }
+  }
+}

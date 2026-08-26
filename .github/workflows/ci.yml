@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify AGENTS.md presence (root + every apps/* project)
+        run: |
+          set -e
+
+          # Root must have AGENTS.md
+          if [ ! -f AGENTS.md ]; then
+            echo "FAIL: AGENTS.md is missing at repository root"
+            exit 1
+          fi
+          echo "OK: root AGENTS.md present"
+
+          # Every direct child of apps/ must have its own AGENTS.md
+          # (this is the current monorepo layout; future P00x directories can be added later)
+          if [ -d apps ]; then
+            for dir in apps/*/; do
+              if [ -d "$dir" ]; then
+                if [ ! -f "${dir}AGENTS.md" ]; then
+                  echo "FAIL: Missing AGENTS.md in $dir"
+                  exit 1
+                fi
+                echo "OK: ${dir}AGENTS.md present"
+              fi
+            done
+          fi
+
+          echo "All AGENTS.md checks passed"

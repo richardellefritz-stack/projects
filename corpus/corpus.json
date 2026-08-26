@@ -1,0 +1,238 @@
+{
+  "corpus_version": "0.2.2-verified-tier1",
+  "updated": "2026-08-25",
+  "_note": "FA Laws, Martial, WA marathon promoted to verified after locator passes. Monographs remain operator-to-confirm until page numbers are pinned.",
+  "entries": [
+    {
+      "id": "SRC-T1-MADDISON-DB",
+      "tier": 1,
+      "type": "dataset",
+      "title": "Maddison Project Database",
+      "author": ["Bolt, Jutta", "van Zanden, Jan Luiten"],
+      "publisher": "Groningen Growth and Development Centre, University of Groningen",
+      "identifier": { "url": "TODO: SOURCE — confirm current release URL and version" },
+      "locator_scheme": "series-cell",
+      "shared_with": ["P005", "P007", "P013"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Long-run GDP per capita series. Primary quantitative ground for any post-1800 growth claim."
+    },
+    {
+      "id": "SRC-T2-MCCLOSKEY-DIGNITY",
+      "tier": 2,
+      "type": "monograph",
+      "title": "Bourgeois Dignity",
+      "author": ["McCloskey, Deirdre N."],
+      "publisher": "University of Chicago Press",
+      "identifier": { "isbn": "TODO: SOURCE — confirm" },
+      "locator_scheme": "page",
+      "credentialing": "University of Chicago Press monograph; author is an emeritus professor of economics and history with a substantial peer-reviewed publication record.",
+      "contested": true,
+      "shared_with": ["P005", "P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Heterodox on interpretation, unimpeachable on standing."
+    },
+    {
+      "id": "SRC-T2-HENRICH-WEIRD",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The WEIRDest People in the World",
+      "author": ["Henrich, Joseph"],
+      "identifier": { "isbn": "TODO: SOURCE — confirm" },
+      "locator_scheme": "page",
+      "credentialing": "Author chairs the Department of Human Evolutionary Biology at Harvard; the book's core arguments derive from peer-reviewed work in psychology and anthropology.",
+      "contested": true,
+      "shared_with": ["P005", "P007", "P013"],
+      "verification_status": "operator-to-confirm"
+    },
+    {
+      "id": "SRC-FA-LAWS-1863",
+      "tier": 1,
+      "type": "primary-text",
+      "title": "Laws of the Game (Football Association)",
+      "author": ["Football Association", "Morley, Ebenezer Cobb"],
+      "year": 1863,
+      "publisher": "Football Association",
+      "identifier": {
+        "url": "https://en.wikisource.org/wiki/Laws_of_the_Game_(1863)"
+      },
+      "locator_scheme": "section",
+      "shared_with": ["P007"],
+      "verification_status": "verified",
+      "notes": "Thirteen laws as published. Public domain. Locator pinned 2026-08-25 (Laws 1–13 + definitions). Primary text for the published-rules claim under Science ↔ Sports."
+    },
+    {
+      "id": "SRC-HYMANS-IAAF-RECORDS-2015",
+      "tier": 1,
+      "type": "official-statistics",
+      "title": "Progression of IAAF World Records",
+      "author": ["Hymans, Richard", "Matrahazi, Imre"],
+      "year": 2015,
+      "publisher": "IAAF (now World Athletics)",
+      "identifier": {
+        "url": "TODO: SOURCE — confirm official PDF / archive URL"
+      },
+      "locator_scheme": "table",
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Official federation document. Quantitative anchor for the quest-for-records characteristic."
+    },
+    {
+      "id": "SRC-MARTIAL-SPECTACULIS",
+      "tier": 1,
+      "type": "primary-text",
+      "title": "Liber de Spectaculis (conventional title)",
+      "author": ["Martial"],
+      "year": 80,
+      "publisher": "n/a (ancient text)",
+      "identifier": {
+        "url": "https://www.thelatinlibrary.com/martial/mart.spec.shtml"
+      },
+      "locator_scheme": "section",
+      "shared_with": ["P007"],
+      "verification_status": "verified",
+      "notes": "Contemporaneous source for the Colosseum inaugural games (80 CE). Public domain. Locator pinned 2026-08-25 to Epigrams I–II. Epigram XXIX usable for governing-rule only with open concession about lethal content."
+    },
+    {
+      "id": "SRC-WA-MARATHON-RECORDS",
+      "tier": 1,
+      "type": "official-statistics",
+      "title": "World Athletics — Men's Marathon World Record / London 2026 Report",
+      "author": ["World Athletics"],
+      "year": 2026,
+      "publisher": "World Athletics",
+      "identifier": {
+        "url": "https://worldathletics.org/records/by-discipline/road-running/marathon/outdoor/men"
+      },
+      "locator_scheme": "table",
+      "shared_with": ["P007"],
+      "verification_status": "verified",
+      "notes": "Sabastian Sawe (KEN) 1:59:30, London, 26 Apr 2026 — first legal sub-two-hour marathon. Ratified: 2026-07-23 (World Athletics press release: ratified-world-records-sawe-ehammer-charlton-mcrae-yan-duplantis-assefa). Supporting race report: worldathletics.org/news/report/sawe-two-hour-assefa-world-record-london-marathon. Hold off first launch page per operator decision; keep in corpus."
+    },
+    {
+      "id": "SRC-GUTTMANN-RITUAL-RECORD",
+      "tier": 2,
+      "type": "monograph",
+      "title": "From Ritual to Record: The Nature of Modern Sports",
+      "author": ["Guttmann, Allen"],
+      "year": 1978,
+      "publisher": "Columbia University Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm 2004 reissue ISBN"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Columbia University Press monograph; author was Professor of American Studies at Amherst College with a substantial peer-reviewed record in sport history.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Spine source for Science ↔ Sports. Cite 2004 revised edition. Page numbers still required before load-bearing use."
+    },
+    {
+      "id": "SRC-YOUNG-OLYMPIC-MYTH",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Olympic Myth of Greek Amateur Athletics",
+      "author": ["Young, David C."],
+      "year": 1984,
+      "publisher": "Ares Publishers",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Monograph by a classicist; reviewed in Journal of Hellenic Studies 106 (1986). Author held academic posts in classics.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Closes the continuity-via-amateur-ideal route. Page numbers still required."
+    },
+    {
+      "id": "SRC-GUTTMANN-GAMES-EMPIRES",
+      "tier": 2,
+      "type": "monograph",
+      "title": "Games and Empires: Modern Sports and Cultural Imperialism",
+      "author": ["Guttmann, Allen"],
+      "year": 1994,
+      "publisher": "Columbia University Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Columbia University Press monograph; same author standing as From Ritual to Record.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Imperial-diffusion critique. Page numbers still required."
+    },
+    {
+      "id": "SRC-GUTTMANN-OLYMPICS",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Olympics: A History of the Modern Games",
+      "author": ["Guttmann, Allen"],
+      "year": 1992,
+      "publisher": "University of Illinois Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm 2001 revised edition ISBN"
+      },
+      "locator_scheme": "page",
+      "credentialing": "University of Illinois Press monograph; same author standing.",
+      "contested": false,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Institutional history of the modern Olympic Games. Page numbers still required."
+    },
+    {
+      "id": "SRC-KYLE-SPECTACLES-DEATH",
+      "tier": 2,
+      "type": "monograph",
+      "title": "Spectacles of Death in Ancient Rome",
+      "author": ["Kyle, Donald G."],
+      "year": 1998,
+      "publisher": "Routledge",
+      "identifier": {
+        "isbn": "0-415-09678-2"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Routledge academic monograph; author is a specialist in ancient sport and spectacle with a peer-reviewed publication record.",
+      "contested": false,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Precise treatment of lethality in the Roman arena. Page numbers still required."
+    },
+    {
+      "id": "SRC-FAGAN-LURE-ARENA",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Lure of the Arena: Social Psychology and the Crowd at the Roman Games",
+      "author": ["Fagan, Garrett G."],
+      "year": 2011,
+      "publisher": "Cambridge University Press",
+      "identifier": {
+        "isbn": "978-0-521-18596-7"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Cambridge University Press monograph; author held an academic post in classics/ancient history.",
+      "contested": true,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Social psychology of the Roman crowd and arena. Page numbers still required."
+    },
+    {
+      "id": "SRC-WELCH-ROMAN-AMPHITHEATRE",
+      "tier": 2,
+      "type": "monograph",
+      "title": "The Roman Amphitheatre: From Its Origins to the Colosseum",
+      "author": ["Welch, K."],
+      "year": 2007,
+      "publisher": "Cambridge University Press",
+      "identifier": {
+        "isbn": "TODO: SOURCE — confirm"
+      },
+      "locator_scheme": "page",
+      "credentialing": "Cambridge University Press monograph; author is a specialist in Roman architecture and archaeology.",
+      "contested": false,
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Direct Architecture-root match for September Colosseum material. Page numbers still required."
+    }
+  ]
+}
