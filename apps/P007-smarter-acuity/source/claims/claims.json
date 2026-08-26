@@ -1,8 +1,8 @@
 {
   "project": "P007",
-  "claims_version": "0.2.1-claim-0003-locator",
+  "claims_version": "0.2.2-claim-0007-locator",
   "updated": "2026-08-25",
-  "_note": "First Science ↔ Sports claims batch. CLM-SCI-0003 locator and statement tightened to match FA Laws 1863 primary text (Wikisource). Adoption date and MCC modelling removed from the Tier-1 claim; they may appear in page prose with secondary citation. CLM-SCI-0005 still awaits a World Athletics corpus entry.",
+  "_note": "CLM-SCI-0003 and CLM-SCI-0007 locators pinned to primary texts. CLM-SCI-0005 still awaits a World Athletics corpus entry.",
   "corpus_ref": {
     "path": "/corpus/corpus.json",
     "corpus_version": "0.2.0-sports-batch-1"
@@ -128,8 +128,9 @@
       "support": [
         {
           "source_id": "SRC-MARTIAL-SPECTACULIS",
-          "locator": "Epigram 1 (amphitheatre as wonder); dedicatory context",
-          "supports": "direct"
+          "locator": "Epigram I ("Omnis Caesareo cedit labor Amphitheatro, unum pro cunctis fama loquetur opus"); cf. Epigram II (site on Nero's lake / Flavian amphitheatre)",
+          "supports": "direct",
+          "note": "Latin Library text confirmed 2026-08-25. Epigram XXIX (Priscus & Verus) usable for governing-rule argument only with open concession that the volume also celebrates lethal spectacles."
         }
       ],
       "status": "pending"
