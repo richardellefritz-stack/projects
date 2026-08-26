@@ -1,7 +1,7 @@
 {
-  "corpus_version": "0.2.2-verified-tier1",
-  "updated": "2026-08-25",
-  "_note": "FA Laws, Martial, WA marathon promoted to verified after locator passes. Monographs remain operator-to-confirm until page numbers are pinned.",
+  "corpus_version": "0.2.3-hymans-seneca-open",
+  "updated": "2026-08-26",
+  "_note": "Hymans 2015 PDF URL pinned; Seneca Ep. 7 added as an open Latin primary. Both remain operator-to-confirm. Monographs remain operator-to-confirm until page numbers are pinned. Not a verify GO.",
   "entries": [
     {
       "id": "SRC-T1-MADDISON-DB",
@@ -69,12 +69,12 @@
       "year": 2015,
       "publisher": "IAAF (now World Athletics)",
       "identifier": {
-        "url": "TODO: SOURCE — confirm official PDF / archive URL"
+        "url": "https://iaaf-ebooks.s3.amazonaws.com/2015/Progression-of-IAAF-World-Records-2015/projet/IAAF-WRPB-2015.pdf"
       },
-      "locator_scheme": "table",
+      "locator_scheme": "page",
       "shared_with": ["P007"],
       "verification_status": "operator-to-confirm",
-      "notes": "Official federation document. Quantitative anchor for the quest-for-records characteristic."
+      "notes": "Official IAAF PDF, free and complete. Title page, Introduction p. VII, p. 3 (IAAF RULE 261 event list), and p. 5 (RECORDS - MEN; 100 yards table from 1855) opened 2026-08-26. CLM-SCI-0004 remains pending. Not a verify GO."
     },
     {
       "id": "SRC-MARTIAL-SPECTACULIS",
@@ -91,6 +91,21 @@
       "shared_with": ["P007"],
       "verification_status": "verified",
       "notes": "Contemporaneous source for the Colosseum inaugural games (80 CE). Public domain. Locator pinned 2026-08-25 to Epigrams I–II. Epigram XXIX usable for governing-rule only with open concession about lethal content."
+    },
+    {
+      "id": "SRC-SENECA-EP-7",
+      "tier": 1,
+      "type": "primary-text",
+      "title": "Ad Lucilium Epistulae Morales, Letter 7",
+      "author": ["Seneca"],
+      "publisher": "n/a (ancient text)",
+      "identifier": {
+        "url": "https://www.thelatinlibrary.com/sen/seneca.ep1.shtml"
+      },
+      "locator_scheme": "section",
+      "shared_with": ["P007"],
+      "verification_status": "operator-to-confirm",
+      "notes": "Open Latin text. Heading VII, sections [1] and [3]–[5] opened 2026-08-26. Alternate open Latin: https://www.perseus.tufts.edu/hopper/text?doc=Sen.+Ep.+7.3 (same edition continues through 4–5). English access copy only, not the authority: https://en.wikisource.org/wiki/Moral_letters_to_Lucilius/Letter_7 §§3–5. Do not cite LacusCurtius (Ep. 7 is not hosted there). Kyle and Fagan are further reading only. CLM-SCI-0006 remains pending. Not a verify GO."
     },
     {
       "id": "SRC-WA-MARATHON-RECORDS",

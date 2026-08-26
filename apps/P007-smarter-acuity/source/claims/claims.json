@@ -1,8 +1,8 @@
 {
   "project": "P007",
-  "claims_version": "0.2.2-claim-0007-locator",
-  "updated": "2026-08-25",
-  "_note": "CLM-SCI-0003 and CLM-SCI-0007 locators pinned to primary texts. CLM-SCI-0005 still awaits a World Athletics corpus entry.",
+  "claims_version": "0.2.3-claim-0004-0006-open",
+  "updated": "2026-08-26",
+  "_note": "CLM-SCI-0004 rewritten onto the open Hymans & Matrahazi 2015 PDF; CLM-SCI-0006 rewritten onto Seneca Ep. 7.3–5. Both remain pending. Not a verify or publish GO. CLM-SCI-0005 still awaits a World Athletics corpus pin on its own claim.",
   "corpus_ref": {
     "path": "/corpus/corpus.json",
     "corpus_version": "0.2.0-sports-batch-1"
@@ -66,19 +66,15 @@
     {
       "id": "CLM-SCI-0004",
       "pair": "science-sports",
-      "statement": "Modern athletics maintains official, progressive world-record lists that make quantifiable improvement over time a central institutional fact; the quest for records is one of Guttmann's seven defining characteristics of modern sport.",
-      "kind": "quantitative",
+      "statement": "The IAAF publishes official world-record progression lists. The 2015 edition, edited by Richard Hymans and Imre Matrahazi, is the eighth edition of that book and tabulates successive marks by event.",
+      "kind": "documentary",
       "load_bearing": true,
       "support": [
         {
           "source_id": "SRC-HYMANS-IAAF-RECORDS-2015",
-          "locator": "record progression tables",
-          "supports": "direct"
-        },
-        {
-          "source_id": "SRC-GUTTMANN-RITUAL-RECORD",
-          "locator": "quest for records (2004 ed.)",
-          "supports": "direct"
+          "locator": "title page (2015 Edition; Edited by Richard Hymans (ATFS) and Imre Matrahazi (IAAF); Copyright IAAF 2015); Introduction p. VII (8th edition of the IAAF World Records Progression book); p. 3 Events for which World Records are recognised (IAAF RULE 261); p. 5 RECORDS - MEN, first table 100 yards, successive dated marks from 1855",
+          "supports": "direct",
+          "note": "Open PDF pinned 2026-08-26. Guttmann is not a load-bearer. 'Now World Athletics' and 'ratified' are not on the face of these pages (p. 5 includes pre-IAAF 100-yard marks before Wharton's 1886 clocking). No men's 100 m locator. Status remains pending."
         }
       ],
       "status": "pending"
@@ -102,19 +98,15 @@
     {
       "id": "CLM-SCI-0006",
       "pair": "science-sports",
-      "statement": "Roman arena spectacle included forms in which death was an intended or accepted outcome (executions, venationes, gladiatorial combat with real mortality); this is documented in specialized scholarship and should not be reduced to the phrase 'slave death matches.'",
+      "statement": "Seneca, in a letter warning Lucilius off crowds, says he happened into a midday spectacle (meridianum spectaculum) expecting relief from human blood and found instead \"mera homicidia\": men with no armor, the outcome of the fighters is death, the crowd crying \"Occide, verbera, ure,\" and, when the show paused, \"interim iugulentur homines, ne nihil agatur.\"",
       "kind": "documentary",
       "load_bearing": true,
       "support": [
         {
-          "source_id": "SRC-KYLE-SPECTACLES-DEATH",
-          "locator": "executions; venationes; gladiatorial mortality",
-          "supports": "direct"
-        },
-        {
-          "source_id": "SRC-FAGAN-LURE-ARENA",
-          "locator": "crowd and lethal display",
-          "supports": "contextual"
+          "source_id": "SRC-SENECA-EP-7",
+          "locator": "heading VII; [1] (vitandum … turbam); [3]–[5] (meridianum spectaculum; mera homicidia; nihil habent quo tegantur / non galea, non scuto; exitus pugnantium mors est; Occide, verbera, ure; interim iugulentur homines, ne nihil agatur)",
+          "supports": "direct",
+          "note": "Latin Library opened 2026-08-26; same letter on Perseus at Sen.+Ep.+7.3 (continues through 4–5). Seneca is moralizing against the crowd, not a neutral report, and not a typology of executions, venationes, and gladiatorial combat. The letter does not license the phrase \"slave death matches.\" English access copy only: Wikisource Moral letters to Lucilius/Letter 7 §§3–5 (Gummere), not the authority. Do not cite LacusCurtius (Ep. 7 is not hosted there). Kyle and Fagan remain further reading; they do not load-bear. Status remains pending."
         }
       ],
       "status": "pending"
