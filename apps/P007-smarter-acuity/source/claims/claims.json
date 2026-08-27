@@ -1,11 +1,11 @@
 {
   "project": "P007",
-  "claims_version": "0.2.3-claim-0004-0006-open",
-  "updated": "2026-08-26",
-  "_note": "CLM-SCI-0004 rewritten onto the open Hymans & Matrahazi 2015 PDF; CLM-SCI-0006 rewritten onto Seneca Ep. 7.3–5. Both remain pending. Not a verify or publish GO. CLM-SCI-0005 still awaits a World Athletics corpus pin on its own claim.",
+  "claims_version": "0.2.4-1-5-pending",
+  "updated": "2026-08-27",
+  "_note": "CLM-AA-0001, CLM-TT-0001, CLM-TT-0002, CLM-RX-0001 added as pending documentary rows for 1-5 Sep. Not verified. Not a live-site or claim-verify GO. Do not add CLM-EE-0001. Packet A CLM-SCI-0003/0004/0006/0007 stay pending and stay off 1-5.",
   "corpus_ref": {
     "path": "/corpus/corpus.json",
-    "corpus_version": "0.2.0-sports-batch-1"
+    "corpus_version": "0.2.4-vitruvius-recreation"
   },
   "claims": [
     {
@@ -147,6 +147,70 @@
       ],
       "contested_by": "Claims that modern sport's history of exclusion proves the equal-conditions rule was never genuine.",
       "response": "The existence of a published standard that critics and reformers could invoke is itself part of the institutional achievement; exclusions were real and the standard was used against them.",
+      "status": "pending"
+    },
+    {
+      "id": "CLM-AA-0001",
+      "pair": "aesthetics-architecture",
+      "statement": "Vitruvius, De Architectura 1.3.2, names three departments of architecture: firmitas, utilitas, and venustas.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-VITRUVIUS-DE-ARCH",
+          "locator": "Book I, Ch. 3 §2 (firmitas, utilitas, venustas); LacusCurtius English Book I",
+          "supports": "direct",
+          "note": "Accepted pending 27 Aug 2026. Face is Vitruvius 1.3.2. Do not treat Wotton 1624 as Vitruvius's face. Latin same book: Thayer L/Roman/Texts/Vitruvius/1*.html. Status remains pending."
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "CLM-TT-0001",
+      "pair": "technology-teaching",
+      "statement": "Vitruvius, De Architectura 1.3.1, lists public works arranged for common use, including theatres, porticoes, baths, and walks.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-VITRUVIUS-DE-ARCH",
+          "locator": "Book I, Ch. 3 §1 (public works for common use: theatres, porticoes, baths, walks); LacusCurtius English Book I",
+          "supports": "direct",
+          "note": "Accepted pending 27 Aug 2026, only if 3 Thu A prose is narrowed to this face. Same Book I URLs. Status remains pending."
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "CLM-TT-0002",
+      "pair": "technology-teaching",
+      "statement": "Vitruvius, in the preface to De Architectura Book I and at 1.1, writes that he set down the principles of the discipline so that they may be known.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-VITRUVIUS-DE-ARCH",
+          "locator": "Book I preface / 1.1 (principles written so they may be known); LacusCurtius English Book I",
+          "supports": "direct",
+          "note": "Accepted pending 27 Aug 2026, only if 3 Thu B prose is narrowed to this face. Status remains pending."
+        }
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "CLM-RX-0001",
+      "pair": "recreation-relaxation",
+      "statement": "The English word recreation comes from Latin recreare / recreatio, in the sense of restore or recovery.",
+      "kind": "documentary",
+      "load_bearing": true,
+      "support": [
+        {
+          "source_id": "SRC-WIKTIONARY-RECREATION",
+          "locator": "etymology of English recreation < Latin recreare / recreatio; https://en.wiktionary.org/wiki/recreation ; https://www.etymonline.com/word/recreation",
+          "supports": "direct",
+          "note": "Accepted pending 27 Aug 2026. Etymology only. Overclaim if treated as amphitheatre practice. OED off-limits. Status remains pending."
+        }
+      ],
       "status": "pending"
     }
   ]
