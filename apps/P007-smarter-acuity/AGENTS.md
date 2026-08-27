@@ -30,6 +30,10 @@ Standing law. Full text: `source/DECISION_2026-08-26_Weekday_Map_Fallback.md`. M
 
 This monorepo owns provenance, the claims ledger, content collections, and the intended future Astro + MDX pipeline. The pure-static site is the live public face; the monorepo is the source of truth for claims and the longer-term structured content system.
 
+### Public page build
+
+When constructing public webpages from essays, do not include internal project disclaimers such as "What this page does not claim" (heading or body). That material is internal (PREP, Drive, claims hygiene). Public HTML is essay body for readers only. Deploy Handoff provenance stays an HTML comment in View Source when required, not visible page copy. Do not restore the disclaimer on later ports.
+
 ## Provenance
 
 Run `node tools/validate-provenance.mjs` before opening a PR. It refuses on ten rules; the table in `source/PROVENANCE.md` §6 says which are GATE, which are CONVENTION, and which stay with the operator.

@@ -36,6 +36,7 @@ shipped is not demonstrably the artifact reviewed.
    - Editing production HTML in Drive without a new monorepo commit + new SHA.
    - Deploying monorepo `src/` directly to Cloudflare until Astro cut-over GO.
    - Treating Notion or chat as the review record.
+   - Porting internal disclaimers such as "What this page does not claim" into public HTML; public pages are essay body only.
 
 5. **Astro cut-over**
    When Astro is the sole origin, this hand-off rule is retired by that GO;
