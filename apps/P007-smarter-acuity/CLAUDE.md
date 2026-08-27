@@ -27,7 +27,7 @@ Webpage-first dual-write:
 Private coaching client work, Meta identity verification for restricted platforms, Instagram / Facebook automated publishing (until identity verification is resolved — manual only for now), any live posting, deployment, or external side-effect without explicit human approval.
 
 **Near-term goal**  
-All viable socials ready + preferred automated process by / before 6 September 2026 launch (Science ↔ Sports under the September Architecture root).
+All viable socials ready + preferred automated process by / before 6 September 2026. First public day: Tuesday 1 September 2026. Packet A / bound Science ↔ Sports: Sunday 6 September 2026. W1 Colosseum: 1–12 September 2026 (September Architecture root).
 
 **Brand rule (locked)**  
 - Display / product name: SMARTER Acuity or S.M.A.R.T.E.R. Acuity (no underscore)  
