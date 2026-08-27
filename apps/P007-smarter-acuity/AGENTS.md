@@ -18,6 +18,7 @@ Standing law. Full text: `source/DECISION_2026-08-26_Weekday_Map_Fallback.md`. M
 - Monday A may use an original math puzzle (not clickbait, not copied) when math needs a door. A puzzle-as-problem may be invented. A world-fact may not.
 - Secondary pair stays off unless the operator names a page and a `namedSpan`.
 - A paragraph or essay may rest on one corpus source when later sentences elaborate meaning, context, application, or profundity. Statistics, quotations, dates, and factual claims still need a source or `TODO: SOURCE`.
+- Amendment 2026-08-27 (`source/DECISION_2026-08-26_Weekday_Map_Fallback.md`): W1 Colosseum is 1–12 September 2026; first public day is Tuesday 1 September 2026; Packet A stays Sunday 6 September 2026; 1–5 September are W1 members, not sits; do not burn reserved faces on 1–5.
 
 ## Production status (2026-08-25/26)
 
