@@ -9,6 +9,16 @@ Website + content pipeline deriving social posts, video assets, and dual living 
 - No invented facts. Every claim must trace to a Tier 1 or Tier 2 corpus source via the claims ledger, or be marked `TODO: SOURCE`.
 - Brand: SMARTER Acuity (display / products) / @SMARTER_Acuity (handle). Underscore only in the handle.
 
+## Calendar, pairs, fallback (2026-08-26)
+
+Standing law. Full text: `source/DECISION_2026-08-26_Weekday_Map_Fallback.md`. Machine-readable map: `src/content/weekday-map.ts`.
+
+- One pair per public day, selected by weekday: Sun `science-sports`, Mon `math-motivation`, Tue `aesthetics-architecture`, Wed `reading-research`, Thu `technology-teaching`, Fri `environment-entertainment`, Sat `recreation-relaxation`. Morning A = first-named side. Evening B = reverse.
+- When that pair does not sit on the week's arc: weekly arc → **that month's root** (do not hardcode Architecture) → how the pair advances or defends Western Civilization, or a sourced fact for that date.
+- Monday A may use an original math puzzle (not clickbait, not copied) when math needs a door. A puzzle-as-problem may be invented. A world-fact may not.
+- Secondary pair stays off unless the operator names a page and a `namedSpan`.
+- A paragraph or essay may rest on one corpus source when later sentences elaborate meaning, context, application, or profundity. Statistics, quotations, dates, and factual claims still need a source or `TODO: SOURCE`.
+
 ## Production status (2026-08-25/26)
 
 **Current public production** is the pure-static site at https://smarteracuity.com (and www), deployed via Wrangler as a Cloudflare Worker with static assets (`npx wrangler deploy`). DNSSEC is enabled.
