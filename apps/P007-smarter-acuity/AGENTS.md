@@ -2,6 +2,20 @@
 
 Website + content pipeline deriving social posts, video assets, and dual living ebooks from a tiered source corpus and claims ledger. Nested rules here win for files under this directory. See root AGENTS.md for repo-wide rules.
 
+## Current operator loop (2026-09-02)
+
+Standing law. Full text: `source/DECISION_2026-09-02_Current_Loop.md`.
+
+Screenwriter works from Heavy. Grok Bot is leverage. Screenwriter is always the final stamp.
+
+Loop: Heavy drafts → Head Master runs Head Case / Jameson / Researchy / Librarian as named → production only on named GO (Holds Status = Ready for GO) → signed RECEIPT webhook back to Heavy. A webhook is not a GO.
+
+Spine: month theme + one weekly living-fight thesis + daily pair interrogations. September = Architecture. W1 Rome / Colosseum week VOID. Pair names off the public surface.
+
+Repo agents never post, never deploy, never store webhook secrets or credentials.
+
+The 2026-08-27 calendar line below (W1 Colosseum 1–12 Sep; Packet A 6 Sep) is **superseded as going-forward law**. Weekday pair names remain.
+
 ## Orientation
 - Webpage-first dual-write: maintain working webpages → derive social posts (X + YouTube) and video assets → simultaneously advance the two living ebook manuscripts.
 - Public system only. High-agency coaching layer is out of scope.
@@ -29,7 +43,7 @@ Standing law. Full text: `source/DECISION_2026-08-26_Weekday_Map_Fallback.md`. M
 - Monday A may use an original math puzzle (not clickbait, not copied) when math needs a door. A puzzle-as-problem may be invented. A world-fact may not.
 - Secondary pair stays off unless the operator names a page and a `namedSpan`.
 - A paragraph or essay may rest on one corpus source when later sentences elaborate meaning, context, application, or profundity. Statistics, quotations, dates, and factual claims still need a source or `TODO: SOURCE`.
-- Amendment 2026-08-27 (`source/DECISION_2026-08-26_Weekday_Map_Fallback.md`): W1 Colosseum is 1–12 September 2026; first public day is Tuesday 1 September 2026; Packet A stays Sunday 6 September 2026; 1–5 September are W1 members, not sits; do not burn reserved faces on 1–5.
+- Amendment 2026-08-27 (`source/DECISION_2026-08-26_Weekday_Map_Fallback.md`): W1 Colosseum is 1–12 September 2026; first public day is Tuesday 1 September 2026; Packet A stays Sunday 6 September 2026; 1–5 September are W1 members, not sits; do not burn reserved faces on 1–5. **Superseded 2026-09-02 as going-forward calendar law** — see `source/DECISION_2026-09-02_Current_Loop.md`. First public day 1 September 2026 remains historical fact. Colosseum is not the current week object.
 
 ## Production status (2026-08-25/26)
 
