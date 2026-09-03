@@ -2,6 +2,20 @@
 
 Website + content pipeline deriving social posts, video assets, and dual living ebooks from a tiered source corpus and claims ledger. Nested rules here win for files under this directory. See root AGENTS.md for repo-wide rules.
 
+## Current law (2026-09-02) — wins over dated calendar lines below
+
+Screenwriter works from Heavy. Grok Bot is leverage. Screenwriter is always the final stamp.
+
+Loop: Heavy drafts → Head Master runs Head Case / Jameson / Researchy / Librarian as named → production only on a named GO (Holds Status = Ready for GO, or Screenwriter in Grok Bot chat) → signed RECEIPT webhook back to Heavy. A webhook is not a GO. Webhook URLs and signing secrets never enter this repo.
+
+Spine: month theme + one weekly living-fight thesis + daily pair interrogations. September = Architecture. W1 Rome / Colosseum / bread-and-circuses week is VOID. Pair names stay off the public surface.
+
+Essays originate in Notion and leave only after Screenwriter KEEP + named GO. Repo agents never post and never deploy.
+
+Superseded as going-forward calendar law: the 2026-08-27 line that W1 Colosseum is 1–12 September and Packet A occupies 6 September. First public day 1 September 2026 still happened; that week is not the month spine.
+
+First-read outside git: Notion [LAW — Current iteration](https://app.notion.com/p/3d003ccbf1d4819da4b3efab7efd5122).
+
 ## Orientation
 - Webpage-first dual-write: maintain working webpages → derive social posts (X + YouTube) and video assets → simultaneously advance the two living ebook manuscripts.
 - Public system only. High-agency coaching layer is out of scope.
@@ -22,14 +36,14 @@ Drafting may use free public URLs and the SMARTER Acuity Resources Notion page. 
 
 ## Calendar, pairs, fallback (2026-08-26)
 
-Standing law. Full text: `source/DECISION_2026-08-26_Weekday_Map_Fallback.md`. Machine-readable map: `src/content/weekday-map.ts`.
+Standing law for the weekday cameras. Full text: `source/DECISION_2026-08-26_Weekday_Map_Fallback.md`. Machine-readable map: `src/content/weekday-map.ts`.
 
 - One pair per public day, selected by weekday: Sun `science-sports`, Mon `math-motivation`, Tue `aesthetics-architecture`, Wed `reading-research`, Thu `technology-teaching`, Fri `environment-entertainment`, Sat `recreation-relaxation`. Morning A = first-named side. Evening B = reverse.
-- When that pair does not sit on the week's arc: weekly arc → **that month's root** (do not hardcode Architecture) → how the pair advances or defends Western Civilization, or a sourced fact for that date.
+- The pair is two cameras on that week's living-fight thesis, not two new topics. When the pair does not sit on the week's thesis: weekly thesis → **that month's root** (do not hardcode Architecture) → how the pair advances or defends Western Civilization, or a sourced fact for that date.
 - Monday A may use an original math puzzle (not clickbait, not copied) when math needs a door. A puzzle-as-problem may be invented. A world-fact may not.
 - Secondary pair stays off unless the operator names a page and a `namedSpan`.
 - A paragraph or essay may rest on one corpus source when later sentences elaborate meaning, context, application, or profundity. Statistics, quotations, dates, and factual claims still need a source or `TODO: SOURCE`.
-- Amendment 2026-08-27 (`source/DECISION_2026-08-26_Weekday_Map_Fallback.md`): W1 Colosseum is 1–12 September 2026; first public day is Tuesday 1 September 2026; Packet A stays Sunday 6 September 2026; 1–5 September are W1 members, not sits; do not burn reserved faces on 1–5.
+- Amendment 2026-08-27 is **historical**. It is not going-forward September law. See Current law (2026-09-02) above.
 
 ## Production status (2026-08-25/26)
 
@@ -37,7 +51,7 @@ Standing law. Full text: `source/DECISION_2026-08-26_Weekday_Map_Fallback.md`. M
 
 **Sole deploy origin:** Google Drive static folder (see `DRIVE_POINTERS.md`). The monorepo does **not** deploy the public site until an explicit Astro cut-over GO.
 
-**Notion** is status/coordination only for calendar, tags, claims, or what is live. The Resources page is a drafting roster under the 28 Aug 2026 decision; it does not set the calendar. See `source/DECISION_2026-08-26_Surface_Boundary_Amendment.md`.
+**Notion** is the origin of essays and of named GOs. The Resources page is a drafting roster. See `source/DECISION_2026-08-26_Surface_Boundary_Amendment.md`.
 
 This monorepo owns provenance, the claims ledger, content collections, and the intended future Astro + MDX pipeline. The pure-static site is the live public face; the monorepo is the source of truth for claims and the longer-term structured content system.
 
