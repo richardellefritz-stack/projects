@@ -1,11 +1,13 @@
 # Weekday Pair Map, Fallback Chain, and September Cadence
 
-**Status:** GO 2026-08-26. Amended 2026-08-27.
+**Status:** GO 2026-08-26. Amended 2026-08-27 (W1 start) and 2026-08-27 (day page).
 **Operator:** Rich Ellefritz
 **Amends:** Planning practice only. Does not repeal provenance-gate, Open Load-Bearing, Surface Boundary, or Deploy Handoff.
 **Why this file exists:** Master Context v2–v2.3 already locked the weekday pair table (6 August 2026). The 25 August Calendar Doc, Tagging Rule v2.1, and live `/system` page did not reprint it. Agents then treated daily rotation as missing. Nested `AGENTS.md` says expand only after a demonstrated failure. This is that failure.
 
 **Amendment 2026-08-27 (Screenwriter lock):** W1 Colosseum starts 1 September 2026. First public day is Tuesday 1 September 2026. Packet A remains bound to Sunday 6 September 2026. Membership in W1 is not a sit. This file is not a hold lift, not a merge-to-main GO, and not a claim-verify GO.
+
+**Amendment 2026-08-27 (day page):** One webpage per public day. Morning A and evening B are sections on `/p/YYYY-MM-DD/`, not separate documents. Full law: `source/DECISION_2026-08-27_Day_Page_Lookback.md`. §4 and §6 below are updated to match. Pair map, fallback, and Packet A substance are unchanged.
 
 ---
 
@@ -54,7 +56,7 @@ If Monday A needs a door that the weekly arc and the monthly root do not already
 
 ## 4. Cadence and September 2026 windows
 
-- Daily dual-write, always. Morning A, evening B. Two pages per public day.
+- Daily dual-write, always. Morning A, evening B. **One page per public day**, two sections (`#a` / `#b`). Share suffixes `/p/YYYY-MM-DD/a` and `/p/YYYY-MM-DD/b` pick the Card and the scroll; they are not second essays. See `DECISION_2026-08-27_Day_Page_Lookback.md`.
 - First public day: Tuesday 1 September 2026.
 - Packet A (bound pair; not the week-start): Sunday 6 September 2026.
 - September windows (W4 clipped):
@@ -63,7 +65,7 @@ If Monday A needs a door that the weekly arc and the monthly root do not already
   - W3 Concert Halls: 2026-09-20 → 2026-09-26
   - W4 Libraries: 2026-09-27 → 2026-09-30 only
 - 1–3 October are not Architecture. October root is Philosophy.
-- 1–30 September = 30 days = 60 page slots.
+- 1–30 September = 30 days = **30 day pages = 60 weaves**.
 - Membership in W1 does not assign a Colosseum sit. 1–5 September stay root+pair doors until Screenwriter names a sit. Do not burn Packet A sources (FA 1863, Martial, IAAF 2015, Seneca) or the 7–12 opened faces (Dio, Suetonius, Tertullian, Hailemikael) on 1–5.
 
 ---
@@ -109,12 +111,17 @@ Substance on 1–5 and 7–30 September remains unassigned until a later packet.
 
 ## 6. Packet A bindings (accepted, not verified)
 
+Canonical day page for 6 September 2026 is `/p/2026-09-06/`. Both weaves live on that page.
+
 | Slot | Path | Source MDX | Claims (pending) |
 |---|---|---|---|
-| 2026-09-06-a | `/p/2026-09-06-a/` | `src/content/pages/published-rules-vs-arena-spectacle.mdx` | CLM-SCI-0003, CLM-SCI-0007 |
-| 2026-09-06-b | `/p/2026-09-06-b/` | `src/content/pages/records-progression-and-midday-spectacle.mdx` | CLM-SCI-0004, CLM-SCI-0006 |
+| 2026-09-06 (day) | `/p/2026-09-06/` | `src/content/pages/2026-09-06-published-rules-and-the-arena.mdx` | CLM-SCI-0003, CLM-SCI-0007, CLM-SCI-0004, CLM-SCI-0006 |
+| 2026-09-06 A | `/p/2026-09-06/a` → `#a` | same file, morning section | CLM-SCI-0003, CLM-SCI-0007 |
+| 2026-09-06 B | `/p/2026-09-06/b` → `#b` | same file, evening section | CLM-SCI-0004, CLM-SCI-0006 |
 
-Do not promote these claims to `verified` in this decision. Do not invent a third Packet A thesis. Do not rewrite Packet A because W1 now starts on the 1st.
+Legacy live slugs, when the Drive packet ships: `/p/2026-09-06-a/` 301 → `/p/2026-09-06/a`; `/p/2026-09-06-b/` 301 → `/p/2026-09-06/b`.
+
+Former collection filenames `published-rules-vs-arena-spectacle.mdx` and `records-progression-and-midday-spectacle.mdx` are stubs pointing at the day file. Do not promote these claims to `verified` in this decision. Do not invent a third Packet A thesis. Do not rewrite Packet A because W1 now starts on the 1st.
 
 Live placeholder copy on `/p/2026-09-06-a/` still advertised “measure, see, and gather.” Replacement sentences were specified in the 26 August packet so the reserved page matches the accepted MDX. Those HTML edits live in the Drive static deploy folder, not in this commit. Deploy remains operator GO (`npx wrangler deploy`).
 
@@ -133,4 +140,6 @@ Live placeholder copy on `/p/2026-09-06-a/` still advertised “measure, see, an
 - [x] GO — Rich Ellefritz
 - Date: 2026-08-26
 - [x] Amendment GO — W1 Colosseum starts 1 September 2026 — Rich Ellefritz via Screenwriter
+- Date: 2026-08-27
+- [x] Amendment GO — one day page per public day; Packet A paths become `/p/2026-09-06/` — Rich Ellefritz via Screenwriter
 - Date: 2026-08-27
